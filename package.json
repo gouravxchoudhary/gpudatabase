@@ -1,0 +1,21 @@
+{
+  "name": "gpu-database",
+  "version": "1.0.0",
+  "description": "GPU Database - Complete Graphics Card Guide",
+  "main": "index.html",
+  "scripts": {
+    "dev": "lite-server",
+    "start": "lite-server"
+  },
+  "keywords": [
+    "gpu",
+    "database",
+    "graphics",
+    "cards"
+  ],
+  "author": "Gourav Choudhary",
+  "license": "MIT",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
