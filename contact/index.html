@@ -127,8 +127,6 @@
             padding: 0.5rem;
             border-radius: 8px;
             transition: all 0.3s ease;
-            border: none;
-            background: none;
         }
 
         .mobile-menu-btn:hover {
@@ -510,6 +508,38 @@
                 height: 35px;
                 font-size: 1rem;
             }
+
+            .form-group input,
+            .form-group textarea {
+                font-size: 16px; /* Prevents zoom on iOS */
+                padding: 0.8rem;
+            }
+
+            .submit-btn {
+                width: 100%;
+                padding: 1rem;
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .contact-item:hover {
+                transform: none;
+                background: rgba(0, 255, 136, 0.1);
+            }
+
+            .submit-btn:hover {
+                transform: none;
+            }
+
+            .nav-links a:hover {
+                transform: none;
+            }
         }
     </style>
 </head>
@@ -518,12 +548,10 @@
         <div class="nav-content">
             <a href="/" class="logo">GPU Database</a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="/" class="nav-link">Home</a></li>
                 <li><a href="/#gpus" class="nav-link">Graphics Cards</a></li>
                 <li><a href="/#comparison" class="nav-link">Compare</a></li>
                 <li><a href="/#guides" class="nav-link">Guides</a></li>
                 <li><a href="/#news" class="nav-link">News</a></li>
-                <li><a href="/blog" class="nav-link">Blog</a></li>
                 <li><a href="/about" class="nav-link">About</a></li>
                 <li><a href="/contact" class="nav-link active">Contact</a></li>
             </ul>
@@ -631,7 +659,7 @@
             <h2 class="social-title">Connect With Me</h2>
             <p class="social-subtitle">Follow my work and stay updated with the latest tech content</p>
             <div class="social-links">
-                <a href="https://www.instagram.com/itz_gourav_choudhary09" target="_blank" rel="noopener" class="social-link">
+                <a href="https://www.instagram.com/itz_gourav_choudhary65" target="_blank" rel="noopener" class="social-link">
                     <span>📸</span>
                     <span>Instagram</span>
                 </a>
@@ -655,58 +683,84 @@
                 <a href="/privacy-policy">Privacy Policy</a>
                 <a href="/terms-of-service">Terms of Service</a>
                 <a href="/advertise">Advertise</a>
-                <a href="/blog">Blog</a>
             </div>
             <p>© 2025 GPU Database. All rights reserved. | The ultimate resource for graphics card information</p>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const navLinks = document.getElementById('navLinks');
-            const contactForm = document.getElementById('contactForm');
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    const contactForm = document.getElementById('contactForm');
 
-            // Mobile menu toggle
-            if (mobileMenuBtn && navLinks) {
-                mobileMenuBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    mobileMenuBtn.classList.toggle('active');
-                    navLinks.classList.toggle('active');
-                    
-                    // Prevent body scroll when menu is open
-                    document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
-                });
+    if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenuBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        });
 
-                // Close menu when clicking outside
-                document.addEventListener('click', (e) => {
-                    if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                        closeMenu();
-                    }
-                });
-
-                // Close menu on nav link click
-                navLinks.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        closeMenu();
-                    });
-                });
-
-                // Close menu on escape key
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape') {
-                        closeMenu();
-                    }
-                });
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                closeMenu();
             }
+        });
 
-            function closeMenu() {
-                if (mobileMenuBtn && navLinks) {
-                    mobileMenuBtn.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    document.body.style.overflow = '';
+        // Close menu on nav link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                closeMenu();
+            });
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMenu();
+            }
+        });
+
+        // Add focus trap for mobile menu
+        trapFocus(navLinks);
+    }
+
+    function closeMenu() {
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.classList.remove('active');
+            navLinks.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    // Add focus trap function
+    function trapFocus(element) {
+        const focusableElements = element.querySelectorAll(
+            'a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select'
+        );
+        const firstFocusableElement = focusableElements[0];
+        const lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+        element.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                if (e.shiftKey) {
+                    if (document.activeElement === firstFocusableElement) {
+                        lastFocusableElement.focus();
+                        e.preventDefault();
+                    }
+                } else {
+                    if (document.activeElement === lastFocusableElement) {
+                        firstFocusableElement.focus();
+                        e.preventDefault();
+                    }
                 }
             }
+        });
+    }
 
             // Form submission
             if (contactForm) {
