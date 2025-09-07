@@ -3,53 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="GPU Database Blog - Expert reviews, comparisons, and guides about NVIDIA RTX graphics cards. Latest GPU news, performance analysis, and buying guides.">
-    <meta name="keywords" content="GPU blog, graphics card reviews, RTX reviews, GPU comparisons, NVIDIA news, GPU guides, graphics card analysis">
-    <meta name="author" content="Gourav Choudhary">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://gpudatabase.in/blog/">
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
+    <meta name="description" content="GPU Database Blog - Expert reviews, in-depth analysis, and comprehensive guides about NVIDIA RTX graphics cards and GPU technology.">
+    <meta name="keywords" content="GPU blog, graphics card reviews, RTX blog, GPU analysis, PC building guides, GPU comparisons">
+    <meta property="og:title" content="GPU Database Blog - Expert GPU Reviews & Analysis">
+    <meta property="og:description" content="Latest GPU reviews, comparisons, and expert analysis. Stay updated with the newest graphics card technology and performance insights.">
     <meta property="og:url" content="https://gpudatabase.in/blog/">
-    <meta property="og:title" content="GPU Database Blog - Expert Graphics Card Reviews & Guides">
-    <meta property="og:description" content="Expert reviews and in-depth analysis of NVIDIA RTX graphics cards. GPU comparisons, performance benchmarks, and buying guides.">
     <meta property="og:image" content="https://gpudatabase.in/img/blog-og.jpg">
-    <meta property="og:site_name" content="GPU Database">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://gpudatabase.in/blog/">
-    <meta property="twitter:title" content="GPU Database Blog - Expert Graphics Card Reviews">
-    <meta property="twitter:description" content="Expert reviews and analysis of NVIDIA RTX graphics cards with performance benchmarks and buying guides.">
-    <meta property="twitter:image" content="https://gpudatabase.in/img/blog-og.jpg">
-
-    <title>GPU Database Blog - Expert Graphics Card Reviews & Guides</title>
-
-    <!-- Schema.org structured data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Blog",
-        "name": "GPU Database Blog",
-        "url": "https://gpudatabase.in/blog/",
-        "description": "Expert reviews and analysis of NVIDIA RTX graphics cards",
-        "author": {
-            "@type": "Person",
-            "name": "Gourav Choudhary",
-            "url": "https://gpudatabase.in/about"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "GPU Database",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https://gpudatabase.in/img/logo.png"
-            }
-        }
-    }
-    </script>
-
+    <link rel="canonical" href="https://gpudatabase.in/blog/">
+    <title>GPU Database Blog - Expert GPU Reviews & Analysis | Latest Graphics Card Insights</title>
+    
     <style>
         * {
             margin: 0;
@@ -62,6 +24,7 @@
             --primary-blue: #00ccff;
             --accent-orange: #ff8800;
             --accent-red: #ff4444;
+            --accent-purple: #8844ff;
             --bg-primary: #0f0f0f;
             --bg-secondary: #1a1a1a;
             --text-primary: #ffffff;
@@ -69,21 +32,36 @@
             --text-muted: #999999;
             --border-color: rgba(255, 255, 255, 0.1);
             --card-bg: rgba(255, 255, 255, 0.05);
-            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
-            --border-radius: 16px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --navbar-height: 70px;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
             background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
             color: var(--text-primary);
             min-height: 100vh;
-            overflow-x: hidden;
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
-        /* Navigation */
+        /* Skip Link for Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--primary-green);
+            color: var(--bg-primary);
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 10000;
+        }
+
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        /* Navigation Styles */
         .navbar {
             background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(20px);
@@ -93,6 +71,9 @@
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid var(--border-color);
+            height: var(--navbar-height);
+            display: flex;
+            align-items: center;
         }
 
         .nav-content {
@@ -102,22 +83,28 @@
             max-width: 1400px;
             margin: 0 auto;
             position: relative;
+            width: 100%;
         }
 
         .logo {
             font-size: 1.5rem;
-            font-weight: bold;
+            font-weight: 700;
             background: linear-gradient(45deg, var(--primary-green), var(--primary-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .nav-links {
             display: none;
             position: absolute;
-            top: 100%;
+            top: calc(100% + 1px);
             left: 0;
             right: 0;
             background: rgba(0, 0, 0, 0.98);
@@ -127,6 +114,8 @@
             gap: 0.5rem;
             border-top: 1px solid var(--border-color);
             list-style: none;
+            max-height: calc(100vh - var(--navbar-height));
+            overflow-y: auto;
         }
 
         .nav-links.active {
@@ -139,6 +128,8 @@
             transition: var(--transition);
             padding: 0.75rem 1rem;
             border-radius: 12px;
+            font-weight: 500;
+            position: relative;
         }
 
         .nav-links a:hover,
@@ -146,6 +137,14 @@
             color: var(--primary-green);
             background: rgba(0, 255, 136, 0.1);
             outline: none;
+            transform: translateX(8px);
+        }
+
+        .nav-links a.active,
+        .nav-links a[aria-current="page"] {
+            color: var(--primary-green);
+            background: rgba(0, 255, 136, 0.15);
+            font-weight: 600;
         }
 
         .mobile-menu-btn {
@@ -157,7 +156,12 @@
             border-radius: 8px;
             transition: var(--transition);
             border: none;
-            background: none;
+            background: transparent;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .mobile-menu-btn span {
@@ -168,16 +172,33 @@
             border-radius: 2px;
         }
 
-        /* Main Content */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 120px 1rem 60px;
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
         }
 
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: calc(var(--navbar-height) + 2rem) 1rem 2rem;
+            width: 100%;
+        }
+
+        /* Page Header */
         .page-header {
             text-align: center;
             margin-bottom: 4rem;
+            background: radial-gradient(circle at center, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
+            padding: 3rem 0;
+            border-radius: 20px;
         }
 
         .page-title {
@@ -187,67 +208,96 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            font-weight: 800;
         }
 
         .page-subtitle {
-            font-size: clamp(1.1rem, 4vw, 1.3rem);
+            font-size: clamp(1rem, 4vw, 1.3rem);
             color: var(--text-secondary);
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
+            line-height: 1.5;
         }
 
+        /* Blog Grid */
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin: 2rem 0;
         }
 
         .blog-card {
             background: var(--card-bg);
-            border-radius: var(--border-radius);
-            padding: 2rem;
             border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-md);
+            border-radius: 20px;
+            padding: 2rem;
             transition: var(--transition);
             position: relative;
             overflow: hidden;
         }
 
         .blog-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 32px rgba(0, 255, 136, 0.2);
-            border-color: rgba(0, 255, 136, 0.3);
+            transform: translateY(-5px);
+            border-color: var(--primary-green);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .blog-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-green), var(--primary-blue));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .blog-card:hover::before {
+            opacity: 1;
         }
 
         .blog-meta {
             display: flex;
+            align-items: center;
             gap: 1rem;
-            margin-bottom: 1rem;
-            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
             flex-wrap: wrap;
+            font-size: 0.9rem;
         }
 
         .blog-category {
-            background: linear-gradient(45deg, var(--primary-green), var(--primary-blue));
+            background: var(--accent-orange);
             color: var(--bg-primary);
-            padding: 0.25rem 0.75rem;
+            padding: 0.3rem 0.8rem;
             border-radius: 20px;
             font-weight: 600;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
+        .blog-meta time {
+            color: var(--text-muted);
+        }
+
+        .blog-meta span {
+            color: var(--text-muted);
+        }
+
         .blog-title {
-            font-size: clamp(1.2rem, 4vw, 1.5rem);
-            margin-bottom: 1rem;
+            font-size: 1.4rem;
             color: var(--text-primary);
+            margin-bottom: 1rem;
             line-height: 1.3;
+            font-weight: 700;
         }
 
         .blog-excerpt {
             color: var(--text-secondary);
+            line-height: 1.6;
             margin-bottom: 1.5rem;
             font-size: 0.95rem;
         }
@@ -261,48 +311,40 @@
             font-weight: 600;
             transition: var(--transition);
             padding: 0.5rem 1rem;
-            border-radius: 8px;
-            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 12px;
+            border: 1px solid var(--primary-green);
+            background: rgba(0, 255, 136, 0.1);
         }
 
         .blog-cta:hover {
-            background: rgba(0, 255, 136, 0.1);
-            transform: translateX(4px);
+            background: var(--primary-green);
+            color: var(--bg-primary);
+            transform: translateX(5px);
         }
 
-        /* Footer */
-        .footer {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 3rem 1rem 2rem;
-            border-top: 1px solid var(--border-color);
-            text-align: center;
-            margin-top: 4rem;
+        /* Featured Article */
+        .featured-article {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 204, 255, 0.1) 100%);
+            border: 2px solid var(--primary-green);
+            position: relative;
         }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
+        .featured-article::after {
+            content: 'Featured Article';
+            position: absolute;
+            top: -12px;
+            left: 2rem;
+            background: var(--primary-green);
+            color: var(--bg-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
         }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: var(--transition);
-            padding: 0.5rem;
-            border-radius: 8px;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary-green);
-            background: rgba(0, 255, 136, 0.1);
+        .featured-article .blog-title {
+            font-size: 1.8rem;
         }
 
         /* Responsive Design */
@@ -320,18 +362,41 @@
             }
 
             .nav-links {
-                display: flex;
+                display: flex !important;
                 position: static;
                 background: none;
+                backdrop-filter: none;
                 flex-direction: row;
                 padding: 0;
                 gap: 1rem;
                 border: none;
+                box-shadow: none;
+                max-height: none;
+                overflow: visible;
+                align-items: center;
+                justify-content: flex-end;
+                flex: 1;
+                margin-left: 2rem;
             }
 
             .nav-links a {
-                padding: 0.5rem 1rem;
+                padding: 0.6rem 1rem;
                 border-radius: 20px;
+                white-space: nowrap;
+                font-size: 0.9rem;
+                transition: all 0.3s ease;
+                min-width: fit-content;
+            }
+
+            .nav-links a:hover,
+            .nav-links a.active {
+                transform: translateY(-1px);
+                background: rgba(0, 255, 136, 0.15);
+                color: var(--primary-green);
+            }
+
+            .container {
+                padding-top: 100px;
             }
 
             .blog-grid {
@@ -356,10 +421,19 @@
             .blog-meta {
                 flex-direction: column;
                 gap: 0.5rem;
+                align-items: flex-start;
             }
         }
 
-        /* Accessibility */
+        /* Focus Styles for Accessibility */
+        .nav-links a:focus,
+        .mobile-menu-btn:focus,
+        .blog-cta:focus {
+            outline: 3px solid var(--primary-green);
+            outline-offset: 2px;
+        }
+
+        /* Reduced Motion */
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation-duration: 0.01ms !important;
@@ -367,32 +441,30 @@
                 transition-duration: 0.01ms !important;
             }
         }
-
-        a:focus,
-        button:focus {
-            outline: 3px solid var(--primary-green);
-            outline-offset: 2px;
-        }
     </style>
 </head>
+
 <body>
-    <nav class="navbar" id="navbar">
+    <!-- Skip Link for Screen Readers -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-content">
             <a href="../index.html" class="logo" aria-label="GPU Database Home">GPU Database</a>
-            <ul class="nav-links" id="navLinks" role="navigation" aria-label="Main navigation">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="../index.html#gpu-guide" class="nav-link">GPU Guide</a></li>
                 <li><a href="../index.html#gpus" class="nav-link">Graphics Cards</a></li>
                 <li><a href="../index.html#gaming-performance-analysis" class="nav-link">Gaming Performance</a></li>
                 <li><a href="../index.html#cryptocurrency-mining" class="nav-link">Mining Guide</a></li>
                 <li><a href="../index.html#ai-machine-learning" class="nav-link">AI Tasks</a></li>
-                <li><a href="../index.html#blog" class="nav-link active">Blog</a></li>
+                <li><a href="index.html" class="nav-link" aria-current="page">Blog</a></li>
                 <li><a href="../index.html#guides" class="nav-link">Guides</a></li>
                 <li><a href="../index.html#news" class="nav-link">News</a></li>
                 <li><a href="../index.html#comparison" class="nav-link">Compare</a></li>
                 <li><a href="../about.html" class="nav-link">About</a></li>
                 <li><a href="../contact.html" class="nav-link">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -400,193 +472,234 @@
         </div>
     </nav>
 
-    <div class="container">
-        <header class="page-header">
-            <h1 class="page-title">GPU Database Blog</h1>
-            <p class="page-subtitle">Expert reviews, in-depth analysis, and comprehensive guides about NVIDIA RTX graphics cards</p>
-        </header>
+    <main id="main-content">
+        <div class="container">
+            <header class="page-header">
+                <h1 class="page-title">GPU Database Blog</h1>
+                <p class="page-subtitle">Expert reviews, in-depth analysis, and comprehensive guides about NVIDIA RTX graphics cards and cutting-edge GPU technology</p>
+            </header>
 
-        <div class="blog-grid">
-            <article class="blog-card">
-                <div class="blog-meta">
-                    <span class="blog-category">HIGH-END BATTLE</span>
-                    <time datetime="2025-08-07">August 7, 2025</time>
-                    <span>7 min read</span>
-                </div>
-                <h2 class="blog-title">AMD RX 7900 XTX vs NVIDIA RTX 4080: Ultimate Battle 2025</h2>
-                <p class="blog-excerpt">Epic showdown between AMD RX 7900 XTX and NVIDIA RTX 4080. Complete performance analysis, ray tracing comparison, and value assessment for 4K gaming enthusiasts.</p>
-                <a href="/blog/amd-rx-7900-xtx-vs-nvidia-rtx-4080-ultimate-battle-2025.html" class="blog-cta">Read Epic Battle →</a>
-            </article>
+            <div class="blog-grid">
+                <article class="blog-card featured-article">
+                    <div class="blog-meta">
+                        <span class="blog-category">HIGH-END BATTLE</span>
+                        <time datetime="2025-08-07">August 7, 2025</time>
+                        <span>7 min read</span>
+                    </div>
+                    <h2 class="blog-title">AMD RX 7900 XTX vs NVIDIA RTX 4080: Ultimate Battle 2025</h2>
+                    <p class="blog-excerpt">Epic showdown between AMD RX 7900 XTX and NVIDIA RTX 4080. Complete performance analysis, ray tracing comparison, and value assessment for 4K gaming enthusiasts. Which flagship GPU delivers the best bang for your buck?</p>
+                    <a href="amd-rx-7900-xtx-vs-nvidia-rtx-4080-ultimate-battle-2025.html" class="blog-cta" aria-label="Read AMD vs NVIDIA battle comparison">Read Epic Battle →</a>
+                </article>
 
-            <article class="blog-card">
-                <div class="blog-meta">
-                    <span class="blog-category">MID-RANGE COMPARISON</span>
-                    <time datetime="2025-08-07">August 7, 2025</time>
-                    <span>6 min read</span>
-                </div>
-                <h2 class="blog-title">RTX 4060 Ti vs RTX 4070: Complete Comparison 2025</h2>
-                <p class="blog-excerpt">Definitive comparison between RTX 4060 Ti and RTX 4070 for 1440p gaming. Performance analysis, value assessment, and clear buying recommendations for mid-range builders.</p>
-                <a href="/blog/rtx-4060-ti-vs-rtx-4070-complete-comparison-2025.html" class="blog-cta">Read Comparison →</a>
-            </article>
+                <article class="blog-card">
+                    <div class="blog-meta">
+                        <span class="blog-category">MID-RANGE COMPARISON</span>
+                        <time datetime="2025-08-07">August 7, 2025</time>
+                        <span>6 min read</span>
+                    </div>
+                    <h2 class="blog-title">RTX 4060 Ti vs RTX 4070: Complete Comparison 2025</h2>
+                    <p class="blog-excerpt">Definitive comparison between RTX 4060 Ti and RTX 4070 for 1440p gaming. Performance analysis, value assessment, and clear buying recommendations for mid-range builders.</p>
+                    <a href="rtx-4060-ti-vs-rtx-4070-complete-comparison-2025.html" class="blog-cta" aria-label="Read RTX 4060 Ti vs 4070 comparison">Read Comparison →</a>
+                </article>
 
-            <article class="blog-card">
-                <div class="blog-meta">
-                    <span class="blog-category">RUMORS & LEAKS</span>
-                    <time datetime="2025-08-06">August 6, 2025</time>
-                    <span>6 min read</span>
-                </div>
-                <h2 class="blog-title">NVIDIA GeForce RTX 60 Series Rumors & Leaks 2025</h2>
-                <p class="blog-excerpt">Breaking news and speculation about NVIDIA's next-generation RTX 60 series. RTX 6090 and RTX 6080 predictions, Cobalt architecture details, DLSS 5.0, performance expectations, and release timeline analysis.</p>
-                <a href="/blog/nvidia-geforce-rtx-60-series-rumors-leaks-2025.html" class="blog-cta">Read Latest Rumors →</a>
-            </article>
+                <article class="blog-card">
+                    <div class="blog-meta">
+                        <span class="blog-category">RUMORS & LEAKS</span>
+                        <time datetime="2025-08-06">August 6, 2025</time>
+                        <span>6 min read</span>
+                    </div>
+                    <h2 class="blog-title">NVIDIA GeForce RTX 60 Series Rumors & Leaks 2025</h2>
+                    <p class="blog-excerpt">Breaking news and speculation about NVIDIA's next-generation RTX 60 series. RTX 6090 and RTX 6080 predictions, Cobalt architecture details, DLSS 5.0, performance expectations, and release timeline analysis.</p>
+                    <a href="nvidia-geforce-rtx-60-series-rumors-leaks-2025.html" class="blog-cta" aria-label="Read RTX 60 series rumors and predictions">Read Latest Rumors →</a>
+                </article>
 
-            <article class="blog-card">
-                <div class="blog-meta">
-                    <span class="blog-category">COMPARISON</span>
-                    <time datetime="2024-12-15">December 15, 2024</time>
-                    <span>12 min read</span>
-                </div>
-                <h2 class="blog-title">RTX 5090 vs RTX 4090: Ultimate Performance Battle</h2>
-                <p class="blog-excerpt">Comprehensive comparison between NVIDIA's flagship GPUs. Performance benchmarks, ray tracing capabilities, DLSS improvements, power efficiency, and value analysis for 4K gaming and content creation.</p>
-                <a href="/blog/rtx-5090-vs-4090-comparison.html" class="blog-cta">Read Full Comparison →</a>
-            </article>
+                <article class="blog-card">
+                    <div class="blog-meta">
+                        <span class="blog-category">FLAGSHIP COMPARISON</span>
+                        <time datetime="2024-12-15">December 15, 2024</time>
+                        <span>12 min read</span>
+                    </div>
+                    <h2 class="blog-title">RTX 5090 vs RTX 4090: Ultimate Performance Battle</h2>
+                    <p class="blog-excerpt">Comprehensive comparison between NVIDIA's flagship GPUs. RTX 5090 vs RTX 4090 performance analysis, architectural improvements, and upgrade recommendations for enthusiast builders.</p>
+                    <a href="rtx-5090-vs-4090-comparison.html" class="blog-cta" aria-label="Read RTX 5090 vs 4090 flagship comparison">Read Battle →</a>
+                </article>
 
-            <article class="blog-card">
-                <div class="blog-meta">
-                    <span class="blog-category">ANALYSIS</span>
-                    <time datetime="2024-12-12">December 12, 2024</time>
-                    <span>10 min read</span>
-                </div>
-                <h2 class="blog-title">RTX 3090 vs RTX 4090: Generation Gap Analysis</h2>
-                <p class="blog-excerpt">Detailed comparison between RTX 3090 and RTX 4090. Architecture improvements, performance gains, efficiency upgrades, and whether upgrading from RTX 3090 is worth the investment.</p>
-                <a href="/blog/rtx-3090-vs-4090-comparison.html" class="blog-cta">Read Full Analysis →</a>
-            </article>
+                <article class="blog-card">
+                    <div class="blog-meta">
+                        <span class="blog-category">GENERATION ANALYSIS</span>
+                        <time datetime="2024-12-12">December 12, 2024</time>
+                        <span>10 min read</span>
+                    </div>
+                    <h2 class="blog-title">RTX 3090 vs RTX 4090: Generation Gap Analysis</h2>
+                    <p class="blog-excerpt">The RTX 4090 represents a massive leap forward from the RTX 3090, bringing architectural improvements, enhanced efficiency, and revolutionary features like DLSS 3. Deep dive into generational improvements.</p>
+                    <a href="rtx-3090-vs-4090-comparison.html" class="blog-cta" aria-label="Read RTX 3090 vs 4090 generation analysis">Read Analysis →</a>
+                </article>
 
-            <article class="blog-card">
-                <div class="blog-meta">
-                    <span class="blog-category">ULTIMATE GUIDE</span>
-                    <time datetime="2024-12-10">December 10, 2024</time>
-                    <span>15 min read</span>
-                </div>
-                <h2 class="blog-title">RTX 3090 vs RTX 4090 vs RTX 5090: Ultimate Comparison</h2>
-                <p class="blog-excerpt">The most comprehensive comparison of three generations of flagship NVIDIA GPUs. Performance evolution, architectural improvements, pricing analysis, and future-proofing considerations for serious gamers and professionals.</p>
-                <a href="/blog/rtx-3090-vs-4090-vs-5090-ultimate-comparison.html" class="blog-cta">Read Ultimate Guide →</a>
-            </article>
-
-            <article class="blog-card">
-                <div class="blog-meta">
-                    <span class="blog-category">BUYING GUIDE</span>
-                    <time datetime="2024-12-08">December 8, 2024</time>
-                    <span>8 min read</span>
-                </div>
-                <h2 class="blog-title">Best GPU for 4K Gaming in 2025</h2>
-                <p class="blog-excerpt">Complete buying guide for choosing the perfect GPU for 4K gaming. Performance requirements, budget considerations, future-proofing advice, and expert recommendations for every price range.</p>
-                <a href="/blog/best-gpu-for-4k-gaming-in-2025.html" class="blog-cta">Read Buying Guide →</a>
-            </article>
-
-            <article class="blog-card">
-                <div class="blog-meta">
-                    <span class="blog-category">TUTORIAL</span>
-                    <time datetime="2024-12-05">December 5, 2024</time>
-                    <span>6 min read</span>
-                </div>
-                <h2 class="blog-title">How to Choose the Right PSU for Your GPU</h2>
-                <p class="blog-excerpt">Essential guide to selecting the perfect power supply for your graphics card. Power requirements, efficiency ratings, cable management, and compatibility considerations for optimal system performance.</p>
-                <a href="/blog/how-to-choose-the-right-psu-for-your-gpu.html" class="blog-cta">Read Tutorial →</a>
-            </article>
-
-            <article class="blog-card">
-                <div class="blog-meta">
-                    <span class="blog-category">NEWS & PREDICTIONS</span>
-                    <time datetime="2024-12-01">December 1, 2024</time>
-                    <span>7 min read</span>
-                </div>
-                <h2 class="blog-title">RTX 50 Series Release Date & Pricing Predictions</h2>
-                <p class="blog-excerpt">Latest news and predictions about NVIDIA's RTX 50 series launch. Expected release dates, pricing tiers, performance improvements, and market positioning analysis based on industry insights.</p>
-                <a href="/blog/rtx-50-series-release-date&pricing-predictions.html" class="blog-cta">Read Latest News →</a>
-            </article>
-        </div>
-    </div>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="/about">About</a>
-                <a href="/contact">Contact</a>
-                <a href="/privacy-policy">Privacy Policy</a>
-                <a href="/terms-of-service">Terms of Service</a>
-                <a href="/advertise">Advertise</a>
-                <a href="/blog/index.html">Blog</a>
+                <article class="blog-card">
+                    <div class="blog-meta">
+                        <span class="blog-category">UPCOMING RELEASES</span>
+                        <time datetime="2024-11-28">November 28, 2024</time>
+                        <span>8 min read</span>
+                    </div>
+                    <h2 class="blog-title">RTX 50 Series Release Date & Specifications</h2>
+                    <p class="blog-excerpt">Everything we know about NVIDIA's upcoming RTX 50 series graphics cards. Expected release dates, rumored specifications, performance predictions, and pricing analysis for the next generation.</p>
+                    <a href="rtx-50-series-release-date-specifications.html" class="blog-cta" aria-label="Read RTX 50 series predictions">Read Predictions →</a>
+                </article>
             </div>
-            <p>© 2025 GPU Database. All rights reserved. | The ultimate resource for graphics card information</p>
         </div>
-    </footer>
+    </main>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', function() {
+            // Enhanced Mobile Navigation with Accessibility
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const navLinks = document.getElementById('navLinks');
+            const navbar = document.getElementById('navbar');
 
-            if (mobileMenuBtn && navLinks) {
-                mobileMenuBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    mobileMenuBtn.classList.toggle('active');
-                    navLinks.classList.toggle('active');
-                    
-                    // Prevent body scroll when menu is open
-                    document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
-                });
+            if (!mobileMenuBtn || !navLinks) return;
 
-                // Close menu when clicking outside
-                document.addEventListener('click', (e) => {
-                    if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                        closeMenu();
-                    }
-                });
-
-                // Close menu on nav link click
-                navLinks.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        closeMenu();
-                    });
-                });
-
-                // Close menu on escape key
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape') {
-                        closeMenu();
-                    }
-                });
-
-                // Handle resize events
-                window.addEventListener('resize', () => {
-                    if (window.innerWidth >= 768) {
-                        closeMenu();
-                    }
-                });
-            }
-
+            // Close menu function
             function closeMenu() {
-                if (mobileMenuBtn && navLinks) {
-                    mobileMenuBtn.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+                mobileMenuBtn.focus();
             }
 
-            // Mobile optimizations
-            if ('ontouchstart' in window) {
-                // Add touch feedback for blog cards
-                document.querySelectorAll('.blog-card').forEach(card => {
-                    card.addEventListener('touchstart', function() {
-                        this.style.transform = 'scale(0.98)';
-                    });
+            // Open menu function
+            function openMenu() {
+                mobileMenuBtn.classList.add('active');
+                navLinks.classList.add('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+                const firstLink = navLinks.querySelector('a');
+                if (firstLink) firstLink.focus();
+            }
+
+            // Toggle menu
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isActive = mobileMenuBtn.classList.contains('active');
+                
+                if (isActive) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!navbar.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+
+            // Close menu when clicking nav links
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    closeMenu();
+                });
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeMenu();
+                }
+                
+                if (navLinks.classList.contains('active')) {
+                    const links = Array.from(navLinks.querySelectorAll('a'));
+                    const currentIndex = links.indexOf(document.activeElement);
                     
-                    card.addEventListener('touchend', function() {
-                        this.style.transform = '';
-                    });
+                    if (e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        const nextIndex = (currentIndex + 1) % links.length;
+                        links[nextIndex].focus();
+                    } else if (e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        const prevIndex = (currentIndex - 1 + links.length) % links.length;
+                        links[prevIndex].focus();
+                    }
+                }
+            });
+
+            // Active page detection and highlighting
+            function setActiveNavItem() {
+                const currentPage = window.location.pathname;
+                const navItems = document.querySelectorAll('.nav-links a');
+                
+                navItems.forEach(item => {
+                    const href = item.getAttribute('href');
+                    if (href === 'index.html' || currentPage.includes('/blog/')) {
+                        item.classList.add('active');
+                        item.setAttribute('aria-current', 'page');
+                    } else {
+                        item.classList.remove('active');
+                        item.removeAttribute('aria-current');
+                    }
                 });
             }
+
+            // Set active nav item on load
+            setActiveNavItem();
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const headerOffset = 100;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Navbar scroll behavior
+            let lastScrollY = window.scrollY;
+            
+            window.addEventListener('scroll', () => {
+                const currentScrollY = window.scrollY;
+                
+                if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                    navbar.style.transform = 'translateY(-100%)';
+                } else {
+                    navbar.style.transform = 'translateY(0)';
+                }
+                
+                lastScrollY = currentScrollY;
+            });
+
+            // Blog card animations on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Apply animation to blog cards
+            document.querySelectorAll('.blog-card').forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+                observer.observe(card);
+            });
         });
     </script>
 </body>
