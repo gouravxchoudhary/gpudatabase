@@ -60,7 +60,7 @@
         .navbar {
             background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(20px);
-            padding: 1rem;
+            padding: 1rem 2rem;
             position: fixed;
             width: 100%;
             top: 0;
@@ -77,7 +77,6 @@
             align-items: center;
             max-width: 1400px;
             margin: 0 auto;
-            position: relative;
             width: 100%;
         }
 
@@ -90,6 +89,9 @@
             background-clip: text;
             text-decoration: none;
             transition: var(--transition);
+            white-space: nowrap;
+            flex-shrink: 0;
+            margin-right: 3rem;
         }
 
         .logo:hover {
@@ -282,7 +284,8 @@
             }
 
             .logo {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
+                margin-right: 3rem;
             }
 
             .mobile-menu-btn {
@@ -296,7 +299,7 @@
                 backdrop-filter: none;
                 flex-direction: row;
                 padding: 0;
-                gap: 1rem;
+                gap: 1.5rem;
                 border: none;
                 box-shadow: none;
                 max-height: none;
@@ -304,27 +307,63 @@
                 align-items: center;
                 justify-content: flex-end;
                 flex: 1;
-                margin-left: 2rem;
+                margin: 0;
             }
 
             .nav-links a {
-                padding: 0.6rem 1rem;
-                border-radius: 20px;
+                padding: 0.6rem 1.2rem;
+                border-radius: 25px;
                 white-space: nowrap;
                 font-size: 0.9rem;
                 transition: all 0.3s ease;
                 min-width: fit-content;
+                font-weight: 500;
+                border: 1px solid transparent;
             }
 
             .nav-links a:hover,
-            .nav-links a.active {
-                transform: translateY(-1px);
+            .nav-links a:focus {
+                transform: translateY(-2px);
                 background: rgba(0, 255, 136, 0.15);
                 color: var(--primary-green);
+                border-color: rgba(0, 255, 136, 0.3);
+                box-shadow: 0 4px 15px rgba(0, 255, 136, 0.2);
+            }
+
+            .nav-links a.active {
+                background: rgba(0, 255, 136, 0.2);
+                color: var(--primary-green);
+                border-color: rgba(0, 255, 136, 0.4);
             }
 
             .container {
                 padding-top: 100px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .nav-links {
+                gap: 2rem;
+            }
+
+            .nav-links a {
+                padding: 0.7rem 1.4rem;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .nav-links {
+                gap: 2.5rem;
+            }
+
+            .nav-links a {
+                padding: 0.8rem 1.6rem;
+                font-size: 1rem;
             }
         }
 
@@ -360,7 +399,6 @@
                 <li><a href="index.html#cryptocurrency-mining" class="nav-link">Mining Guide</a></li>
                 <li><a href="index.html#ai-machine-learning" class="nav-link">AI Tasks</a></li>
                 <li><a href="blog/index.html" class="nav-link">Blog</a></li>
-                <li><a href="index.html#guides" class="nav-link">Guides</a></li>
                 <li><a href="index.html#news" class="nav-link">News</a></li>
                 <li><a href="index.html#comparison" class="nav-link">Compare</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
