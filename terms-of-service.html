@@ -3,30 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Terms of Service for GPU Database - Learn about our service terms and conditions.">
-    <meta name="keywords" content="terms of service, GPU Database terms, service conditions">
+    <meta name="description" content="Terms of Service for GPU Database - Read our terms and conditions for using our website and services.">
+    <meta name="keywords" content="terms of service, GPU Database terms, website terms, conditions">
     <meta property="og:title" content="Terms of Service - GPU Database">
-    <meta property="og:description" content="Read the terms and conditions for using GPU Database services.">
+    <meta property="og:description" content="Read the terms and conditions for using GPU Database website and services.">
     <meta property="og:url" content="https://gpudatabase.in/terms-of-service">
     <meta property="og:image" content="https://gpudatabase.in/img/terms-og.jpg">
     <link rel="canonical" href="https://gpudatabase.in/terms-of-service">
-    <title>Terms of Service - GPU Database | Service Terms & Conditions</title>
-    
-    <!-- Schema.org structured data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "Terms of Service",
-        "url": "https://gpudatabase.in/terms-of-service",
-        "description": "Terms of service for GPU Database outlining user agreements and service conditions",
-        "publisher": {
-            "@type": "Organization",
-            "name": "GPU Database",
-            "url": "https://gpudatabase.in"
-        }
-    }
-    </script>
+    <title>Terms of Service - GPU Database | Website Terms & Conditions</title>
     
     <style>
         * {
@@ -35,23 +19,56 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
-            color: #ffffff;
-            min-height: 100vh;
-            overflow-x: hidden;
+        :root {
+            --primary-green: #00ff88;
+            --primary-blue: #00ccff;
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --navbar-height: 70px;
         }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Skip Link for Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--primary-green);
+            color: var(--bg-primary);
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 10000;
+        }
+
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        /* Navigation Styles */
         .navbar {
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
             padding: 1rem;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--border-color);
+            height: var(--navbar-height);
+            display: flex;
+            align-items: center;
         }
 
         .nav-content {
@@ -61,31 +78,39 @@
             max-width: 1400px;
             margin: 0 auto;
             position: relative;
+            width: 100%;
         }
 
         .logo {
             font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #00ff88, #00ccff);
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary-green), var(--primary-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .nav-links {
             display: none;
             position: absolute;
-            top: 100%;
+            top: calc(100% + 1px);
             left: 0;
             right: 0;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(20px);
             flex-direction: column;
             padding: 1rem;
             gap: 0.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid var(--border-color);
             list-style: none;
+            max-height: calc(100vh - var(--navbar-height));
+            overflow-y: auto;
         }
 
         .nav-links.active {
@@ -93,23 +118,28 @@
         }
 
         .nav-links a {
-            color: #ffffff;
+            color: var(--text-primary);
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             padding: 0.75rem 1rem;
             border-radius: 12px;
+            font-weight: 500;
             position: relative;
         }
 
-        .nav-links a:hover {
-            color: #00ff88;
+        .nav-links a:hover,
+        .nav-links a:focus {
+            color: var(--primary-green);
             background: rgba(0, 255, 136, 0.1);
-            transform: translateX(4px);
+            outline: none;
+            transform: translateX(8px);
         }
 
-        .nav-links a.active {
-            color: #00ff88;
+        .nav-links a.active,
+        .nav-links a[aria-current="page"] {
+            color: var(--primary-green);
             background: rgba(0, 255, 136, 0.15);
+            font-weight: 600;
         }
 
         .mobile-menu-btn {
@@ -119,7 +149,10 @@
             gap: 4px;
             padding: 0.5rem;
             border-radius: 8px;
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            border: none;
+            background: transparent;
+            z-index: 1001;
         }
 
         .mobile-menu-btn:hover {
@@ -129,8 +162,8 @@
         .mobile-menu-btn span {
             width: 24px;
             height: 3px;
-            background: #ffffff;
-            transition: all 0.3s ease;
+            background: var(--text-primary);
+            transition: var(--transition);
             border-radius: 2px;
         }
 
@@ -147,16 +180,18 @@
         }
 
         .container {
-            max-width: 1000px;
+            padding-top: 90px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 120px 1rem 60px;
+            padding-left: 1rem;
+            padding-right: 1rem;
         }
 
         .section-title {
-            font-size: clamp(2rem, 8vw, 3rem);
-            margin-bottom: 1rem;
+            font-size: 2.5rem;
             text-align: center;
-            background: linear-gradient(45deg, #ffffff, #00ff88);
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary-green), var(--primary-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -164,17 +199,16 @@
 
         .last-updated {
             text-align: center;
-            color: #cccccc;
+            color: var(--text-secondary);
             margin-bottom: 3rem;
             font-style: italic;
         }
 
         .terms-content {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.02);
             border-radius: 20px;
-            padding: 2rem 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            line-height: 1.8;
+            padding: 3rem;
+            border: 1px solid var(--border-color);
         }
 
         .terms-section {
@@ -182,109 +216,66 @@
         }
 
         .terms-section h2 {
-            color: #00ff88;
-            font-size: clamp(1.2rem, 5vw, 1.5rem);
+            color: var(--primary-green);
             margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid rgba(0, 255, 136, 0.3);
+            font-size: 1.5rem;
         }
 
         .terms-section h3 {
-            color: #00ccff;
-            font-size: clamp(1rem, 4vw, 1.2rem);
-            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
             margin-top: 1.5rem;
+            font-size: 1.2rem;
         }
 
         .terms-section p {
-            color: #cccccc;
+            color: var(--text-secondary);
             margin-bottom: 1rem;
-            font-size: clamp(0.9rem, 3vw, 1rem);
+            line-height: 1.7;
         }
 
         .terms-section ul {
-            color: #cccccc;
+            color: var(--text-secondary);
             margin-left: 2rem;
             margin-bottom: 1rem;
         }
 
         .terms-section li {
             margin-bottom: 0.5rem;
-            font-size: clamp(0.9rem, 3vw, 1rem);
         }
 
         .highlight {
-            background: rgba(255, 136, 0, 0.1);
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 8px;
             padding: 1rem;
-            border-radius: 10px;
-            border-left: 4px solid #ff8800;
-            margin: 1.5rem 0;
-        }
-
-        .warning {
-            background: rgba(255, 68, 68, 0.1);
-            padding: 1rem;
-            border-radius: 10px;
-            border-left: 4px solid #ff4444;
-            margin: 1.5rem 0;
+            margin: 1rem 0;
         }
 
         .contact-info {
-            background: rgba(0, 204, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 15px;
-            border: 1px solid rgba(0, 204, 255, 0.3);
+            background: rgba(0, 255, 136, 0.05);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid rgba(0, 255, 136, 0.2);
             margin-top: 2rem;
         }
 
         .contact-info h3 {
-            color: #00ccff;
+            color: var(--primary-green);
             margin-bottom: 1rem;
         }
 
         .contact-link {
-            color: #00ff88;
+            color: var(--primary-green);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: var(--transition);
         }
 
         .contact-link:hover {
-            color: #00ccff;
             text-decoration: underline;
         }
 
-        .footer {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 3rem 1rem 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: #cccccc;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            padding: 0.5rem;
-        }
-
-        .footer-links a:hover {
-            color: #00ff88;
-        }
-
-        /* Tablet Styles */
+        /* Responsive Design */
         @media (min-width: 768px) {
             .navbar {
                 padding: 1rem 2rem;
@@ -299,34 +290,48 @@
             }
 
             .nav-links {
-                display: flex;
+                display: flex !important;
                 position: static;
                 background: none;
+                backdrop-filter: none;
                 flex-direction: row;
                 padding: 0;
                 gap: 1rem;
                 border: none;
                 box-shadow: none;
+                max-height: none;
+                overflow: visible;
+                align-items: center;
+                justify-content: flex-end;
+                flex: 1;
+                margin-left: 2rem;
             }
 
             .nav-links a {
-                padding: 0.5rem 1rem;
+                padding: 0.6rem 1rem;
                 border-radius: 20px;
+                white-space: nowrap;
+                font-size: 0.9rem;
+                transition: all 0.3s ease;
+                min-width: fit-content;
             }
 
-            .nav-links a:hover {
-                transform: none;
+            .nav-links a:hover,
+            .nav-links a.active {
+                transform: translateY(-1px);
+                background: rgba(0, 255, 136, 0.15);
+                color: var(--primary-green);
             }
 
-            .terms-content {
-                padding: 3rem;
+            .container {
+                padding-top: 100px;
             }
         }
 
         /* Focus Styles for Accessibility */
         .nav-links a:focus,
-        .contact-link:focus {
-            outline: 3px solid #00ff88;
+        .mobile-menu-btn:focus {
+            outline: 3px solid var(--primary-green);
             outline-offset: 2px;
         }
 
@@ -338,40 +343,17 @@
                 transition-duration: 0.01ms !important;
             }
         }
-
-        /* Extra Small Mobile Screens */
-        @media (max-width: 360px) {
-            .container {
-                padding: 120px 0.5rem 60px;
-            }
-            
-            .terms-content {
-                padding: 1.5rem 1rem;
-            }
-        }
-
-        /* Navigation Styles */
-        .navbar { background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); padding: 1rem; position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-color); height: 70px; display: flex; align-items: center; }
-        .nav-content { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; width: 100%; padding: 0 1rem; }
-        .logo { font-size: 1.5rem; font-weight: 700; background: linear-gradient(45deg, var(--primary-green), var(--primary-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; }
-        .nav-links { display: none; position: absolute; top: calc(100% + 1px); left: 0; right: 0; background: rgba(0,0,0,0.98); backdrop-filter: blur(20px); flex-direction: column; padding: 1rem; gap: 0.5rem; border-top: 1px solid var(--border-color); list-style: none; z-index: 1000; }
-        .nav-links.active { display: flex; }
-        .nav-links a { color: var(--text-primary); text-decoration: none; padding: 0.75rem 1rem; border-radius: 12px; font-weight: 500; transition: all 0.3s ease; }
-        .nav-links a:hover, .nav-links a.active { color: var(--primary-green); background: rgba(0,255,136,0.1); }
-        .mobile-menu-btn { display: flex; flex-direction: column; gap: 4px; padding: 0.5rem; border: none; background: transparent; cursor: pointer; }
-        .mobile-menu-btn span { width: 24px; height: 3px; background: var(--text-primary); transition: all 0.3s ease; border-radius: 2px; }
-        .mobile-menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
-        .mobile-menu-btn.active span:nth-child(2) { opacity: 0; }
-        .mobile-menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
-        .container { padding-top: 90px; }
-        @media (min-width: 768px) { .mobile-menu-btn { display: none; } .nav-links { display: flex !important; position: static; background: none; flex-direction: row; padding: 0; gap: 1rem; border: none; margin-left: 2rem; } .nav-links a { padding: 0.6rem 1rem; border-radius: 20px; font-size: 0.9rem; } .logo { font-size: 1.8rem; } .container { padding-top: 100px; } }
     </style>
 </head>
+
 <body>
-    <nav class="navbar" id="navbar">
+    <!-- Skip Link for Screen Readers -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-content">
             <a href="index.html" class="logo" aria-label="GPU Database Home">GPU Database</a>
-            <ul class="nav-links" id="navLinks" role="navigation" aria-label="Main navigation">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html#gpu-guide" class="nav-link">GPU Guide</a></li>
                 <li><a href="index.html#gpus" class="nav-link">Graphics Cards</a></li>
                 <li><a href="index.html#gaming-performance-analysis" class="nav-link">Gaming Performance</a></li>
@@ -384,7 +366,7 @@
                 <li><a href="about.html" class="nav-link">About</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -392,251 +374,253 @@
         </div>
     </nav>
 
-    <div class="container">
-        <h1 class="section-title">Terms of Service</h1>
-        <p class="last-updated">Last updated: August 7, 2025</p>
+    <main id="main-content">
+        <div class="container">
+            <h1 class="section-title">Terms of Service</h1>
+            <p class="last-updated">Last updated: August 7, 2025</p>
 
-        <div class="terms-content">
-            <div class="terms-section">
-                <h2>1. Acceptance of Terms</h2>
-                <p>By accessing and using GPU Database ("the website," "our service"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these terms, please do not use our website or services.</p>
-                
-                <div class="highlight">
-                    <strong>Important:</strong> These terms constitute a legal agreement between you and GPU Database. Please read them carefully. By continuing to use our services, you acknowledge that you have read, understood, and agree to be bound by these terms.
+            <div class="terms-content">
+                <div class="terms-section">
+                    <h2>1. Acceptance of Terms</h2>
+                    <p>By accessing and using GPU Database ("the website," "our service"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these terms, please do not use our website or services.</p>
+                    
+                    <div class="highlight">
+                        <strong>Important:</strong> These terms constitute a legal agreement between you and GPU Database. Please read them carefully. By continuing to use our services, you acknowledge that you have read, understood, and agree to be bound by these terms.
+                    </div>
                 </div>
 
-                <p>If you represent a company or organization, you represent and warrant that you have the authority to bind that entity to these terms.</p>
-            </div>
-
-            <div class="terms-section">
-                <h2>2. Description of Service</h2>
-                <p>GPU Database provides:</p>
-                <ul>
-                    <li>Comprehensive graphics card specifications and performance data</li>
-                    <li>GPU comparison tools and benchmarks</li>
-                    <li>Technology guides and tutorials</li>
-                    <li>Latest news and updates about graphics cards</li>
-                    <li>Custom PC building consultation services</li>
-                    <li>Web development and SEO services</li>
-                    <li>Hardware recommendations and buying guides</li>
-                    <li>Technical support and consultation</li>
-                </ul>
-
-                <p>Our services are provided "as is" and we reserve the right to modify, suspend, or discontinue any part of our services at any time.</p>
-            </div>
-
-            <div class="terms-section">
-                <h2>3. User Responsibilities</h2>
-                
-                <h3>3.1 Acceptable Use</h3>
-                <p>You agree to use our website responsibly and in accordance with these terms. You will not:</p>
-                <ul>
-                    <li>Use the service for any illegal or unauthorized purpose</li>
-                    <li>Attempt to gain unauthorized access to our systems</li>
-                    <li>Upload malicious code, viruses, or harmful content</li>
-                    <li>Scrape or harvest data without permission</li>
-                    <li>Impersonate others or provide false information</li>
-                    <li>Spam or send unsolicited communications</li>
-                    <li>Violate any applicable laws or regulations</li>
-                </ul>
-
-                <h3>3.2 Account Responsibility</h3>
-                <p>If you create an account or contact us, you are responsible for:</p>
-                <ul>
-                    <li>Providing accurate and complete information</li>
-                    <li>Maintaining the confidentiality of your login credentials</li>
-                    <li>All activities that occur under your account</li>
-                    <li>Notifying us of any unauthorized use</li>
-                </ul>
-            </div>
-
-            <div class="terms-section">
-                <h2>4. Content and Intellectual Property</h2>
-                
-                <h3>4.1 Our Content</h3>
-                <p>All content on GPU Database, including but not limited to text, graphics, logos, images, and software, is our property or licensed to us and is protected by copyright and other intellectual property laws.</p>
-
-                <h3>4.2 User-Generated Content</h3>
-                <p>When you submit content (comments, feedback, suggestions), you grant us a non-exclusive, royalty-free license to use, modify, and display such content.</p>
-
-                <h3>4.3 Third-Party Content</h3>
-                <p>We may include links to third-party websites and content. We do not control and are not responsible for third-party content.</p>
-            </div>
-
-            <div class="terms-section">
-                <h2>5. Services and Pricing</h2>
-                
-                <h3>5.1 Free Services</h3>
-                <p>Basic access to GPU information and comparisons is provided free of charge.</p>
-
-                <h3>5.2 Paid Services</h3>
-                <p>For custom services (PC builds, web development, SEO consultation):</p>
-                <ul>
-                    <li>Pricing will be discussed and agreed upon before work begins</li>
-                    <li>Payment terms will be specified in separate agreements</li>
-                    <li>Refund policies apply as outlined in service agreements</li>
-                    <li>All prices are subject to change with notice</li>
-                </ul>
-                <h3>5.3 Affiliate Relationships</h3>
-                <p>We may earn commissions from affiliate links to products and services. This does not affect our editorial independence or the prices you pay.</p>
-
-                <h3>5.4 Service Modifications</h3>
-                <p>We reserve the right to modify our pricing, services, and terms with reasonable notice to existing customers.</p>
-            </div>
-            
-            <div class="terms-section">
-                <h2>6. Disclaimers and Limitations</h2>
-                
-                <div class="warning">
-                    <strong>Important Disclaimer:</strong> Information about unreleased products (such as RTX 50 series) is based on leaks and rumors and may not be accurate.
+                <div class="terms-section">
+                    <h2>2. Description of Service</h2>
+                    <p>GPU Database provides information, reviews, comparisons, and analysis related to graphics processing units (GPUs) and related technology. Our services include:</p>
+                    <ul>
+                        <li>GPU performance data and benchmarks</li>
+                        <li>Product reviews and comparisons</li>
+                        <li>Technical specifications and analysis</li>
+                        <li>Educational content and guides</li>
+                        <li>News and updates about GPU technology</li>
+                    </ul>
                 </div>
 
-                <h3>6.1 Information Accuracy</h3>
-                <p>While we strive for accuracy, we cannot guarantee that all information is current, complete, or error-free. GPU specifications and prices are subject to change by manufacturers.</p>
+                <div class="terms-section">
+                    <h2>3. User Responsibilities</h2>
+                    
+                    <h3>3.1 Acceptable Use</h3>
+                    <p>You agree to use our website and services only for lawful purposes and in accordance with these Terms. You must not:</p>
+                    <ul>
+                        <li>Use the service for any illegal or unauthorized purpose</li>
+                        <li>Violate any laws in your jurisdiction</li>
+                        <li>Transmit viruses, malware, or other harmful code</li>
+                        <li>Attempt to gain unauthorized access to our systems</li>
+                        <li>Interfere with or disrupt our service or servers</li>
+                        <li>Impersonate any person or entity</li>
+                    </ul>
 
-                <h3>6.2 Service Availability</h3>
-                <p>We do not guarantee uninterrupted access to our website. We may modify, suspend, or discontinue services at any time.</p>
+                    <h3>3.2 Content Guidelines</h3>
+                    <p>If you submit content to our website (comments, feedback, etc.), you agree that such content:</p>
+                    <ul>
+                        <li>Is accurate and not misleading</li>
+                        <li>Does not violate any third-party rights</li>
+                        <li>Does not contain offensive or inappropriate material</li>
+                        <li>Does not include spam or promotional content</li>
+                    </ul>
+                </div>
 
-                <h3>6.3 Limitation of Liability</h3>
-                <p>To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of our services.</p>
-            </div>
+                <div class="terms-section">
+                    <h2>4. Intellectual Property Rights</h2>
+                    
+                    <h3>4.1 Our Content</h3>
+                    <p>All content on GPU Database, including text, graphics, logos, images, and software, is owned by GPU Database or its licensors and is protected by copyright and other intellectual property laws.</p>
 
-            <div class="terms-section">
-                <h2>7. Privacy and Data Protection</h2>
-                <p>Your privacy is important to us. Our collection and use of personal information is governed by our Privacy Policy, which is incorporated into these Terms by reference.</p>
-                
-                <h3>7.1 Data Collection</h3>
-                <p>We collect information as described in our Privacy Policy to provide and improve our services.</p>
+                    <h3>4.2 Limited License</h3>
+                    <p>We grant you a limited, non-exclusive, non-transferable license to access and use our website for personal, non-commercial purposes, subject to these Terms.</p>
 
-                <h3>7.2 Cookies</h3>
-                <p>We use cookies and similar technologies to enhance your experience. You can control cookie preferences through your browser settings.</p>
-            </div>
+                    <h3>4.3 Restrictions</h3>
+                    <p>You may not:</p>
+                    <ul>
+                        <li>Copy, modify, or distribute our content without permission</li>
+                        <li>Use our content for commercial purposes</li>
+                        <li>Reverse engineer or attempt to extract source code</li>
+                        <li>Remove or alter any copyright notices</li>
+                    </ul>
+                </div>
 
-            <div class="terms-section">
-                <h2>8. Termination</h2>
-                
-                <h3>8.1 Termination by You</h3>
-                <p>You may stop using our services at any time.</p>
+                <div class="terms-section">
+                    <h2>5. Privacy and Data Protection</h2>
+                    <p>Your privacy is important to us. Our Privacy Policy explains how we collect, use, and protect your information. By using our service, you consent to our data practices as described in our Privacy Policy.</p>
+                </div>
 
-                <h3>8.2 Termination by Us</h3>
-                <p>We may terminate or suspend your access if you violate these Terms or engage in harmful activities.</p>
+                <div class="terms-section">
+                    <h2>6. Disclaimers and Limitations</h2>
+                    
+                    <h3>6.1 Information Accuracy</h3>
+                    <p>While we strive to provide accurate and up-to-date information, we make no warranties about the completeness, reliability, or accuracy of the information on our website. GPU specifications, prices, and availability may change without notice.</p>
 
-                <h3>8.3 Effect of Termination</h3>
-                <p>Upon termination, your right to use our services ceases immediately. Sections that by their nature should survive termination will continue in effect.</p>
-            </div>
+                    <h3>6.2 No Warranties</h3>
+                    <p>Our service is provided "as is" without any warranties, express or implied. We disclaim all warranties, including but not limited to merchantability, fitness for a particular purpose, and non-infringement.</p>
 
-            <div class="terms-section">
-                <h2>9. Indemnification</h2>
-                <p>You agree to indemnify and hold us harmless from any claims, damages, or expenses arising from your use of our services or violation of these Terms.</p>
-            </div>
+                    <h3>6.3 Limitation of Liability</h3>
+                    <p>To the maximum extent permitted by law, GPU Database shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our service.</p>
+                </div>
 
-            <div class="terms-section">
-                <h2>10. Governing Law and Disputes</h2>
-                
-                <h3>10.1 Governing Law</h3>
-                <p>These Terms are governed by the laws of India, without regard to conflict of law principles.</p>
+                <div class="terms-section">
+                    <h2>7. Third-Party Links and Services</h2>
+                    <p>Our website may contain links to third-party websites or services. We are not responsible for the content, privacy policies, or practices of these third-party sites. Your interactions with third-party sites are governed by their respective terms and policies.</p>
+                </div>
 
-                <h3>10.2 Dispute Resolution</h3>
-                <p>Any disputes will be resolved through good faith negotiation. If resolution cannot be reached, disputes will be subject to the jurisdiction of courts in Rajasthan, India.</p>
-            </div>
+                <div class="terms-section">
+                    <h2>8. Affiliate Relationships</h2>
+                    <p>GPU Database may participate in affiliate marketing programs. This means we may earn commissions from purchases made through links on our website. All affiliate relationships are disclosed, and they do not influence our reviews or recommendations.</p>
+                </div>
 
-            <div class="terms-section">
-                <h2>11. Changes to Terms</h2>
-                <p>We may update these Terms from time to time. Changes will be posted on this page with an updated "Last Updated" date.</p>
-                
-                <h3>11.1 Notification of Changes</h3>
-                <p>For significant changes, we will provide notice through:</p>
-                <ul>
-                    <li>Email notifications to registered users</li>
-                    <li>Prominent website notices</li>
-                    <li>Social media announcements</li>
-                </ul>
+                <div class="terms-section">
+                    <h2>9. Service Availability</h2>
+                    <p>We strive to maintain continuous service availability but cannot guarantee uninterrupted access. We reserve the right to modify, suspend, or discontinue our service at any time without notice.</p>
+                </div>
 
-                <h3>11.2 Continued Use</h3>
-                <p>Your continued use of our services after changes are posted constitutes acceptance of the new Terms.</p>
-            </div>
+                <div class="terms-section">
+                    <h2>10. User Accounts</h2>
+                    <p>If you create an account on our website, you are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account.</p>
+                </div>
 
-            <div class="terms-section">
-                <h2>12. Miscellaneous</h2>
-                
-                <h3>12.1 Entire Agreement</h3>
-                <p>These Terms, together with our Privacy Policy, constitute the entire agreement between you and GPU Database.</p>
+                <div class="terms-section">
+                    <h2>11. Termination</h2>
+                    <p>We may terminate or suspend your access to our service immediately, without prior notice, for any reason, including if you breach these Terms. Upon termination, your right to use the service will cease immediately.</p>
+                </div>
 
-                <h3>12.2 Severability</h3>
-                <p>If any provision of these Terms is found to be unenforceable, the remaining provisions will continue in full force and effect.</p>
+                <div class="terms-section">
+                    <h2>12. Changes to Terms</h2>
+                    <p>We reserve the right to modify these Terms at any time. Changes will be effective when posted on this page. Your continued use of our service after changes are posted constitutes acceptance of the new Terms.</p>
+                </div>
 
-                <h3>12.3 Waiver</h3>
-                <p>Our failure to enforce any provision does not constitute a waiver of our right to enforce such provision in the future.</p>
-            </div>
+                <div class="terms-section">
+                    <h2>13. Governing Law</h2>
+                    <p>These Terms shall be governed by and construed in accordance with the laws of India, without regard to conflict of law principles. Any disputes shall be resolved in the courts of Rajasthan, India.</p>
+                </div>
 
-            <div class="contact-info">
-                <h3>Questions About These Terms</h3>
-                <p>If you have questions about these Terms of Service, please contact us:</p>
-                <p><strong>Email:</strong> <a href="mailto:gouravchoudharyofficial@gmail.com" class="contact-link">gouravchoudharyofficial@gmail.com</a></p>
-                <p><strong>Subject Line:</strong> Terms of Service Inquiry</p>
-                <p><strong>Response Time:</strong> We will respond to terms-related inquiries within 7 business days.</p>
+                <div class="terms-section">
+                    <h2>14. Contact Information</h2>
+                    <p>If you have any questions about these Terms of Service, please contact us using the information provided below.</p>
+                </div>
+
+                <div class="contact-info">
+                    <h3>Questions About These Terms</h3>
+                    <p>If you have questions about these Terms of Service, please contact us:</p>
+                    <p><strong>Email:</strong> <a href="mailto:gouravchoudharyofficial@gmail.com" class="contact-link">gouravchoudharyofficial@gmail.com</a></p>
+                    <p><strong>Subject Line:</strong> Terms of Service Inquiry</p>
+                    <p><strong>Response Time:</strong> We will respond to terms-related inquiries within 7 business days.</p>
+                </div>
             </div>
         </div>
-    </div>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="/about">About</a>
-                <a href="/contact.html">Contact</a>
-                <a href="/privacy-policy.html">Privacy Policy</a>
-                <a href="/terms-of-service.html">Terms of Service</a>
-                <a href="/advertise.html">Advertise</a>
-                <a href="/blog/index.html">Blog</a>
-            </div>
-            <p>© 2025 GPU Database. All rights reserved. | The ultimate resource for graphics card information</p>
-        </div>
-    </footer>
+    </main>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', function() {
+            // Enhanced Mobile Navigation with Accessibility
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const navLinks = document.getElementById('navLinks');
+            const navbar = document.getElementById('navbar');
 
-            if (mobileMenuBtn && navLinks) {
-                mobileMenuBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    mobileMenuBtn.classList.toggle('active');
-                    navLinks.classList.toggle('active');
-                    
-                    // Prevent body scroll when menu is open
-                    document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
-                });
+            if (!mobileMenuBtn || !navLinks) return;
 
-                // Close menu when clicking outside
-                document.addEventListener('click', (e) => {
-                    if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                        closeMenu();
-                    }
-                });
-
-                // Close menu on nav link click
-                navLinks.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        closeMenu();
-                    });
-                });
-
-                // Close menu on escape key
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape') {
-                        closeMenu();
-                    }
-                });
-            }
-
+            // Close menu function
             function closeMenu() {
-                if (mobileMenuBtn && navLinks) {
-                    mobileMenuBtn.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+                mobileMenuBtn.focus();
             }
+
+            // Open menu function
+            function openMenu() {
+                mobileMenuBtn.classList.add('active');
+                navLinks.classList.add('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+                const firstLink = navLinks.querySelector('a');
+                if (firstLink) firstLink.focus();
+            }
+
+            // Toggle menu
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isActive = mobileMenuBtn.classList.contains('active');
+                
+                if (isActive) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!navbar.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+
+            // Close menu when clicking nav links
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    closeMenu();
+                });
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeMenu();
+                }
+                
+                if (navLinks.classList.contains('active')) {
+                    const links = Array.from(navLinks.querySelectorAll('a'));
+                    const currentIndex = links.indexOf(document.activeElement);
+                    
+                    if (e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        const nextIndex = (currentIndex + 1) % links.length;
+                        links[nextIndex].focus();
+                    } else if (e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        const prevIndex = (currentIndex - 1 + links.length) % links.length;
+                        links[prevIndex].focus();
+                    }
+                }
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const headerOffset = 100;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Navbar scroll behavior
+            let lastScrollY = window.scrollY;
+            
+            window.addEventListener('scroll', () => {
+                const currentScrollY = window.scrollY;
+                
+                if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                    navbar.style.transform = 'translateY(-100%)';
+                } else {
+                    navbar.style.transform = 'translateY(0)';
+                }
+                
+                lastScrollY = currentScrollY;
+            });
         });
     </script>
 </body>

@@ -1547,14 +1547,36 @@
                 --bg-secondary: #111111;
             }
         }
+
+        /* Skip Link Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--primary-green);
+            color: var(--bg-primary);
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            z-index: 1000;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 6px;
+        }
     </style>
 </head>
 
 <body>
-    <nav class="navbar" id="navbar">
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-content">
             <a href="#home" class="logo" aria-label="GPU Database Home">GPU Database</a>
-            <ul class="nav-links" id="navLinks" role="navigation" aria-label="Main navigation">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#gpu-guide" class="nav-link" data-section="gpu-guide">GPU Guide</a></li>
                 <li><a href="#gpus" class="nav-link" data-section="gpus">Graphics Cards</a></li>
                 <li><a href="#gaming-performance-analysis" class="nav-link"
@@ -1578,7 +1600,7 @@
         </div>
     </nav>
 
-    <main>
+    <main id="main-content">
         <section class="hero section" id="home">
             <h1>Complete GPU Database & Performance Analysis 2025</h1>
             <p>Your ultimate resource for NVIDIA GeForce RTX graphics cards covering gaming performance, cryptocurrency
@@ -3254,10 +3276,43 @@
                     }
                 });
 
-                // Close menu when pressing Escape key
+                // Close menu when pressing Escape key and enhanced keyboard navigation
                 document.addEventListener('keydown', (e) => {
                     if (e.key === 'Escape') {
                         this.closeMenu();
+                    }
+                    
+                    // Enhanced keyboard navigation for nav links
+                    if (e.key === 'Tab' && e.target.classList.contains('nav-link')) {
+                        // Focus trap within navigation when menu is open
+                        if (navLinks.classList.contains('active')) {
+                            const navLinkElements = navLinks.querySelectorAll('.nav-link');
+                            const firstNavLink = navLinkElements[0];
+                            const lastNavLink = navLinkElements[navLinkElements.length - 1];
+                            
+                            if (e.shiftKey && e.target === firstNavLink) {
+                                e.preventDefault();
+                                lastNavLink.focus();
+                            } else if (!e.shiftKey && e.target === lastNavLink) {
+                                e.preventDefault();
+                                firstNavLink.focus();
+                            }
+                        }
+                    }
+                    
+                    // Arrow key navigation within nav links
+                    if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && e.target.classList.contains('nav-link')) {
+                        e.preventDefault();
+                        const navLinkElements = Array.from(navLinks.querySelectorAll('.nav-link'));
+                        const currentIndex = navLinkElements.indexOf(e.target);
+                        
+                        if (e.key === 'ArrowDown') {
+                            const nextIndex = (currentIndex + 1) % navLinkElements.length;
+                            navLinkElements[nextIndex].focus();
+                        } else {
+                            const prevIndex = (currentIndex - 1 + navLinkElements.length) % navLinkElements.length;
+                            navLinkElements[prevIndex].focus();
+                        }
                     }
                 });
 

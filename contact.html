@@ -894,30 +894,56 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Active State Management for Contact
+            function setActiveNavigation() {
+                const navLinks = document.querySelectorAll('.nav-link');
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    link.removeAttribute('aria-current');
+                    
+                    // Check if this is the contact page
+                    if (link.getAttribute('href') === 'contact.html' || link.getAttribute('href') === '../contact.html') {
+                        link.classList.add('active');
+                        link.setAttribute('aria-current', 'page');
+                    }
+                });
+            }
+            
+            // Initialize active state
+            setActiveNavigation();
+
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const navLinks = document.getElementById('navLinks');
+            const navLinksContainer = document.getElementById('navLinks');
             const contactForm = document.getElementById('contactForm');
 
             // Mobile menu toggle
-            if (mobileMenuBtn && navLinks) {
+            if (mobileMenuBtn && navLinksContainer) {
+                function closeMenu() {
+                    mobileMenuBtn.classList.remove('active');
+                    navLinksContainer.classList.remove('active');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = '';
+                }
+
                 mobileMenuBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    mobileMenuBtn.classList.toggle('active');
-                    navLinks.classList.toggle('active');
+                    const isActive = mobileMenuBtn.classList.toggle('active');
+                    navLinksContainer.classList.toggle('active');
+                    mobileMenuBtn.setAttribute('aria-expanded', isActive);
                     
                     // Prevent body scroll when menu is open
-                    document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+                    document.body.style.overflow = isActive ? 'hidden' : '';
                 });
 
                 // Close menu when clicking outside
                 document.addEventListener('click', (e) => {
-                    if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    if (!navLinksContainer.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
                         closeMenu();
                     }
                 });
 
                 // Close menu on nav link click
-                navLinks.querySelectorAll('a').forEach(link => {
+                navLinksContainer.querySelectorAll('a').forEach(link => {
                     link.addEventListener('click', () => {
                         closeMenu();
                     });

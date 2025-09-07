@@ -803,6 +803,25 @@
             }
         }
 
+        /* Skip Link Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--primary-green);
+            color: var(--bg-primary);
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            z-index: 1000;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 6px;
+        }
+
         /* Extra Small Mobile Screens */
         @media (max-width: 360px) {
             .container {
@@ -826,7 +845,10 @@
 </head>
 
 <body>
-    <nav class="navbar" id="navbar">
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-content">
             <a href="index.html" class="logo" aria-label="GPU Database Home">GPU Database</a>
             <ul class="nav-links" id="navLinks" role="navigation" aria-label="Main navigation">
@@ -839,10 +861,11 @@
                 <li><a href="index.html#guides" class="nav-link">Guides</a></li>
                 <li><a href="index.html#news" class="nav-link">News</a></li>
                 <li><a href="index.html#comparison" class="nav-link">Compare</a></li>
-                <li><a href="about.html" class="nav-link active">About</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu"
+                aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -851,7 +874,7 @@
     </nav>
 
     <main>
-        <div class="container">
+        <div class="container" id="main-content">
             <section class="hero">
                 <h1>About Gourav Choudhary</h1>
                 <p>Founder of GPU Database - Your trusted source for comprehensive graphics card analysis, performance reviews, and expert PC building guidance</p>
@@ -1085,15 +1108,35 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Active State Management
+            function setActiveNavigation() {
+                const navLinks = document.querySelectorAll('.nav-link');
+                const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    link.removeAttribute('aria-current');
+                    
+                    // Check if this is the current page
+                    if (currentPage === 'about.html' && (link.getAttribute('href') === 'about.html' || link.getAttribute('href') === '../about.html')) {
+                        link.classList.add('active');
+                        link.setAttribute('aria-current', 'page');
+                    }
+                });
+            }
+            
+            // Initialize active state
+            setActiveNavigation();
+
             // Enhanced Mobile Navigation
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const navLinks = document.getElementById('navLinks');
+            const navLinksContainer = document.getElementById('navLinks');
 
-            if (!mobileMenuBtn || !navLinks) return;
+            if (!mobileMenuBtn || !navLinksContainer) return;
 
             function closeMenu() {
                 mobileMenuBtn.classList.remove('active');
-                navLinks.classList.remove('active');
+                navLinksContainer.classList.remove('active');
                 mobileMenuBtn.setAttribute('aria-expanded', 'false');
                 document.body.style.overflow = '';
             }
@@ -1101,7 +1144,7 @@
             mobileMenuBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const isActive = mobileMenuBtn.classList.toggle('active');
-                navLinks.classList.toggle('active');
+                navLinksContainer.classList.toggle('active');
                 
                 // Update ARIA attributes
                 mobileMenuBtn.setAttribute('aria-expanded', isActive);
@@ -1112,13 +1155,13 @@
 
             // Close menu when clicking outside
             document.addEventListener('click', (e) => {
-                if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                if (!navLinksContainer.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
                     closeMenu();
                 }
             });
 
             // Close menu when clicking nav links
-            navLinks.querySelectorAll('a').forEach(link => {
+            navLinksContainer.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     closeMenu();
                 });
