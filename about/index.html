@@ -1674,19 +1674,19 @@
 <body>
     <nav class="navbar" id="navbar">
         <div class="nav-content">
-            <a href="#home" class="logo" aria-label="GPU Database Home">GPU Database</a>
+            <a href="../index.html" class="logo" aria-label="GPU Database Home">GPU Database</a>
             <ul class="nav-links" id="navLinks" role="navigation" aria-label="Main navigation">
-                <li><a href="#gpu-guide" class="nav-link" data-section="gpu-guide">GPU Guide</a></li>
-                <li><a href="#gaming-performance" class="nav-link" data-section="gaming-performance">Gaming</a></li>
-                <li><a href="#mining-guide" class="nav-link" data-section="mining-guide">Mining</a></li>
-                <li><a href="#ai-tasks" class="nav-link" data-section="ai-tasks">AI Tasks</a></li>
-                <li><a href="#gpus" class="nav-link" data-section="gpus">Graphics Cards</a></li>
-                <li><a href="#comparison" class="nav-link" data-section="comparison">Compare</a></li>
-                <li><a href="#blog" class="nav-link" data-section="blog">Blog</a></li>
-                <li><a href="#guides" class="nav-link" data-section="guides">Guides</a></li>
-                <li><a href="#news" class="nav-link" data-section="news">News</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="../index.html#gpu-guide" class="nav-link">GPU Guide</a></li>
+                <li><a href="../index.html#gpus" class="nav-link">Graphics Cards</a></li>
+                <li><a href="../index.html#gaming-performance-analysis" class="nav-link">Gaming Performance</a></li>
+                <li><a href="../index.html#cryptocurrency-mining" class="nav-link">Mining Guide</a></li>
+                <li><a href="../index.html#ai-machine-learning" class="nav-link">AI Tasks</a></li>
+                <li><a href="../index.html#blog" class="nav-link">Blog</a></li>
+                <li><a href="../index.html#guides" class="nav-link">Guides</a></li>
+                <li><a href="../index.html#news" class="nav-link">News</a></li>
+                <li><a href="../index.html#comparison" class="nav-link">Compare</a></li>
+                <li><a href="../about.html" class="nav-link">About</a></li>
+                <li><a href="../contact.html" class="nav-link">Contact</a></li>
             </ul>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span></span>
@@ -1695,7 +1695,6 @@
             </button>
         </div>
     </nav>
-
     <main>
         <section class="hero section" id="home">
             <h1>Complete GPU Database & Expert Reviews</h1>
@@ -3689,101 +3688,15 @@
             }
 
             setupScrollOptimizations() {
-                let ticking = false;
-                const navbar = document.getElementById('navbar');
-
-                const handleScroll = () => {
-                    if (!ticking) {
-                        requestAnimationFrame(() => {
-                            const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-                            // Enhanced navbar behavior
-                            if (currentScrollTop > 100) {
-                                navbar.classList.add('scrolled');
-                            } else {
-                                navbar.classList.remove('scrolled');
-                            }
-
-                            // Hide/show navbar on scroll (mobile only)
-                            if (window.innerWidth <= 768) {
-                                if (currentScrollTop > this.lastScrollTop && currentScrollTop > 100) {
-                                    navbar.classList.add('hidden');
-                                } else {
-                                    navbar.classList.remove('hidden');
-                                }
-                            }
-
-                            this.lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
-                            ticking = false;
-                        });
-                        ticking = true;
-                    }
-                };
-
-                document.addEventListener('scroll', handleScroll, { passive: true });
+                // Navbar removed - scroll optimizations disabled
             }
 
             setupScrollSpy() {
-                const sections = ['home', 'gpu-guide', 'gaming-performance', 'mining-guide', 'ai-tasks', 'gpus', 'comparison', 'blog', 'guides', 'news'];
-                const navLinks = document.querySelectorAll('.nav-link[data-section]');
-
-                const observerOptions = {
-                    root: null,
-                    rootMargin: '-20% 0px -70% 0px',
-                    threshold: 0.1
-                };
-
-                const scrollSpyObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const sectionId = entry.target.id;
-                            
-                            // Update active navigation
-                            navLinks.forEach(link => {
-                                link.classList.remove('active');
-                                if (link.dataset.section === sectionId) {
-                                    link.classList.add('active');
-                                }
-                            });
-
-                            this.currentSection = sectionId;
-                        }
-                    });
-                }, observerOptions);
-
-                // Observe all sections
-                sections.forEach(sectionId => {
-                    const section = document.getElementById(sectionId);
-                    if (section) {
-                        scrollSpyObserver.observe(section);
-                    }
-                });
+                // Navigation removed - scroll spy disabled
             }
 
             setupKeyboardNavigation() {
-                document.addEventListener('keydown', (e) => {
-                    // Quick navigation shortcuts
-                    if (e.altKey) {
-                        switch(e.key) {
-                            case '1':
-                                e.preventDefault();
-                                this.navigateToSection('home');
-                                break;
-                            case '2':
-                                e.preventDefault();
-                                this.navigateToSection('gpus');
-                                break;
-                            case '3':
-                                e.preventDefault();
-                                this.navigateToSection('comparison');
-                                break;
-                            case '4':
-                                e.preventDefault();
-                                this.navigateToSection('blog');
-                                break;
-                        }
-                    }
-                });
+                // Navigation removed - keyboard shortcuts disabled
             }
 
             setupPerformanceOptimizations() {
