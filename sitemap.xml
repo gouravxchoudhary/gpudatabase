@@ -33,7 +33,7 @@
     </url>
 
     <url>
-        <loc>https://gpudatabase.in/privacy-policy.html</loc>
+        <loc>https://gpudatabase.in/privacy-policy</loc>
         <lastmod>2025-08-07</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
@@ -41,7 +41,7 @@
     </url>
 
     <url>
-        <loc>https://gpudatabase.in/terms-of-service.html</loc>
+        <loc>https://gpudatabase.in/terms-of-service</loc>
         <lastmod>2025-08-07</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
@@ -49,7 +49,7 @@
     </url>
 
     <url>
-        <loc>https://gpudatabase.in/advertise.html</loc>
+        <loc>https://gpudatabase.in/advertise</loc>
         <lastmod>2025-08-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
@@ -67,7 +67,7 @@
 
     <!-- Latest Blog Posts (High Priority) -->
     <url>
-        <loc>https://gpudatabase.in/blog/amd-rx-7900-xtx-vs-nvidia-rtx-4080-ultimate-battle-2025.html</loc>
+        <loc>https://gpudatabase.in/blog/amd-rx-7900-xtx-vs-nvidia-rtx-4080-ultimate-battle-2025</loc>
         <lastmod>2025-08-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
@@ -75,7 +75,7 @@
     </url>
 
     <url>
-        <loc>https://gpudatabase.in/blog/rtx-4060-ti-vs-rtx-4070-complete-comparison-2025.html</loc>
+        <loc>https://gpudatabase.in/blog/rtx-4060-ti-vs-rtx-4070-complete-comparison-2025</loc>
         <lastmod>2025-08-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
@@ -83,7 +83,7 @@
     </url>
 
     <url>
-        <loc>https://gpudatabase.in/blog/nvidia-geforce-rtx-60-series-rumors-leaks-2025.html</loc>
+        <loc>https://gpudatabase.in/blog/nvidia-geforce-rtx-60-series-rumors-leaks-2025</loc>
         <lastmod>2025-08-06</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -92,7 +92,7 @@
 
     <!-- Existing Blog Posts -->
     <url>
-        <loc>https://gpudatabase.in/blog/rtx-5090-vs-4090-comparison.html</loc>
+        <loc>https://gpudatabase.in/blog/rtx-5090-vs-4090-comparison</loc>
         <lastmod>2024-12-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -100,7 +100,7 @@
     </url>
 
     <url>
-        <loc>https://gpudatabase.in/blog/rtx-3090-vs-4090-comparison.html</loc>
+        <loc>https://gpudatabase.in/blog/rtx-3090-vs-4090-comparison</loc>
         <lastmod>2024-12-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -108,7 +108,7 @@
     </url>
 
     <url>
-        <loc>https://gpudatabase.in/blog/rtx-3090-vs-4090-vs-5090-ultimate-comparison.html</loc>
+        <loc>https://gpudatabase.in/blog/rtx-3090-vs-4090-vs-5090-ultimate-comparison</loc>
         <lastmod>2024-12-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -116,7 +116,7 @@
     </url>
 
     <url>
-        <loc>https://gpudatabase.in/blog/best-gpu-for-4k-gaming-in-2025.html</loc>
+        <loc>https://gpudatabase.in/blog/best-gpu-for-4k-gaming-in-2025</loc>
         <lastmod>2024-12-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -124,7 +124,7 @@
     </url>
 
     <url>
-        <loc>https://gpudatabase.in/blog/how-to-choose-the-right-psu-for-your-gpu.html</loc>
+        <loc>https://gpudatabase.in/blog/how-to-choose-the-right-psu-for-your-gpu</loc>
         <lastmod>2024-12-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -132,7 +132,7 @@
     </url>
 
     <url>
-        <loc>https://gpudatabase.in/blog/rtx-50-series-release-date&pricing-predictions.html</loc>
+        <loc>https://gpudatabase.in/blog/rtx-50-series-release-date-pricing-predictions</loc>
         <lastmod>2024-12-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
