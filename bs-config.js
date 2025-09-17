@@ -9,9 +9,22 @@ module.exports = {
                 // URL decode the request URL
                 req.url = decodeURIComponent(req.url);
 
+                // Redirect if there are multiple trailing slashes
+                if (req.url.match(/\/\/+/)) {
+                    res.writeHead(301, {
+                        'Location': req.url.replace(/\/\/+/g, '/')
+                    });
+                    res.end();
+                    return;
+                }
+
                 // Remove trailing slash except for root
                 if (req.url.length > 1 && req.url.endsWith('/')) {
-                    req.url = req.url.slice(0, -1);
+                    res.writeHead(301, {
+                        'Location': req.url.slice(0, -1)
+                    });
+                    res.end();
+                    return;
                 }
                 
                 // Handle root path

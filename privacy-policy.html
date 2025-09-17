@@ -3,14 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Privacy Policy for GPU Database - Learn how we protect your data and privacy.">
-    <meta name="keywords" content="privacy policy, data protection, GPU Database privacy">
+    <meta name="description" content="Privacy Policy for GPU Database - Learn how we protect your data and privacy. We are committed to safeguarding your personal information.">
+    <meta name="keywords" content="privacy policy, data protection, GPU Database privacy, GDPR compliance, user data security">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="GPU Database">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
     <meta property="og:title" content="Privacy Policy - GPU Database">
-    <meta property="og:description" content="Learn how GPU Database protects your personal information and privacy.">
+    <meta property="og:description" content="Learn how GPU Database protects your personal information and privacy. Full transparency about our data practices.">
     <meta property="og:url" content="https://gpudatabase.in/privacy-policy">
     <meta property="og:image" content="https://gpudatabase.in/img/privacy-og.jpg">
+    <meta property="og:site_name" content="GPU Database">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Privacy Policy - GPU Database">
+    <meta name="twitter:description" content="Learn how GPU Database protects your personal information and privacy.">
+    <meta name="twitter:image" content="https://gpudatabase.in/img/privacy-og.jpg">
+    
     <link rel="canonical" href="https://gpudatabase.in/privacy-policy">
-    <title>Privacy Policy - GPU Database | Data Protection & Privacy</title>
+    <title>Privacy Policy - GPU Database | Data Protection & User Privacy</title>
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Privacy Policy",
+        "description": "Privacy Policy for GPU Database - Data protection and user privacy information",
+        "url": "https://gpudatabase.in/privacy-policy",
+        "publisher": {
+            "@type": "Organization",
+            "name": "GPU Database",
+            "url": "https://gpudatabase.in"
+        },
+        "datePublished": "2025-01-01",
+        "dateModified": "2025-08-07"
+    }
+    </script>
     
     <style>
         * {
@@ -22,45 +53,73 @@
         :root {
             --primary-green: #00ff88;
             --primary-blue: #00ccff;
-            --bg-primary: #0f0f0f;
-            --bg-secondary: #1a1a1a;
+            --accent-purple: #8844ff;
+            --accent-orange: #ff8800;
+            --bg-primary: #0d0d0d;
+            --bg-secondary: #141414;
+            --bg-card: rgba(255, 255, 255, 0.04);
             --text-primary: #ffffff;
-            --text-secondary: #cccccc;
+            --text-secondary: #b8b8b8;
+            --text-muted: #808080;
             --border-color: rgba(255, 255, 255, 0.1);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --navbar-height: 70px;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
+            overflow-x: hidden;
             line-height: 1.6;
         }
 
-        /* Skip Link for Accessibility */
-        .skip-link {
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: linear-gradient(125deg, #0d0d0d 0%, #0f0f1a 50%, #0d0d0d 100%);
+        }
+
+        .gradient-orb {
             position: absolute;
-            top: -40px;
-            left: 6px;
-            background: var(--primary-green);
-            color: var(--bg-primary);
-            padding: 8px;
-            text-decoration: none;
-            border-radius: 4px;
-            z-index: 10000;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
         }
 
-        .skip-link:focus {
-            top: 6px;
+        .orb1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--primary-green) 0%, transparent 70%);
+            top: -200px;
+            left: -200px;
+            animation: float 20s infinite ease-in-out;
         }
 
-        /* Navigation Styles */
+        .orb2 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, var(--primary-blue) 0%, transparent 70%);
+            bottom: -175px;
+            right: -175px;
+            animation: float 25s infinite ease-in-out reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -30px) scale(1.1); }
+        }
+
+        /* Navigation */
         .navbar {
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(20px);
-            padding: 1rem;
+            background: rgba(13, 13, 13, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0 1.5rem;
             position: fixed;
             width: 100%;
             top: 0;
@@ -69,29 +128,32 @@
             height: var(--navbar-height);
             display: flex;
             align-items: center;
+            transition: all 0.3s ease;
         }
 
-        .nav-content {
+        .navbar.scrolled {
+            background: rgba(13, 13, 13, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-            width: 100%;
         }
 
         .logo {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            background: linear-gradient(45deg, var(--primary-green), var(--primary-blue));
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-decoration: none;
-            transition: var(--transition);
-            white-space: nowrap;
-            flex-shrink: 0;
+            transition: transform 0.3s ease;
         }
 
         .logo:hover {
@@ -99,75 +161,59 @@
         }
 
         .nav-links {
-            display: none;
-            position: absolute;
-            top: calc(100% + 1px);
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.98);
-            backdrop-filter: blur(20px);
-            flex-direction: column;
-            padding: 1rem;
-            gap: 0.5rem;
-            border-top: 1px solid var(--border-color);
-            list-style: none;
-            max-height: calc(100vh - var(--navbar-height));
-            overflow-y: auto;
-        }
-
-        .nav-links.active {
             display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            align-items: center;
+            margin: 0;
+            padding: 0;
         }
 
         .nav-links a {
-            color: var(--text-primary);
+            color: var(--text-secondary);
             text-decoration: none;
-            transition: var(--transition);
-            padding: 0.75rem 1rem;
-            border-radius: 12px;
             font-weight: 500;
-            position: relative;
-            font-size: 0.9rem;
-        }
-
-        .nav-links a:hover,
-        .nav-links a:focus {
-            color: var(--primary-green);
-            background: rgba(0, 255, 136, 0.1);
-            outline: none;
-            transform: translateX(8px);
-        }
-
-        .nav-links a.active,
-        .nav-links a[aria-current="page"] {
-            color: var(--primary-green);
-            background: rgba(0, 255, 136, 0.15);
-            font-weight: 600;
-        }
-
-        .mobile-menu-btn {
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 4px;
+            transition: color 0.3s ease;
             padding: 0.5rem;
-            border-radius: 8px;
-            transition: var(--transition);
-            border: none;
-            background: transparent;
-            z-index: 1001;
+            position: relative;
         }
 
-        .mobile-menu-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
         }
 
         .mobile-menu-btn span {
-            width: 24px;
+            width: 25px;
             height: 3px;
             background: var(--text-primary);
-            transition: var(--transition);
             border-radius: 2px;
+            transition: all 0.3s ease;
         }
 
         .mobile-menu-btn.active span:nth-child(1) {
@@ -179,61 +225,231 @@
         }
 
         .mobile-menu-btn.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
+            transform: rotate(-45deg) translate(7px, -7px);
         }
 
+        /* Container */
         .container {
-            padding-top: 90px;
             max-width: 1200px;
             margin: 0 auto;
-            padding-left: 1rem;
-            padding-right: 1rem;
+            padding: calc(var(--navbar-height) + 3rem) 1.5rem 3rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            min-height: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* GPU Security Shield Animation */
+        .security-shield {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .shield-outer {
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--primary-green);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: relative;
+            animation: shieldPulse 4s ease-in-out infinite;
+        }
+
+        .shield-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: var(--primary-green);
+            animation: shieldRotate 8s linear infinite;
+        }
+
+        @keyframes shieldPulse {
+            0%, 100% { transform: scale(1); opacity: 0.1; }
+            50% { transform: scale(1.2); opacity: 0.2; }
+        }
+
+        @keyframes shieldRotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Data Flow Lines */
+        .data-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0.08;
+            overflow: hidden;
+        }
+
+        .data-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+            animation: dataFlow 3s linear infinite;
+        }
+
+        .data-line:nth-child(1) {
+            width: 200px;
+            top: 20%;
+            left: -200px;
+            animation-delay: 0s;
+        }
+
+        .data-line:nth-child(2) {
+            width: 150px;
+            top: 40%;
+            left: -150px;
+            animation-delay: 0.5s;
+        }
+
+        .data-line:nth-child(3) {
+            width: 180px;
+            top: 60%;
+            left: -180px;
+            animation-delay: 1s;
+        }
+
+        .data-line:nth-child(4) {
+            width: 160px;
+            top: 80%;
+            left: -160px;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes dataFlow {
+            to { transform: translateX(calc(100vw + 200px)); }
         }
 
         .section-title {
-            font-size: 2.5rem;
-            text-align: center;
+            font-size: clamp(2.5rem, 7vw, 4rem);
             margin-bottom: 1rem;
-            background: linear-gradient(45deg, var(--primary-green), var(--primary-blue));
+            background: linear-gradient(135deg, var(--text-primary), var(--primary-green));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            font-weight: 800;
+            position: relative;
+            z-index: 2;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .last-updated {
-            text-align: center;
             color: var(--text-secondary);
-            margin-bottom: 3rem;
             font-style: italic;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 0.8s ease 0.2s both;
         }
 
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Policy Content */
         .policy-content {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 20px;
+            background: var(--bg-card);
+            border-radius: 24px;
             padding: 3rem;
             border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.8s ease 0.4s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .policy-section {
             margin-bottom: 3rem;
+            opacity: 0;
+            animation: sectionFadeIn 0.6s ease forwards;
+        }
+
+        .policy-section:nth-child(1) { animation-delay: 0.5s; }
+        .policy-section:nth-child(2) { animation-delay: 0.6s; }
+        .policy-section:nth-child(3) { animation-delay: 0.7s; }
+        .policy-section:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes sectionFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .policy-section h2 {
             color: var(--primary-green);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .policy-section h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-green), var(--primary-blue));
+            border-radius: 2px;
         }
 
         .policy-section h3 {
             color: var(--text-primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             margin-top: 1.5rem;
+            font-size: 1.2rem;
         }
 
         .policy-section p {
             color: var(--text-secondary);
             margin-bottom: 1rem;
-            line-height: 1.7;
+            line-height: 1.8;
         }
 
         .policy-section ul {
@@ -243,160 +459,257 @@
         }
 
         .policy-section li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .policy-section li::before {
+            content: '▸';
+            color: var(--primary-green);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
         }
 
         .highlight {
-            background: rgba(0, 255, 136, 0.1);
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.08), rgba(0, 204, 255, 0.08));
             border: 1px solid rgba(0, 255, 136, 0.2);
-            border-radius: 8px;
-            padding: 1rem;
-            margin: 1rem 0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-green), var(--primary-blue));
+        }
+
+        .highlight strong {
+            color: var(--primary-green);
         }
 
         .contact-info {
-            background: rgba(0, 255, 136, 0.05);
-            border-radius: 12px;
-            padding: 2rem;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.06), rgba(0, 204, 255, 0.06));
+            border-radius: 20px;
+            padding: 2.5rem;
             border: 1px solid rgba(0, 255, 136, 0.2);
             margin-top: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.05) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .contact-info h3 {
             color: var(--primary-green);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            position: relative;
+        }
+
+        .contact-info p {
+            position: relative;
             margin-bottom: 1rem;
         }
 
         .contact-link {
             color: var(--primary-green);
             text-decoration: none;
-            transition: var(--transition);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
         .contact-link:hover {
-            text-decoration: underline;
+            color: var(--primary-blue);
+            text-shadow: 0 0 10px rgba(0, 204, 255, 0.5);
         }
 
-        /* Responsive Design */
-        @media (min-width: 768px) {
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 3rem 1rem 2rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-green);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
             .navbar {
-                padding: 1rem 2rem;
+                padding: 0 1rem;
             }
 
-            .logo {
-                font-size: 1.3rem;
-                margin-right: 2rem;
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: var(--navbar-height);
+                left: 0;
+                right: 0;
+                background: rgba(13, 13, 13, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 0.5rem;
+                border-top: 1px solid var(--border-color);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+                max-height: calc(100vh - var(--navbar-height));
+                overflow-y: auto;
             }
 
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                width: 100%;
+                padding: 1rem;
+                border-radius: 12px;
+            }
+
+            .nav-links a:hover {
+                background: rgba(255, 255, 255, 0.05);
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .container {
+                padding: calc(var(--navbar-height) + 2rem) 1rem 2rem;
+            }
+
+            .policy-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .policy-section h2 {
+                font-size: 1.4rem;
+            }
+
+            .contact-info {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                min-height: 300px;
+            }
+
+            .security-shield {
+                width: 80px;
+                height: 80px;
+            }
+
+            .shield-inner {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .policy-content {
+                padding: 1.5rem;
+                border-radius: 16px;
+            }
+
+            .policy-section h2 {
+                font-size: 1.2rem;
+                padding-left: 15px;
+            }
+
+            .policy-section h3 {
+                font-size: 1rem;
+            }
+
+            .highlight {
+                padding: 1rem;
+            }
+
+            .contact-info {
+                padding: 1.5rem;
+            }
+
+            .contact-info h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (min-width: 769px) {
             .mobile-menu-btn {
                 display: none;
             }
 
             .nav-links {
                 display: flex !important;
-                position: static;
-                background: none;
-                backdrop-filter: none;
-                flex-direction: row;
-                padding: 0;
-                gap: 0.5rem;
-                border: none;
-                box-shadow: none;
-                max-height: none;
-                overflow: visible;
-                align-items: center;
-                justify-content: flex-end;
-                flex: 1;
-                margin: 0;
-                flex-wrap: wrap;
-            }
-
-            .nav-links a {
-                padding: 0.5rem 0.8rem;
-                border-radius: 20px;
-                white-space: nowrap;
-                font-size: 0.85rem;
-                transition: all 0.3s ease;
-                min-width: fit-content;
-                font-weight: 500;
-            }
-
-            .nav-links a:hover,
-            .nav-links a.active {
-                transform: translateY(-1px);
-                background: rgba(0, 255, 136, 0.15);
-                color: var(--primary-green);
-            }
-
-            .container {
-                padding-top: 100px;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .logo {
-                font-size: 1.5rem;
-            }
-
-            .nav-links {
-                gap: 0.8rem;
-            }
-
-            .nav-links a {
-                padding: 0.6rem 1rem;
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (min-width: 1200px) {
-            .nav-links {
-                gap: 1rem;
-            }
-
-            .nav-links a {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.95rem;
-            }
-        }
-
-        /* Focus Styles for Accessibility */
-        .nav-links a:focus,
-        .mobile-menu-btn:focus {
-            outline: 3px solid var(--primary-green);
-            outline-offset: 2px;
-        }
-
-        /* Reduced Motion */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Skip Link for Screen Readers -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="gradient-orb orb1"></div>
+        <div class="gradient-orb orb2"></div>
+    </div>
 
-    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
-        <div class="nav-content">
-            <a href="/" class="logo" aria-label="GPU Database Home">GPU Database</a>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">GPU Database</a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="/#gpu-guide" class="nav-link">GPU Guide</a></li>
-                <li><a href="/#gpus" class="nav-link">Graphics Cards</a></li>
-                <li><a href="/#gaming-performance-analysis" class="nav-link">Gaming Performance</a></li>
-                <li><a href="/#cryptocurrency-mining" class="nav-link">Mining Guide</a></li>
-                <li><a href="/#ai-machine-learning" class="nav-link">AI Tasks</a></li>
-                <li><a href="/blog" class="nav-link">Blog</a></li>
+                <li><a href="/blog" class="nav-link" aria-current="page">Blog</a></li>
+                <li><a href="/#guides" class="nav-link">Guides</a></li>
                 <li><a href="/#news" class="nav-link">News</a></li>
                 <li><a href="/#comparison" class="nav-link">Compare</a></li>
                 <li><a href="/about" class="nav-link">About</a></li>
                 <li><a href="/contact" class="nav-link">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -404,10 +717,27 @@
         </div>
     </nav>
 
-    <main id="main-content">
+    <main>
         <div class="container">
-            <h1 class="section-title">Privacy Policy</h1>
-            <p class="last-updated">Last updated: August 7, 2025</p>
+            <!-- Hero Section with GPU Animations -->
+            <section class="hero-section">
+                <!-- Security Shield Animation -->
+                <div class="security-shield">
+                    <div class="shield-outer"></div>
+                    <div class="shield-inner">🔒</div>
+                </div>
+
+                <!-- Data Flow Lines -->
+                <div class="data-lines">
+                    <div class="data-line"></div>
+                    <div class="data-line"></div>
+                    <div class="data-line"></div>
+                    <div class="data-line"></div>
+                </div>
+
+                <h1 class="section-title">Privacy Policy</h1>
+                <p class="last-updated">Last updated: August 7, 2025</p>
+            </section>
 
             <div class="policy-content">
                 <div class="policy-section">
@@ -473,19 +803,7 @@
                 </div>
 
                 <div class="policy-section">
-                    <h2>6. Cookies and Tracking Technologies</h2>
-                    <p>Our website uses cookies and similar technologies to enhance your browsing experience. You can control cookie preferences through your browser settings.</p>
-                    
-                    <h3>6.1 Types of Cookies We Use</h3>
-                    <ul>
-                        <li>Essential cookies for website functionality</li>
-                        <li>Analytics cookies to understand user behavior</li>
-                        <li>Preference cookies to remember your settings</li>
-                    </ul>
-                </div>
-
-                <div class="policy-section">
-                    <h2>7. Your Rights and Choices</h2>
+                    <h2>6. Your Rights and Choices</h2>
                     <p>Depending on your location, you may have the following rights:</p>
                     <ul>
                         <li>Access to your personal information</li>
@@ -498,174 +816,97 @@
                 </div>
 
                 <div class="policy-section">
+                    <h2>7. Cookies and Tracking Technologies</h2>
+                    <p>Our website uses cookies and similar technologies to enhance your browsing experience. You can control cookie preferences through your browser settings.</p>
+                    
+                    <h3>Types of Cookies We Use</h3>
+                    <ul>
+                        <li>Essential cookies for website functionality</li>
+                        <li>Analytics cookies to understand user behavior</li>
+                        <li>Preference cookies to remember your settings</li>
+                    </ul>
+                </div>
+
+                <div class="policy-section">
                     <h2>8. Children's Privacy</h2>
                     <p>Our website is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If we discover that we have collected information from a child under 13, we will delete it immediately.</p>
                 </div>
 
                 <div class="policy-section">
-                    <h2>9. International Data Transfers</h2>
-                    <p>Your information may be transferred to and processed in countries other than your own. We ensure appropriate safeguards are in place to protect your information during such transfers.</p>
-                </div>
-
-                <div class="policy-section">
-                    <h2>10. Data Retention</h2>
-                    <p>We retain your personal information only as long as necessary to fulfill the purposes outlined in this policy or as required by law. When information is no longer needed, we securely delete or anonymize it.</p>
-                </div>
-
-                <div class="policy-section">
-                    <h2>11. Third-Party Links</h2>
-                    <p>Our website may contain links to third-party websites. We are not responsible for the privacy practices of these external sites. We encourage you to read their privacy policies.</p>
-                </div>
-
-                <div class="policy-section">
-                    <h2>12. Changes to This Privacy Policy</h2>
+                    <h2>9. Changes to This Privacy Policy</h2>
                     <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated "Last Updated" date. We encourage you to review this policy periodically.</p>
-                    
-                    <p>For significant changes, we will provide additional notice through:</p>
-                    <ul>
-                        <li>Email notifications to registered users</li>
-                        <li>Prominent notices on our website</li>
-                        <li>Social media announcements</li>
-                    </ul>
                 </div>
 
                 <div class="contact-info">
                     <h3>Contact Us About Privacy</h3>
                     <p>If you have questions about this Privacy Policy or our data practices, please contact us:</p>
                     <p><strong>Email:</strong> <a href="mailto:gouravchoudharyofficial@gmail.com" class="contact-link">gouravchoudharyofficial@gmail.com</a></p>
-                    <p><strong>Subject Line:</strong> Privacy Policy Inquiry</p>
+                    <p><strong>Website:</strong> <a href="https://gpudatabase.in" class="contact-link">gpudatabase.in</a></p>
                     <p><strong>Response Time:</strong> We will respond to privacy-related inquiries within 7 business days.</p>
                 </div>
             </div>
         </div>
     </main>
 
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/terms-of-service">Terms of Service</a>
+        </div>
+        <p>© 2025 GPU Database. All rights reserved.</p>
+    </footer>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Enhanced Mobile Navigation with Accessibility
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const navLinks = document.getElementById('navLinks');
-            const navbar = document.getElementById('navbar');
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        let isMenuOpen = false;
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            mobileMenuBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+        });
 
-            if (!mobileMenuBtn || !navLinks) return;
-
-            // Close menu function
-            function closeMenu() {
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (isMenuOpen && !navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                isMenuOpen = false;
                 mobileMenuBtn.classList.remove('active');
                 navLinks.classList.remove('active');
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
                 document.body.style.overflow = '';
-                mobileMenuBtn.focus();
             }
+        });
 
-            // Open menu function
-            function openMenu() {
-                mobileMenuBtn.classList.add('active');
-                navLinks.classList.add('active');
-                mobileMenuBtn.setAttribute('aria-expanded', 'true');
-                document.body.style.overflow = 'hidden';
-                const firstLink = navLinks.querySelector('a');
-                if (firstLink) firstLink.focus();
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
+        });
 
-            // Toggle menu
-            mobileMenuBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const isActive = mobileMenuBtn.classList.contains('active');
-                
-                if (isActive) {
-                    closeMenu();
-                } else {
-                    openMenu();
+        // Smooth Scrolling for Internal Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 100;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
                 }
-            });
-
-            // Close menu when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!navbar.contains(e.target)) {
-                    closeMenu();
-                }
-            });
-
-            // Close menu when clicking nav links
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    closeMenu();
-                });
-            });
-
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closeMenu();
-                }
-                
-                if (navLinks.classList.contains('active')) {
-                    const links = Array.from(navLinks.querySelectorAll('a'));
-                    const currentIndex = links.indexOf(document.activeElement);
-                    
-                    if (e.key === 'ArrowDown') {
-                        e.preventDefault();
-                        const nextIndex = (currentIndex + 1) % links.length;
-                        links[nextIndex].focus();
-                    } else if (e.key === 'ArrowUp') {
-                        e.preventDefault();
-                        const prevIndex = (currentIndex - 1 + links.length) % links.length;
-                        links[prevIndex].focus();
-                    }
-                }
-            });
-
-            // Active page detection
-            function setActiveNavItem() {
-                const currentPage = window.location.pathname;
-                const navItems = document.querySelectorAll('.nav-links a');
-                
-                navItems.forEach(item => {
-                    if (currentPage.includes('privacy-policy')) {
-                        // This is the privacy policy page - no specific nav item to highlight
-                        item.classList.remove('active');
-                        item.removeAttribute('aria-current');
-                    } else {
-                        item.classList.remove('active');
-                        item.removeAttribute('aria-current');
-                    }
-                });
-            }
-
-            setActiveNavItem();
-
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        const headerOffset = 100;
-                        const elementPosition = target.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // Navbar scroll behavior
-            let lastScrollY = window.scrollY;
-            
-            window.addEventListener('scroll', () => {
-                const currentScrollY = window.scrollY;
-                
-                if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                    navbar.style.transform = 'translateY(-100%)';
-                } else {
-                    navbar.style.transform = 'translateY(0)';
-                }
-                
-                lastScrollY = currentScrollY;
             });
         });
     </script>
