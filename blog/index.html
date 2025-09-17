@@ -22,50 +22,46 @@
         :root {
             --primary-green: #00ff88;
             --primary-blue: #00ccff;
-            --accent-orange: #ff8800;
-            --accent-red: #ff4444;
             --accent-purple: #8844ff;
-            --bg-primary: #0f0f0f;
+            --accent-orange: #ff8800;
+            --bg-primary: #0d0d0d;
             --bg-secondary: #1a1a1a;
+            --bg-card: rgba(255, 255, 255, 0.04);
             --text-primary: #ffffff;
-            --text-secondary: #cccccc;
-            --text-muted: #999999;
+            --text-secondary: #b8b8b8;
+            --text-muted: #808080;
             --border-color: rgba(255, 255, 255, 0.1);
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --navbar-height: 70px;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            background: linear-gradient(135deg, var(--bg-primary) 0%, #151520 100%);
             color: var(--text-primary);
             min-height: 100vh;
+            overflow-x: hidden;
             line-height: 1.6;
         }
 
-        /* Skip Link for Accessibility */
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 6px;
-            background: var(--primary-green);
-            color: var(--bg-primary);
-            padding: 8px;
-            text-decoration: none;
-            border-radius: 4px;
-            z-index: 10000;
+        /* Simple animated background */
+        .background-gradient {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 204, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(136, 68, 255, 0.1) 0%, transparent 50%);
         }
 
-        .skip-link:focus {
-            top: 6px;
-        }
-
-        /* Navigation Styles */
+        /* Navigation */
         .navbar {
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(20px);
-            padding: 1rem;
+            background: rgba(13, 13, 13, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0 1.5rem;
             position: fixed;
             width: 100%;
             top: 0;
@@ -74,27 +70,32 @@
             height: var(--navbar-height);
             display: flex;
             align-items: center;
+            transition: all 0.3s ease;
         }
 
-        .nav-content {
+        .navbar.scrolled {
+            background: rgba(13, 13, 13, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-            width: 100%;
         }
 
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            background: linear-gradient(45deg, var(--primary-green), var(--primary-blue));
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-decoration: none;
-            transition: var(--transition);
+            transition: transform 0.3s ease;
         }
 
         .logo:hover {
@@ -102,74 +103,61 @@
         }
 
         .nav-links {
-            display: none;
-            position: absolute;
-            top: calc(100% + 1px);
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.98);
-            backdrop-filter: blur(20px);
-            flex-direction: column;
-            padding: 1rem;
-            gap: 0.5rem;
-            border-top: 1px solid var(--border-color);
-            list-style: none;
-            max-height: calc(100vh - var(--navbar-height));
-            overflow-y: auto;
-        }
-
-        .nav-links.active {
             display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            align-items: center;
+            margin: 0;
+            padding: 0;
         }
 
         .nav-links a {
-            color: var(--text-primary);
+            color: var(--text-secondary);
             text-decoration: none;
-            transition: var(--transition);
-            padding: 0.75rem 1rem;
-            border-radius: 12px;
             font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem;
             position: relative;
         }
 
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
         .nav-links a:hover,
-        .nav-links a:focus {
-            color: var(--primary-green);
-            background: rgba(0, 255, 136, 0.1);
-            outline: none;
-            transform: translateX(8px);
+        .nav-links a.active {
+            color: var(--text-primary);
         }
 
-        .nav-links a.active,
-        .nav-links a[aria-current="page"] {
-            color: var(--primary-green);
-            background: rgba(0, 255, 136, 0.15);
-            font-weight: 600;
-        }
-
+        /* Mobile Menu Button */
         .mobile-menu-btn {
-            display: flex;
+            display: none;
             flex-direction: column;
-            cursor: pointer;
             gap: 4px;
-            padding: 0.5rem;
-            border-radius: 8px;
-            transition: var(--transition);
+            background: none;
             border: none;
-            background: transparent;
-            z-index: 1001;
-        }
-
-        .mobile-menu-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            padding: 0.5rem;
         }
 
         .mobile-menu-btn span {
-            width: 24px;
+            width: 25px;
             height: 3px;
             background: var(--text-primary);
-            transition: var(--transition);
             border-radius: 2px;
+            transition: all 0.3s ease;
         }
 
         .mobile-menu-btn.active span:nth-child(1) {
@@ -181,42 +169,334 @@
         }
 
         .mobile-menu-btn.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
+            transform: rotate(-45deg) translate(7px, -7px);
         }
 
         /* Container */
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: calc(var(--navbar-height) + 2rem) 1rem 2rem;
-            width: 100%;
+            padding: calc(var(--navbar-height) + 2rem) 1.5rem 2rem;
+            position: relative;
         }
 
-        /* Page Header */
+        /* Page Header with GPU Animation */
         .page-header {
             text-align: center;
             margin-bottom: 4rem;
-            background: radial-gradient(circle at center, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
             padding: 3rem 0;
-            border-radius: 20px;
+            animation: fadeInDown 0.8s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* GPU Circuit Animation Background */
+        .gpu-circuit-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0.15;
+            overflow: hidden;
+        }
+
+        .circuit-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, var(--primary-green), transparent);
+            height: 1px;
+            animation: circuitFlow 3s linear infinite;
+        }
+
+        .circuit-line:nth-child(1) {
+            width: 200px;
+            top: 20%;
+            left: -200px;
+            animation-delay: 0s;
+        }
+
+        .circuit-line:nth-child(2) {
+            width: 150px;
+            top: 40%;
+            left: -200px;
+            animation-delay: 0.5s;
+        }
+
+        .circuit-line:nth-child(3) {
+            width: 180px;
+            top: 60%;
+            left: -200px;
+            animation-delay: 1s;
+        }
+
+        .circuit-line:nth-child(4) {
+            width: 220px;
+            top: 80%;
+            left: -200px;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes circuitFlow {
+            to {
+                transform: translateX(calc(100vw + 200px));
+            }
+        }
+
+        /* Floating GPU Icons */
+        .gpu-floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .gpu-icon-float {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.1;
+            animation: floatIcon 15s infinite ease-in-out;
+        }
+
+        .gpu-icon-float:nth-child(1) {
+            left: 10%;
+            top: 20%;
+            animation-delay: 0s;
+        }
+
+        .gpu-icon-float:nth-child(2) {
+            left: 80%;
+            top: 30%;
+            animation-delay: 3s;
+        }
+
+        .gpu-icon-float:nth-child(3) {
+            left: 20%;
+            top: 70%;
+            animation-delay: 6s;
+        }
+
+        .gpu-icon-float:nth-child(4) {
+            left: 70%;
+            top: 60%;
+            animation-delay: 9s;
+        }
+
+        .gpu-icon-float:nth-child(5) {
+            left: 50%;
+            top: 10%;
+            animation-delay: 12s;
+        }
+
+        @keyframes floatIcon {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.1;
+            }
+            50% {
+                transform: translate(30px, -30px) rotate(180deg);
+                opacity: 0.2;
+            }
+            90% {
+                opacity: 0.1;
+            }
+        }
+
+        /* GPU Chip Animation */
+        .gpu-chip {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .chip-core {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            position: relative;
+            animation: chipPulse 4s ease-in-out infinite;
+        }
+
+        .chip-circuit {
+            position: absolute;
+            background: var(--primary-green);
+            opacity: 0.5;
+        }
+
+        .chip-circuit:nth-child(1) {
+            width: 2px;
+            height: 30px;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .chip-circuit:nth-child(2) {
+            width: 30px;
+            height: 2px;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .chip-circuit:nth-child(3) {
+            width: 2px;
+            height: 30px;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .chip-circuit:nth-child(4) {
+            width: 30px;
+            height: 2px;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        @keyframes chipPulse {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.1;
+            }
+            50% {
+                transform: scale(1.2) rotate(45deg);
+                opacity: 0.2;
+            }
+        }
+
+        /* Animated Grid Pattern */
+        .hero-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-image: 
+                linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: gridSlide 20s linear infinite;
+        }
+
+        @keyframes gridSlide {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(30px, 30px);
+            }
         }
 
         .page-title {
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, var(--text-primary), var(--primary-green));
+            font-size: clamp(2.5rem, 7vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--primary-green));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-weight: 800;
+            line-height: 1.2;
+            position: relative;
+            z-index: 2;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% {
+                filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.3));
+            }
+            100% {
+                filter: drop-shadow(0 0 30px rgba(0, 255, 136, 0.5));
+            }
         }
 
         .page-subtitle {
-            font-size: clamp(1rem, 4vw, 1.3rem);
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
             color: var(--text-secondary);
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto;
-            line-height: 1.5;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(-10px);
+            }
+        }
+
+        /* GPU Stats Animation */
+        .gpu-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.8s forwards;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            animation: countUp 2s ease-out 1s forwards;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes countUp {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         /* Blog Grid */
@@ -224,75 +504,119 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            margin: 2rem 0;
+            margin-bottom: 3rem;
         }
 
+        /* Blog Card */
         .blog-card {
-            background: var(--card-bg);
+            background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: var(--transition);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .blog-card:nth-child(1) { animation-delay: 0.1s; }
+        .blog-card:nth-child(2) { animation-delay: 0.2s; }
+        .blog-card:nth-child(3) { animation-delay: 0.3s; }
+        .blog-card:nth-child(4) { animation-delay: 0.4s; }
+        .blog-card:nth-child(5) { animation-delay: 0.5s; }
+        .blog-card:nth-child(6) { animation-delay: 0.6s; }
+        .blog-card:nth-child(7) { animation-delay: 0.7s; }
+        .blog-card:nth-child(8) { animation-delay: 0.8s; }
+        .blog-card:nth-child(9) { animation-delay: 0.9s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary-green);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Card Image Area */
+        .card-image-area {
+            height: 180px;
+            margin: -1.5rem -1.5rem 1.5rem;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 204, 255, 0.1));
+            border-radius: 16px 16px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: relative;
             overflow: hidden;
         }
 
-        .blog-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-green);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .blog-card::before {
+        .card-image-area::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-green), var(--primary-blue));
-            opacity: 0;
-            transition: var(--transition);
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.02) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
         }
 
-        .blog-card:hover::before {
-            opacity: 1;
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
 
+        .gpu-icon {
+            font-size: 3rem;
+            opacity: 0.3;
+        }
+
+        /* Card Content */
         .blog-meta {
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             flex-wrap: wrap;
             font-size: 0.9rem;
         }
 
         .blog-category {
-            background: var(--accent-orange);
+            background: linear-gradient(135deg, var(--accent-orange), var(--primary-green));
             color: var(--bg-primary);
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
             font-weight: 600;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        .blog-meta time {
+        .blog-meta time,
+        .blog-meta .read-time {
             color: var(--text-muted);
-        }
-
-        .blog-meta span {
-            color: var(--text-muted);
+            font-size: 0.85rem;
         }
 
         .blog-title {
             font-size: 1.4rem;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            line-height: 1.3;
             font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            color: var(--text-primary);
+            transition: color 0.3s ease;
+        }
+
+        .blog-card:hover .blog-title {
+            color: var(--primary-green);
         }
 
         .blog-excerpt {
@@ -309,162 +633,315 @@
             color: var(--primary-green);
             text-decoration: none;
             font-weight: 600;
-            transition: var(--transition);
-            padding: 0.5rem 1rem;
-            border-radius: 12px;
-            border: 1px solid var(--primary-green);
-            background: rgba(0, 255, 136, 0.1);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
         }
 
         .blog-cta:hover {
-            background: var(--primary-green);
-            color: var(--bg-primary);
-            transform: translateX(5px);
+            gap: 0.8rem;
+            color: var(--primary-blue);
         }
 
         /* Featured Article */
         .featured-article {
             grid-column: 1 / -1;
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 204, 255, 0.1) 100%);
-            border: 2px solid var(--primary-green);
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.08), rgba(0, 204, 255, 0.08));
+            border: 1px solid var(--primary-green);
             position: relative;
+            padding: 2rem;
         }
 
-        .featured-article::after {
-            content: 'Featured Article';
+        .featured-badge {
             position: absolute;
             top: -12px;
             left: 2rem;
-            background: var(--primary-green);
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
             color: var(--bg-primary);
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 1rem;
             border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .featured-article .blog-title {
-            font-size: 1.8rem;
+            font-size: clamp(1.5rem, 3vw, 1.8rem);
         }
 
-        /* Responsive Design */
-        @media (min-width: 768px) {
+        .featured-article .card-image-area {
+            height: 250px;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+        }
+
+        .scroll-top svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--bg-primary);
+            stroke-width: 3;
+            fill: none;
+        }
+
+        /* Mobile Responsive Design */
+        @media (max-width: 768px) {
+            :root {
+                --navbar-height: 60px;
+            }
+
             .navbar {
-                padding: 1rem 2rem;
-            }
-
-            .logo {
-                font-size: 1.8rem;
-            }
-
-            .mobile-menu-btn {
-                display: none;
+                padding: 0 1rem;
             }
 
             .nav-links {
-                display: flex !important;
-                position: static;
-                background: none;
-                backdrop-filter: none;
-                flex-direction: row;
-                padding: 0;
-                gap: 1rem;
-                border: none;
-                box-shadow: none;
-                max-height: none;
-                overflow: visible;
-                align-items: center;
-                justify-content: flex-end;
-                flex: 1;
-                margin-left: 2rem;
+                display: none;
+                position: fixed;
+                top: var(--navbar-height);
+                left: 0;
+                right: 0;
+                background: rgba(13, 13, 13, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 0.5rem;
+                border-top: 1px solid var(--border-color);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
+
+            .nav-links.active {
+                display: flex;
             }
 
             .nav-links a {
-                padding: 0.6rem 1rem;
-                border-radius: 20px;
-                white-space: nowrap;
-                font-size: 0.9rem;
-                transition: all 0.3s ease;
-                min-width: fit-content;
+                width: 100%;
+                padding: 0.8rem;
+                border-radius: 8px;
             }
 
-            .nav-links a:hover,
-            .nav-links a.active {
-                transform: translateY(-1px);
-                background: rgba(0, 255, 136, 0.15);
-                color: var(--primary-green);
+            .nav-links a:hover {
+                background: rgba(255, 255, 255, 0.05);
+            }
+
+            .mobile-menu-btn {
+                display: flex;
             }
 
             .container {
-                padding-top: 100px;
+                padding: calc(var(--navbar-height) + 1.5rem) 1rem 2rem;
             }
 
-            .blog-grid {
-                gap: 2.5rem;
+            .page-header {
+                margin-bottom: 3rem;
+                padding: 2rem 0;
+                min-height: 350px;
             }
 
-            .blog-card {
-                padding: 2.5rem;
+            /* Reduce hero animations on mobile */
+            .gpu-circuit-bg,
+            .gpu-floating-icons {
+                opacity: 0.08;
             }
-        }
 
-        @media (max-width: 480px) {
+            .gpu-chip {
+                width: 40px;
+                height: 40px;
+                opacity: 0.05;
+            }
+
+            .gpu-stats {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .stat-value {
+                font-size: 1.2rem;
+            }
+
+            .stat-label {
+                font-size: 0.75rem;
+            }
+
             .blog-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
 
-            .blog-card {
+            .featured-article {
                 padding: 1.5rem;
             }
 
-            .blog-meta {
-                flex-direction: column;
-                gap: 0.5rem;
-                align-items: flex-start;
+            .featured-article .card-image-area {
+                height: 200px;
+            }
+
+            .blog-card {
+                padding: 1.25rem;
+            }
+
+            .card-image-area {
+                height: 150px;
+            }
+
+            .blog-title {
+                font-size: 1.25rem;
+            }
+
+            .blog-excerpt {
+                font-size: 0.9rem;
+            }
+
+            .scroll-top {
+                width: 42px;
+                height: 42px;
+                bottom: 1.5rem;
+                right: 1.5rem;
             }
         }
 
-        /* Focus Styles for Accessibility */
-        .nav-links a:focus,
-        .mobile-menu-btn:focus,
-        .blog-cta:focus {
-            outline: 3px solid var(--primary-green);
-            outline-offset: 2px;
+        @media (max-width: 480px) {
+            .page-header {
+                min-height: 300px;
+                padding: 1.5rem 0;
+            }
+
+            /* Hide complex animations on small mobile */
+            .gpu-floating-icons,
+            .gpu-chip {
+                display: none;
+            }
+
+            .hero-grid {
+                background-size: 20px 20px;
+            }
+
+            .page-title {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .page-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .gpu-stats {
+                margin-top: 1.5rem;
+            }
+
+            .stat-item {
+                min-width: 80px;
+            }
+
+            .blog-meta {
+                gap: 0.5rem;
+            }
+
+            .blog-category {
+                font-size: 0.7rem;
+                padding: 0.25rem 0.6rem;
+            }
+
+            .blog-title {
+                font-size: 1.15rem;
+            }
+
+            .featured-article .blog-title {
+                font-size: 1.3rem;
+            }
+
+            .blog-excerpt {
+                font-size: 0.85rem;
+                line-height: 1.5;
+            }
+
+            .blog-cta {
+                font-size: 0.9rem;
+            }
         }
 
-        /* Reduced Motion */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Accessibility */
         @media (prefers-reduced-motion: reduce) {
-            * {
+            *,
+            *::before,
+            *::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus styles for keyboard navigation */
+        a:focus,
+        button:focus {
+            outline: 2px solid var(--primary-green);
+            outline-offset: 2px;
+        }
+
+        /* Print styles */
+        @media print {
+            .navbar,
+            .scroll-top,
+            .background-gradient {
+                display: none;
+            }
+
+            body {
+                background: white;
+                color: black;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Skip Link for Screen Readers -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- Background -->
+    <div class="background-gradient"></div>
 
-    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
-        <div class="nav-content">
-            <a href="/" class="logo" aria-label="GPU Database Home">GPU Database</a>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">GPU Database</a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="/#gpu-guide" class="nav-link">GPU Guide</a></li>
-                <li><a href="/#gpus" class="nav-link">Graphics Cards</a></li>
-                <li><a href="/#gaming-performance-analysis" class="nav-link">Gaming Performance</a></li>
-                <li><a href="/#cryptocurrency-mining" class="nav-link">Mining Guide</a></li>
-                <li><a href="/#ai-machine-learning" class="nav-link">AI Tasks</a></li>
-                <li><a href="/blog" class="nav-link" aria-current="page">Blog</a></li>
                 <li><a href="/#guides" class="nav-link">Guides</a></li>
                 <li><a href="/#news" class="nav-link">News</a></li>
                 <li><a href="/#comparison" class="nav-link">Compare</a></li>
                 <li><a href="/about" class="nav-link">About</a></li>
                 <li><a href="/contact" class="nav-link">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -472,235 +949,393 @@
         </div>
     </nav>
 
-    <main id="main-content">
+    <!-- Main Content -->
+    <main>
         <div class="container">
+            <!-- Page Header -->
             <header class="page-header">
+                <!-- GPU Circuit Animation Background -->
+                <div class="gpu-circuit-bg">
+                    <div class="circuit-line"></div>
+                    <div class="circuit-line"></div>
+                    <div class="circuit-line"></div>
+                    <div class="circuit-line"></div>
+                </div>
+
+                <!-- Animated Grid Pattern -->
+                <div class="hero-grid"></div>
+
+                <!-- Floating GPU Icons -->
+                <div class="gpu-floating-icons">
+                    <span class="gpu-icon-float">⚡</span>
+                    <span class="gpu-icon-float">💻</span>
+                    <span class="gpu-icon-float">🎮</span>
+                    <span class="gpu-icon-float">🚀</span>
+                    <span class="gpu-icon-float">📊</span>
+                </div>
+
+                <!-- GPU Chip Animation -->
+                <div class="gpu-chip">
+                    <div class="chip-core">
+                        <div class="chip-circuit"></div>
+                        <div class="chip-circuit"></div>
+                        <div class="chip-circuit"></div>
+                        <div class="chip-circuit"></div>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
                 <h1 class="page-title">GPU Database Blog</h1>
                 <p class="page-subtitle">Expert reviews, in-depth analysis, and comprehensive guides about NVIDIA RTX graphics cards and cutting-edge GPU technology</p>
+                
+                <!-- GPU Stats -->
+                <div class="gpu-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">500+</span>
+                        <span class="stat-label">Reviews</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">50K+</span>
+                        <span class="stat-label">Readers</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">24/7</span>
+                        <span class="stat-label">Updates</span>
+                    </div>
+                </div>
             </header>
 
-            <div class="blog-grid">
+            <!-- Blog Grid -->
+            <section class="blog-grid">
+                <!-- Featured Article -->
                 <article class="blog-card featured-article">
+                    <span class="featured-badge">Featured</span>
+                    <div class="card-image-area">
+                        <span class="gpu-icon">🎮</span>
+                    </div>
                     <div class="blog-meta">
                         <span class="blog-category">HIGH-END BATTLE</span>
                         <time datetime="2025-08-07">August 7, 2025</time>
-                        <span>7 min read</span>
+                        <span class="read-time">7 min read</span>
                     </div>
                     <h2 class="blog-title">AMD RX 7900 XTX vs NVIDIA RTX 4080: Ultimate Battle 2025</h2>
                     <p class="blog-excerpt">Epic showdown between AMD RX 7900 XTX and NVIDIA RTX 4080. Complete performance analysis, ray tracing comparison, and value assessment for 4K gaming enthusiasts. Which flagship GPU delivers the best bang for your buck?</p>
-                    <a href="/blog/amd-rx-7900-xtx-vs-nvidia-rtx-4080-ultimate-battle-2025" class="blog-cta" aria-label="Read AMD vs NVIDIA battle comparison">Read Epic Battle →</a>
+                    <a href="/blog/amd-rx-7900-xtx-vs-nvidia-rtx-4080-ultimate-battle-2025" class="blog-cta">
+                        Read Epic Battle →
+                    </a>
                 </article>
 
+                <!-- Blog Card 1 -->
                 <article class="blog-card">
+                    <div class="card-image-area">
+                        <span class="gpu-icon">💻</span>
+                    </div>
+                    <div class="blog-meta">
+                        <span class="blog-category">4K GAMING GUIDE</span>
+                        <time datetime="2025-08-07">August 7, 2025</time>
+                        <span class="read-time">8 min read</span>
+                    </div>
+                    <h2 class="blog-title">Best GPU for 4K Gaming in 2025</h2>
+                    <p class="blog-excerpt">Comprehensive guide to the best graphics cards for 4K gaming. In-depth performance analysis, price-to-performance ratios, and recommendations for every budget range.</p>
+                    <a href="/blog/best-gpu-for-4k-gaming-in-2025" class="blog-cta">
+                        Read Guide →
+                    </a>
+                </article>
+
+                <!-- Blog Card 2 -->
+                <article class="blog-card">
+                    <div class="card-image-area">
+                        <span class="gpu-icon">⚡</span>
+                    </div>
                     <div class="blog-meta">
                         <span class="blog-category">MID-RANGE COMPARISON</span>
                         <time datetime="2025-08-07">August 7, 2025</time>
-                        <span>6 min read</span>
+                        <span class="read-time">6 min read</span>
                     </div>
                     <h2 class="blog-title">RTX 4060 Ti vs RTX 4070: Complete Comparison 2025</h2>
                     <p class="blog-excerpt">Definitive comparison between RTX 4060 Ti and RTX 4070 for 1440p gaming. Performance analysis, value assessment, and clear buying recommendations for mid-range builders.</p>
-                    <a href="/blog/rtx-4060-ti-vs-rtx-4070-complete-comparison-2025" class="blog-cta" aria-label="Read RTX 4060 Ti vs 4070 comparison">Read Comparison →</a>
+                    <a href="/blog/rtx-4060-ti-vs-rtx-4070-complete-comparison-2025" class="blog-cta">
+                        Read Comparison →
+                    </a>
                 </article>
 
+                <!-- Blog Card 3 -->
                 <article class="blog-card">
+                    <div class="card-image-area">
+                        <span class="gpu-icon">🚀</span>
+                    </div>
                     <div class="blog-meta">
                         <span class="blog-category">RUMORS & LEAKS</span>
                         <time datetime="2025-08-06">August 6, 2025</time>
-                        <span>6 min read</span>
+                        <span class="read-time">6 min read</span>
                     </div>
                     <h2 class="blog-title">NVIDIA GeForce RTX 60 Series Rumors & Leaks 2025</h2>
-                    <p class="blog-excerpt">Breaking news and speculation about NVIDIA's next-generation RTX 60 series. RTX 6090 and RTX 6080 predictions, Cobalt architecture details, DLSS 5.0, performance expectations, and release timeline analysis.</p>
-                    <a href="/blog/nvidia-geforce-rtx-60-series-rumors-leaks-2025" class="blog-cta" aria-label="Read RTX 60 series rumors and predictions">Read Latest Rumors →</a>
+                    <p class="blog-excerpt">Breaking news and speculation about NVIDIA's next-generation RTX 60 series. RTX 6090 and RTX 6080 predictions, Cobalt architecture details, DLSS 5.0, performance expectations.</p>
+                    <a href="/blog/nvidia-geforce-rtx-60-series-rumors-leaks-2025" class="blog-cta">
+                        Read Latest Rumors →
+                    </a>
                 </article>
 
+                <!-- Blog Card 4 -->
                 <article class="blog-card">
+                    <div class="card-image-area">
+                        <span class="gpu-icon">🔧</span>
+                    </div>
+                    <div class="blog-meta">
+                        <span class="blog-category">BUILD GUIDE</span>
+                        <time datetime="2025-08-05">August 5, 2025</time>
+                        <span class="read-time">5 min read</span>
+                    </div>
+                    <h2 class="blog-title">How to Choose the Right PSU for Your GPU</h2>
+                    <p class="blog-excerpt">Essential guide to selecting the perfect power supply for your graphics card. Learn about power requirements, efficiency ratings, and recommended PSU wattages.</p>
+                    <a href="/blog/how-to-choose-the-right-psu-for-your-gpu" class="blog-cta">
+                        Read Guide →
+                    </a>
+                </article>
+
+                <!-- Blog Card 5 -->
+                <article class="blog-card">
+                    <div class="card-image-area">
+                        <span class="gpu-icon">🎯</span>
+                    </div>
                     <div class="blog-meta">
                         <span class="blog-category">FLAGSHIP COMPARISON</span>
                         <time datetime="2024-12-15">December 15, 2024</time>
-                        <span>12 min read</span>
+                        <span class="read-time">12 min read</span>
                     </div>
                     <h2 class="blog-title">RTX 5090 vs RTX 4090: Ultimate Performance Battle</h2>
-                    <p class="blog-excerpt">Comprehensive comparison between NVIDIA's flagship GPUs. RTX 5090 vs RTX 4090 performance analysis, architectural improvements, and upgrade recommendations for enthusiast builders.</p>
-                    <a href="/blog/rtx-5090-vs-4090-comparison" class="blog-cta" aria-label="Read RTX 5090 vs 4090 flagship comparison">Read Battle →</a>
+                    <p class="blog-excerpt">Comprehensive comparison between NVIDIA's flagship GPUs. RTX 5090 vs RTX 4090 performance analysis, architectural improvements, and upgrade recommendations.</p>
+                    <a href="/blog/rtx-5090-vs-4090-comparison" class="blog-cta">
+                        Read Battle →
+                    </a>
                 </article>
 
+                <!-- Blog Card 6 -->
                 <article class="blog-card">
+                    <div class="card-image-area">
+                        <span class="gpu-icon">📊</span>
+                    </div>
+                    <div class="blog-meta">
+                        <span class="blog-category">TRIPLE COMPARISON</span>
+                        <time datetime="2024-12-14">December 14, 2024</time>
+                        <span class="read-time">15 min read</span>
+                    </div>
+                    <h2 class="blog-title">RTX 3090 vs 4090 vs 5090: Ultimate Comparison</h2>
+                    <p class="blog-excerpt">Epic three-way battle between NVIDIA's flagship GPUs across generations. Detailed analysis of performance scaling, feature improvements, and value proposition.</p>
+                    <a href="/blog/rtx-3090-vs-4090-vs-5090-ultimate-comparison" class="blog-cta">
+                        Read Analysis →
+                    </a>
+                </article>
+
+                <!-- Blog Card 7 -->
+                <article class="blog-card">
+                    <div class="card-image-area">
+                        <span class="gpu-icon">📈</span>
+                    </div>
                     <div class="blog-meta">
                         <span class="blog-category">GENERATION ANALYSIS</span>
                         <time datetime="2024-12-12">December 12, 2024</time>
-                        <span>10 min read</span>
+                        <span class="read-time">10 min read</span>
                     </div>
                     <h2 class="blog-title">RTX 3090 vs RTX 4090: Generation Gap Analysis</h2>
-                    <p class="blog-excerpt">The RTX 4090 represents a massive leap forward from the RTX 3090, bringing architectural improvements, enhanced efficiency, and revolutionary features like DLSS 3. Deep dive into generational improvements.</p>
-                    <a href="/blog/rtx-3090-vs-4090-comparison" class="blog-cta" aria-label="Read RTX 3090 vs 4090 generation analysis">Read Analysis →</a>
+                    <p class="blog-excerpt">The RTX 4090 represents a massive leap forward from the RTX 3090, bringing architectural improvements, enhanced efficiency, and revolutionary features like DLSS 3.</p>
+                    <a href="/blog/rtx-3090-vs-4090-comparison" class="blog-cta">
+                        Read Analysis →
+                    </a>
                 </article>
 
+                <!-- Blog Card 8 -->
                 <article class="blog-card">
+                    <div class="card-image-area">
+                        <span class="gpu-icon">📅</span>
+                    </div>
                     <div class="blog-meta">
                         <span class="blog-category">UPCOMING RELEASES</span>
                         <time datetime="2024-11-28">November 28, 2024</time>
-                        <span>8 min read</span>
+                        <span class="read-time">8 min read</span>
                     </div>
                     <h2 class="blog-title">RTX 50 Series Release Date & Specifications</h2>
-                    <p class="blog-excerpt">Everything we know about NVIDIA's upcoming RTX 50 series graphics cards. Expected release dates, rumored specifications, performance predictions, and pricing analysis for the next generation.</p>
-                    <a href="/blog/rtx-50-series-release-date-and-pricing-predictions" class="blog-cta" aria-label="Read RTX 50 series predictions">Read Predictions →</a>
+                    <p class="blog-excerpt">Everything we know about NVIDIA's upcoming RTX 50 series graphics cards. Expected release dates, rumored specifications, performance predictions, and pricing analysis.</p>
+                    <a href="/blog/rtx-50-series-release-date-and-pricing-predictions" class="blog-cta">
+                        Read Predictions →
+                    </a>
                 </article>
-            </div>
+            </section>
         </div>
     </main>
 
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <svg viewBox="0 0 24 24">
+            <path d="M7 14l5-5 5 5"/>
+        </svg>
+    </div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Enhanced Mobile Navigation with Accessibility
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const navLinks = document.getElementById('navLinks');
-            const navbar = document.getElementById('navbar');
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        let isMenuOpen = false;
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            mobileMenuBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (isMenuOpen) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
 
-            if (!mobileMenuBtn || !navLinks) return;
-
-            // Close menu function
-            function closeMenu() {
+        // Close mobile menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                isMenuOpen = false;
                 mobileMenuBtn.classList.remove('active');
                 navLinks.classList.remove('active');
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
                 document.body.style.overflow = '';
-                mobileMenuBtn.focus();
-            }
-
-            // Open menu function
-            function openMenu() {
-                mobileMenuBtn.classList.add('active');
-                navLinks.classList.add('active');
-                mobileMenuBtn.setAttribute('aria-expanded', 'true');
-                document.body.style.overflow = 'hidden';
-                const firstLink = navLinks.querySelector('a');
-                if (firstLink) firstLink.focus();
-            }
-
-            // Toggle menu
-            mobileMenuBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const isActive = mobileMenuBtn.classList.contains('active');
-                
-                if (isActive) {
-                    closeMenu();
-                } else {
-                    openMenu();
-                }
-            });
-
-            // Close menu when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!navbar.contains(e.target)) {
-                    closeMenu();
-                }
-            });
-
-            // Close menu when clicking nav links
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    closeMenu();
-                });
-            });
-
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closeMenu();
-                }
-                
-                if (navLinks.classList.contains('active')) {
-                    const links = Array.from(navLinks.querySelectorAll('a'));
-                    const currentIndex = links.indexOf(document.activeElement);
-                    
-                    if (e.key === 'ArrowDown') {
-                        e.preventDefault();
-                        const nextIndex = (currentIndex + 1) % links.length;
-                        links[nextIndex].focus();
-                    } else if (e.key === 'ArrowUp') {
-                        e.preventDefault();
-                        const prevIndex = (currentIndex - 1 + links.length) % links.length;
-                        links[prevIndex].focus();
-                    }
-                }
-            });
-
-            // Active page detection and highlighting
-            function setActiveNavItem() {
-                const currentPage = window.location.pathname;
-                const navItems = document.querySelectorAll('.nav-links a');
-                
-                navItems.forEach(item => {
-                    const href = item.getAttribute('href');
-                    if (href === 'index.html' || currentPage.includes('/blog/')) {
-                        item.classList.add('active');
-                        item.setAttribute('aria-current', 'page');
-                    } else {
-                        item.classList.remove('active');
-                        item.removeAttribute('aria-current');
-                    }
-                });
-            }
-
-            // Set active nav item on load
-            setActiveNavItem();
-
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        const headerOffset = 100;
-                        const elementPosition = target.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // Navbar scroll behavior
-            let lastScrollY = window.scrollY;
-            
-            window.addEventListener('scroll', () => {
-                const currentScrollY = window.scrollY;
-                
-                if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                    navbar.style.transform = 'translateY(-100%)';
-                } else {
-                    navbar.style.transform = 'translateY(0)';
-                }
-                
-                lastScrollY = currentScrollY;
-            });
-
-            // Blog card animations on scroll
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-
-            // Apply animation to blog cards
-            document.querySelectorAll('.blog-card').forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-                observer.observe(card);
             });
         });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (isMenuOpen && !navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                isMenuOpen = false;
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            // Add scrolled class for navbar styling
+            if (currentScroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Scroll to Top Button
+        const scrollTop = document.getElementById('scrollTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 500) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        });
+
+        scrollTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add subtle parallax effect to cards on scroll (only on desktop)
+        if (window.innerWidth > 768) {
+            const cards = document.querySelectorAll('.blog-card');
+            
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                
+                cards.forEach((card, index) => {
+                    const speed = 0.5 + (index * 0.1);
+                    const yPos = -(scrolled * speed / 10);
+                    
+                    if (Math.abs(yPos) < 50) { // Limit the effect
+                        card.style.transform = `translateY(${yPos}px)`;
+                    }
+                });
+            });
+        }
+
+        // Intersection Observer for smooth card appearance
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all blog cards
+        document.querySelectorAll('.blog-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Animate stats numbers on scroll
+        const animateStats = () => {
+            const stats = document.querySelectorAll('.stat-value');
+            
+            stats.forEach(stat => {
+                const target = stat.innerText;
+                const isNumber = /^\d+/.test(target);
+                
+                if (isNumber) {
+                    const number = parseInt(target.match(/\d+/)[0]);
+                    const suffix = target.replace(/\d+/, '');
+                    let current = 0;
+                    const increment = number / 50;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= number) {
+                            current = number;
+                            clearInterval(timer);
+                        }
+                        stat.innerText = Math.floor(current) + suffix;
+                    }, 30);
+                }
+            });
+        };
+
+        // Trigger stats animation when hero section is visible
+        const heroSection = document.querySelector('.page-header');
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    heroObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        if (heroSection) {
+            heroObserver.observe(heroSection);
+        }
     </script>
 </body>
 </html>
