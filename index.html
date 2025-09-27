@@ -70,51 +70,75 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "WebSite",
-                "@id": "https://gpudatabase.in/#website",
-                "url": "https://gpudatabase.in/",
-                "name": "GPU Database",
-                "description": "Comprehensive database of 30+ NVIDIA RTX graphics cards with gaming performance benchmarks, mining hashrates, and AI specifications",
-                "publisher": {
-                    "@id": "https://gpudatabase.in/#organization"
-                },
-                "potentialAction": {
-                    "@type": "SearchAction",
-                    "target": {
-                        "@type": "EntryPoint",
-                        "urlTemplate": "https://gpudatabase.in/?s={search_term_string}"
+                            borderColor: [
+                                "rgba(0, 255, 136, 1)",
+                                "rgba(0, 204, 255, 1)",
+                                "rgba(255, 136, 0, 1)",
+                                "rgba(136, 68, 255, 1)",
+                                "rgba(255, 68, 204, 1)",
+                                "rgba(255, 204, 68, 1)"
+                            ]
+                        }]
                     },
-                    "query-input": "required name=search_term_string"
-                },
-                "inLanguage": "en-US"
-            },
-            {
-                "@type": "Organization",
-                "@id": "https://gpudatabase.in/#organization",
-                "name": "GPU Database",
-                "url": "https://gpudatabase.in/",
-                "logo": {
-                    "@type": "ImageObject",
-                    "url": "https://gpudatabase.in/logo.png",
-                    "width": 512,
-                    "height": 512
-                },
-                "founder": {
-                    "@type": "Person",
-                    "name": "Gourav Choudhary",
-                    "jobTitle": "GPU Expert"
-                },
-                "sameAs": [
-                    "https://twitter.com/gpudatabase",
-                    "https://facebook.com/gpudatabase",
-                    "https://youtube.com/gpudatabase"
-                ]
-            },
-            {
-                "@type": "ItemList",
-                "@id": "https://gpudatabase.in/#gpu-list",
+                    options: {
+                        plugins: {
+                            legend: {
+                                labels: { color: '#ffffff' }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                                borderColor: 'rgba(0, 255, 136, 0.5)',
+                                borderWidth: 1
+                            }
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    title: {
+                                        display: true,
+                                        text: "FPS",
+                                        color: '#ffffff'
+                                    },
+                                    ticks: { color: '#cccccc' },
+                                    grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                                },
+                                x: {
+                                    ticks: { color: '#cccccc' },
+                                    grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                                }
+                            },
+                            animation: {
+                                duration: 2000,
+                                easing: 'easeInOutQuart'
+                            }
+                        }
+                    }
+                });
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: "FPS",
+                                    color: '#ffffff'
+                                },
+                                ticks: { color: '#cccccc' },
+                                grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                            },
+                            x: {
+                                ticks: { color: '#cccccc' },
+                                grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                            }
+                        },
+                        animation: {
+                            duration: 2000,
+                            easing: 'easeInOutQuart'
+                        }
+                    }
+                });
+            }
                 "name": "NVIDIA RTX Graphics Cards Database",
                 "description": "Complete list of NVIDIA RTX 50, 40, 30, and 20 series graphics cards with prices from $249 to $1999",
                 "numberOfItems": 30,
@@ -225,6 +249,18 @@
             --border-radius: 16px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --navbar-height: 70px;
+            
+            /* Footer Variables */
+            --footer-primary-green: #00ff88;
+            --footer-primary-blue: #00ccff;
+            --footer-accent-orange: #ff8800;
+            --footer-bg-primary: #0f0f0f;
+            --footer-bg-secondary: #1a1a1a;
+            --footer-text-primary: #ffffff;
+            --footer-text-secondary: #cccccc;
+            --footer-text-muted: #999999;
+            --footer-border-color: rgba(255, 255, 255, 0.1);
+            --footer-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         /* Optimized Base Styles */
@@ -278,25 +314,6 @@
         @keyframes circuitMove {
             0% { transform: translate(0, 0); }
             100% { transform: translate(50px, 50px); }
-        }
-
-        /* Skip Link Accessibility */
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 6px;
-            background: var(--primary-green);
-            color: var(--bg-primary);
-            padding: 8px 16px;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 600;
-            z-index: 10000;
-            transition: top 0.3s;
-        }
-
-        .skip-link:focus {
-            top: 6px;
         }
 
         /* Enhanced Navigation with Glassmorphism */
@@ -495,6 +512,19 @@
             background: radial-gradient(circle at center, rgba(0, 255, 136, 0.1) 0%, transparent 70%);
         }
 
+        .hero-flex-center {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            padding: 0 1rem;
+        }
+
         /* GPU Particles Animation */
         .gpu-particles {
             position: absolute;
@@ -586,12 +616,41 @@
         .gpu-3d-face:nth-child(3) { transform: rotateY(180deg) translateZ(100px); }
         .gpu-3d-face:nth-child(4) { transform: rotateY(-90deg) translateZ(100px); }
 
-        /* Hero Content */
-        .hero-content {
+        /* Hero Section Styling */
+        .hero.section {
             position: relative;
+            min-height: 80vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem 1rem;
+            overflow: hidden;
+        }
+
+        /* Hero Content Wrapper */
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             z-index: 1;
             max-width: 1000px;
             width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Ensure all text elements in hero are centered */
+        .hero-content h1,
+        .hero-content p,
+        .hero-content .warning {
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero h1 {
@@ -603,14 +662,22 @@
             background-clip: text;
             font-weight: 800;
             line-height: 1.2;
-            animation: fadeInUp 0.8s ease, shimmer 3s infinite;
+            animation: fadeInUp 0.8s ease;
             background-size: 200% 200%;
+            text-align: center;
+            width: 100%;
+            display: block;
         }
 
         @keyframes shimmer {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes shimmerText {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
         }
 
         @keyframes fadeInUp {
@@ -630,6 +697,7 @@
             max-width: 800px;
             margin: 0 auto 2rem;
             line-height: 1.5;
+            text-align: center;
             animation: fadeInUp 0.8s ease 0.2s both;
         }
 
@@ -1261,39 +1329,31 @@
             font-weight: 600;
         }
 
+        .blog-title-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .blog-title-link:hover .blog-title {
+            color: var(--primary-blue);
+            transform: translateX(5px);
+        }
+
         .blog-title {
             font-size: 1.4rem;
             color: var(--primary-green);
             margin-bottom: 1rem;
             line-height: 1.3;
+            cursor: pointer;
+            transition: var(--transition);
         }
 
         .blog-excerpt {
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 0;
             line-height: 1.6;
-        }
-
-        .blog-cta {
-            color: var(--primary-blue);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .blog-cta:hover {
-            color: var(--primary-green);
-        }
-
-        .blog-cta::after {
-            content: '→';
-            margin-left: 0.5rem;
-            transition: var(--transition);
-        }
-
-        .blog-cta:hover::after {
-            transform: translateX(4px);
         }
 
         /* Guide Cards */
@@ -1345,7 +1405,7 @@
         }
 
         .guide-features li::before {
-            content: "✓";
+            content: "✔";
             color: var(--primary-green);
             position: absolute;
             left: 0;
@@ -1460,39 +1520,397 @@
             font-size: 0.9rem;
         }
 
-        /* Footer */
-        .footer {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 3rem 1rem 2rem;
-            border-top: 1px solid var(--border-color);
-            text-align: center;
+        /* Enhanced Footer Styles */
+        /* Reset for footer elements */
+        .footer * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .footer-content {
+        /* Main Footer Container */
+        .footer {
+            background: #000;
+            margin-top: 5rem;
+            position: relative;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        /* Newsletter Section */
+        .footer-newsletter-section {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 204, 255, 0.1) 100%);
+            border-top: 1px solid var(--footer-primary-green);
+            border-bottom: 1px solid var(--footer-border-color);
+            padding: 3rem 2rem;
+            position: relative;
+        }
+
+        .footer-newsletter-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+            animation: shimmer 8s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(100%); }
+        }
+
+        .newsletter-container {
             max-width: 1200px;
             margin: 0 auto;
-        }
-
-        .footer-links {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+            gap: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-content {
+            flex: 1;
+        }
+
+        .newsletter-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, var(--footer-primary-green), var(--footer-primary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .newsletter-subtitle {
+            color: var(--footer-text-secondary);
+            font-size: 1rem;
+        }
+
+        .newsletter-form-inline {
+            display: flex;
             gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
+            min-width: 400px;
         }
 
-        .footer-links a {
-            color: var(--text-secondary);
+        .newsletter-input-modern {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 1rem 1.5rem;
+            color: var(--footer-text-primary);
+            font-size: 1rem;
+            transition: var(--footer-transition);
+        }
+
+        .newsletter-input-modern::placeholder {
+            color: var(--footer-text-muted);
+        }
+
+        .newsletter-input-modern:focus {
+            outline: none;
+            border-color: var(--footer-primary-green);
+            background: rgba(0, 255, 136, 0.05);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+        }
+
+        .newsletter-btn-modern {
+            background: linear-gradient(45deg, var(--footer-primary-green), var(--footer-primary-blue));
+            color: #000;
+            border: none;
+            border-radius: 50px;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--footer-transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .newsletter-btn-modern:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+        }
+
+        /* Main Footer Section */
+        .footer-main {
+            padding: 4rem 2rem 3rem;
+            background: linear-gradient(180deg, rgba(15, 15, 15, 1) 0%, #000 100%);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 4rem;
+        }
+
+        /* Brand Column */
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .footer-logo-modern {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--footer-primary-green);
+        }
+
+        .gpu-cube-logo {
+            width: 40px;
+            height: 40px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotateCube3D 10s infinite linear;
+        }
+
+        @keyframes rotateCube3D {
+            0% { transform: rotateX(0deg) rotateY(0deg); }
+            100% { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--footer-primary-green);
+            background: rgba(0, 255, 136, 0.1);
+        }
+
+        .cube-face:nth-child(1) { transform: translateZ(20px); }
+        .cube-face:nth-child(2) { transform: rotateY(90deg) translateZ(20px); }
+        .cube-face:nth-child(3) { transform: rotateX(90deg) translateZ(20px); }
+
+        .brand-tagline {
+            color: var(--footer-text-secondary);
+            font-size: 1rem;
+        }
+
+        .brand-stats {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .stat-item .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--footer-primary-blue);
+        }
+
+        .stat-item .stat-label {
+            font-size: 0.85rem;
+            color: var(--footer-text-muted);
+        }
+
+        /* Footer Links Grid */
+        .footer-links-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-link-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--footer-text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .title-icon {
+            font-size: 1.2rem;
+        }
+
+        .footer-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-link {
+            color: var(--footer-text-secondary);
             text-decoration: none;
-            transition: color 0.3s ease;
-            padding: 0.5rem;
+            font-size: 0.9rem;
+            transition: var(--footer-transition);
+            position: relative;
+            padding-left: 1rem;
+            display: inline-block;
         }
 
-        .footer-links a:hover {
-            color: var(--primary-green);
+        .footer-link:before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            transition: var(--footer-transition);
         }
 
-        /* Mobile Responsive Design */
+        .footer-link:hover {
+            color: var(--footer-primary-green);
+            padding-left: 1.5rem;
+        }
+
+        .footer-link:hover:before {
+            opacity: 1;
+            left: 0.5rem;
+        }
+
+        .footer-link.hot-link {
+            color: var(--footer-accent-orange);
+            font-weight: 600;
+        }
+
+        /* Social Media Bar */
+        .footer-social-bar {
+            background: rgba(0, 255, 136, 0.05);
+            border-top: 1px solid var(--footer-border-color);
+            border-bottom: 1px solid var(--footer-border-color);
+            padding: 1.5rem 2rem;
+        }
+
+        .social-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .social-text {
+            color: var(--footer-text-secondary);
+            font-weight: 500;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon-modern {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--footer-border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--footer-text-secondary);
+            transition: var(--footer-transition);
+            text-decoration: none;
+        }
+
+        .social-icon-modern svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .social-icon-modern:hover {
+            background: linear-gradient(45deg, var(--footer-primary-green), var(--footer-primary-blue));
+            color: #000;
+            transform: translateY(-5px) rotate(360deg);
+            border-color: transparent;
+        }
+
+        /* Bottom Footer */
+        .footer-bottom {
+            background: #000;
+            padding: 1.5rem 2rem;
+        }
+
+        .footer-bottom-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-legal {
+            color: var(--footer-text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-legal-links {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-legal-links a {
+            color: var(--footer-text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-legal-links a:hover {
+            color: var(--footer-primary-green);
+        }
+
+        .separator {
+            color: var(--footer-text-muted);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .newsletter-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .newsletter-form-inline {
+                min-width: 100%;
+                flex-direction: column;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-bottom-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
         @media (max-width: 768px) {
             .navbar {
                 padding: 0.8rem 1rem;
@@ -1581,6 +1999,29 @@
 
             .gpu-specs {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-links-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .brand-stats {
+                justify-content: space-around;
+            }
+
+            .footer-legal-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .newsletter-title {
+                font-size: 1.4rem;
+            }
+
+            .footer-logo-modern {
+                font-size: 1.4rem;
             }
         }
 
@@ -1699,9 +2140,6 @@
     <!-- Animated Circuit Background -->
     <div class="gpu-circuit-bg" aria-hidden="true"></div>
 
-    <!-- Skip Link for Accessibility -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
     <!-- Navigation -->
     <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-content">
@@ -1732,42 +2170,43 @@
         <section class="hero section" id="home">
             <!-- GPU Particles Animation -->
             <div class="gpu-particles" aria-hidden="true">
-                <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
-                <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
-                <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
-                <div class="particle" style="left: 40%; animation-delay: 3s;"></div>
-                <div class="particle" style="left: 50%; animation-delay: 4s;"></div>
-                <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
-                <div class="particle" style="left: 70%; animation-delay: 6s;"></div>
-                <div class="particle" style="left: 80%; animation-delay: 7s;"></div>
-                <div class="particle" style="left: 90%; animation-delay: 8s;"></div>
-            </div>
-
-            <!-- 3D GPU Card Animation -->
-            <div class="gpu-3d-container" aria-hidden="true">
-                <div class="gpu-3d-card">
-                    <div class="gpu-3d-face">GPU</div>
-                    <div class="gpu-3d-face">RTX</div>
-                    <div class="gpu-3d-face">4K</div>
-                    <div class="gpu-3d-face">AI</div>
-                </div>
-            </div>
-
-            <div class="hero-content">
-                <h1>Complete GPU Database & Performance Analysis 2025</h1>
-                <p>Your ultimate resource for NVIDIA GeForce RTX graphics cards covering gaming performance, cryptocurrency mining profitability, AI workloads, and machine learning tasks. Compare 30+ GPU models from RTX 20, 30, 40, and 50 series with detailed specifications, real-world benchmarks, mining hashrates, AI performance metrics, and professional workload analysis.</p>
-                <p class="warning"><strong>Note:</strong> RTX 50 series specs are based on official announcements and may receive updates.</p>
-
-                <div class="search-container">
-                    <input type="text" class="search-bar" placeholder="Search for GPU models, games, mining coins, AI models, or specifications..." id="searchInput" aria-label="Search GPUs" autocomplete="off">
+                    <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+                    <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+                    <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+                    <div class="particle" style="left: 40%; animation-delay: 3s;"></div>
+                    <div class="particle" style="left: 50%; animation-delay: 4s;"></div>
+                    <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+                    <div class="particle" style="left: 70%; animation-delay: 6s;"></div>
+                    <div class="particle" style="left: 80%; animation-delay: 7s;"></div>
+                    <div class="particle" style="left: 90%; animation-delay: 8s;"></div>
                 </div>
 
-                <div class="filters" role="group" aria-label="GPU filters">
-                    <button class="filter-btn active" data-filter="all" type="button">All GPUs (30+ Models)</button>
-                    <button class="filter-btn" data-filter="rtx-50" type="button">RTX 50 Series</button>
-                    <button class="filter-btn" data-filter="rtx-40" type="button">RTX 40 Series</button>
-                    <button class="filter-btn" data-filter="rtx-30" type="button">RTX 30 Series</button>
-                    <button class="filter-btn" data-filter="rtx-20" type="button">RTX 20 Series</button>
+                <!-- 3D GPU Card Animation -->
+                <div class="gpu-3d-container" aria-hidden="true">
+                    <div class="gpu-3d-card">
+                        <div class="gpu-3d-face">GPU</div>
+                        <div class="gpu-3d-face">RTX</div>
+                        <div class="gpu-3d-face">4K</div>
+                        <div class="gpu-3d-face">AI</div>
+                    </div>
+                </div>
+
+                <div class="hero-content">
+                    <h1>Complete GPU Database & Performance Analysis 2025</h1>
+                    <p>Your ultimate resource for NVIDIA GeForce RTX graphics cards covering gaming performance, cryptocurrency mining profitability, AI workloads, and machine learning tasks. Compare 30+ GPU models from RTX 20, 30, 40, and 50 series with detailed specifications, real-world benchmarks, mining hashrates, AI performance metrics, and professional workload analysis.</p>
+                    <p class="warning"><strong>Note:</strong> RTX 50 series specs are based on official announcements and may receive updates.</p>
+
+                    <div class="search-container">
+                        <input type="text" class="search-bar" placeholder="Search for GPU models, games, mining coins, AI models, or specifications..." id="searchInput" aria-label="Search GPUs" autocomplete="off">
+                    </div>
+
+                    <div class="filters" role="group" aria-label="GPU filters">
+                        <button class="filter-btn active" data-filter="all" type="button">All GPUs (30+ Models)</button>
+                        <button class="filter-btn" data-filter="rtx-50" type="button">RTX 50 Series</button>
+                        <button class="filter-btn" data-filter="rtx-40" type="button">RTX 40 Series</button>
+                        <button class="filter-btn" data-filter="rtx-30" type="button">RTX 30 Series</button>
+                        <button class="filter-btn" data-filter="rtx-20" type="button">RTX 20 Series</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1776,8 +2215,13 @@
             <!-- YOUR ORIGINAL CONTENT SECTIONS - ALL PRESERVED -->
             <section class="content-section section" id="gpu-guide">
                 <div class="content-intro">
-                    <h1>The Complete Guide to Graphics Processing Units (GPUs): Performance, Technology, Gaming, Mining, and AI Applications in 2025</h1>
-                    <p class="lead">Graphics Processing Units (GPUs) have evolved from simple display controllers to powerful computing engines that drive modern gaming, content creation, cryptocurrency mining, artificial intelligence, machine learning, and scientific computing. Understanding GPU performance across these diverse applications is crucial for making informed purchasing decisions and optimizing system performance for specific workloads.</p>
+                    <h1>The Complete Guide to Graphics Processing Units (GPUs): Performance, Technology, Gaming, Mining,
+                        and AI Applications in 2025</h1>
+                    <p class="lead">Graphics Processing Units (GPUs) have evolved from simple display controllers to
+                        powerful computing engines that drive modern gaming, content creation, cryptocurrency mining,
+                        artificial intelligence, machine learning, and scientific computing. Understanding GPU
+                        performance across these diverse applications is crucial for making informed purchasing
+                        decisions and optimizing system performance for specific workloads.</p>
                 </div>
 
                 <div class="table-of-contents">
@@ -1786,13 +2230,15 @@
                         <li><a href="#gpu-fundamentals">GPU Fundamentals and Architecture</a></li>
                         <li><a href="#gpu-performance-metrics">Understanding GPU Performance Metrics</a></li>
                         <li><a href="#nvidia-rtx-evolution">NVIDIA RTX Series Evolution and Performance</a></li>
-                        <li><a href="#gaming-performance-analysis">Gaming Performance Analysis Across Resolutions</a></li>
+                        <li><a href="#gaming-performance-analysis">Gaming Performance Analysis Across Resolutions</a>
+                        </li>
                         <li><a href="#ray-tracing-dlss">Ray Tracing and DLSS Technology</a></li>
                         <li><a href="#content-creation">GPU Performance in Content Creation</a></li>
                         <li><a href="#power-efficiency">Power Consumption and Efficiency</a></li>
                         <li><a href="#memory-bandwidth">GPU Memory and Bandwidth Requirements</a></li>
                         <li><a href="#cooling-overclocking">Cooling Solutions and Overclocking</a></li>
-                        <li><a href="#cryptocurrency-mining">Cryptocurrency Mining Performance and Profitability</a></li>
+                        <li><a href="#cryptocurrency-mining">Cryptocurrency Mining Performance and Profitability</a>
+                        </li>
                         <li><a href="#ai-machine-learning">AI and Machine Learning GPU Acceleration</a></li>
                         <li><a href="#professional-workloads">Professional Computing and Rendering</a></li>
                         <li><a href="#buying-guide-comprehensive">Comprehensive GPU Buying Guide</a></li>
@@ -1802,59 +2248,106 @@
                 <!-- ALL YOUR ORIGINAL ARTICLE CONTENT -->
                 <article class="content-article" id="gpu-fundamentals">
                     <h2>GPU Fundamentals and Architecture</h2>
-                    <p>Graphics Processing Units represent one of the most significant technological achievements in modern computing. Unlike Central Processing Units (CPUs) that excel at sequential processing with complex instruction sets, GPUs are designed for parallel processing, featuring thousands of smaller cores that can handle multiple tasks simultaneously.</p>
-                    
+                    <p>Graphics Processing Units represent one of the most significant technological achievements in
+                        modern computing. Unlike Central Processing Units (CPUs) that excel at sequential processing
+                        with complex instruction sets, GPUs are designed for parallel processing, featuring thousands of
+                        smaller cores that can handle multiple tasks simultaneously.</p>
+
                     <h3 id="gpu-performance-metrics">The Evolution of GPU Architecture</h3>
-                    <p>The journey from basic graphics accelerators to today's sophisticated GPUs spans several decades. Early graphics cards merely handled basic 2D operations and simple 3D rendering. Modern GPUs, particularly NVIDIA's RTX series, incorporate revolutionary technologies like real-time ray tracing, AI-powered upscaling, and programmable shading units that transform how we experience digital content.</p>
-                    
-                    <p>NVIDIA's current GPU architecture, based on the Ada Lovelace and upcoming Blackwell designs, represents the pinnacle of graphics processing technology. These architectures feature streaming multiprocessors (SMs) that contain multiple CUDA cores, RT cores for ray tracing acceleration, and Tensor cores for AI workloads. Each generation brings improvements in performance per watt, manufacturing process nodes, and specialized computing capabilities.</p>
-                    
+                    <p>The journey from basic graphics accelerators to today's sophisticated GPUs spans several decades.
+                        Early graphics cards merely handled basic 2D operations and simple 3D rendering. Modern GPUs,
+                        particularly NVIDIA's RTX series, incorporate revolutionary technologies like real-time ray
+                        tracing, AI-powered upscaling, and programmable shading units that transform how we experience
+                        digital content.</p>
+
+                    <p>NVIDIA's current GPU architecture, based on the Ada Lovelace and upcoming Blackwell designs,
+                        represents the pinnacle of graphics processing technology. These architectures feature streaming
+                        multiprocessors (SMs) that contain multiple CUDA cores, RT cores for ray tracing acceleration,
+                        and Tensor cores for AI workloads. Each generation brings improvements in performance per watt,
+                        manufacturing process nodes, and specialized computing capabilities.</p>
+
                     <h4 id="nvidia-rtx-evolution">Understanding GPU Components</h4>
-                    <p>Modern GPUs consist of several key components working in harmony. The graphics processor itself houses thousands of shader cores organized into streaming multiprocessors. These cores handle vertex processing, pixel shading, and compute operations. Memory controllers manage data flow between the GPU and its dedicated video memory (VRAM), while specialized units handle tasks like video encoding, decoding, and display output.</p>
-                    
+                    <p>Modern GPUs consist of several key components working in harmony. The graphics processor itself
+                        houses thousands of shader cores organized into streaming multiprocessors. These cores handle
+                        vertex processing, pixel shading, and compute operations. Memory controllers manage data flow
+                        between the GPU and its dedicated video memory (VRAM), while specialized units handle tasks like
+                        video encoding, decoding, and display output.</p>
+
                     <div class="highlight-box">
                         <h4>Key GPU Architecture Terms</h4>
                         <ul>
-                            <li><strong>CUDA Cores:</strong> Basic processing units that handle parallel computations</li>
-                            <li><strong>RT Cores:</strong> Specialized hardware for real-time ray tracing calculations</li>
+                            <li><strong>CUDA Cores:</strong> Basic processing units that handle parallel computations
+                            </li>
+                            <li><strong>RT Cores:</strong> Specialized hardware for real-time ray tracing calculations
+                            </li>
                             <li><strong>Tensor Cores:</strong> AI acceleration units for machine learning workloads</li>
-                            <li><strong>Streaming Multiprocessors (SMs):</strong> Groups of cores that execute instructions</li>
+                            <li><strong>Streaming Multiprocessors (SMs):</strong> Groups of cores that execute
+                                instructions</li>
                             <li><strong>Memory Interface:</strong> Bus width determining data transfer rates</li>
                         </ul>
                     </div>
-                    
+
                     <h3 id="ray-tracing-dlss">Manufacturing Process and Performance Impact</h3>
-                    <p>The manufacturing process node significantly impacts GPU performance, power efficiency, and transistor density. NVIDIA's latest GPUs utilize advanced nodes like TSMC's 4nm process, allowing for billions of transistors on a single chip. Smaller process nodes enable higher clock speeds, reduced power consumption, and increased transistor density, directly translating to better performance and efficiency.</p>
-                    
-                    <p>The transition from older 12nm nodes to modern 4nm processes has enabled NVIDIA to pack more functionality into their GPUs while maintaining reasonable power envelopes. This advancement is particularly evident in the RTX 40 series, which delivers significant performance improvements over the RTX 30 series while often consuming similar or less power.</p>
+                    <p>The manufacturing process node significantly impacts GPU performance, power efficiency, and
+                        transistor density. NVIDIA's latest GPUs utilize advanced nodes like TSMC's 4nm process,
+                        allowing for billions of transistors on a single chip. Smaller process nodes enable higher clock
+                        speeds, reduced power consumption, and increased transistor density, directly translating to
+                        better performance and efficiency.</p>
+
+                    <p>The transition from older 12nm nodes to modern 4nm processes has enabled NVIDIA to pack more
+                        functionality into their GPUs while maintaining reasonable power envelopes. This advancement is
+                        particularly evident in the RTX 40 series, which delivers significant performance improvements
+                        over the RTX 30 series while often consuming similar or less power.</p>
                 </article>
 
                 <article class="content-article" id="gaming-performance-analysis">
-                    <h2>Ultimate GPU Gaming Performance Guide: Resolution Analysis, Frame Rates, and Optimization Strategies</h2>
-                    
-                    <p>Gaming performance represents the primary use case for most consumer GPUs. Understanding how different graphics cards perform across various resolutions, game settings, and scenarios helps gamers make informed decisions and optimize their gaming experience for smooth, immersive gameplay.</p>
-                    
+                    <h2>Ultimate GPU Gaming Performance Guide: Resolution Analysis, Frame Rates, and Optimization
+                        Strategies</h2>
+
+                    <p>Gaming performance represents the primary use case for most consumer GPUs. Understanding how
+                        different graphics cards perform across various resolutions, game settings, and scenarios helps
+                        gamers make informed decisions and optimize their gaming experience for smooth, immersive
+                        gameplay.</p>
+
                     <h3 id="content-creation">Gaming Performance Across All Resolutions</h3>
-                    <p>GPU gaming performance varies dramatically across different display resolutions, with each step up in resolution requiring substantially more computational power. Understanding these performance scaling characteristics helps gamers select appropriate hardware for their displays and performance expectations.</p>
-                    
+                    <p>GPU gaming performance varies dramatically across different display resolutions, with each step
+                        up in resolution requiring substantially more computational power. Understanding these
+                        performance scaling characteristics helps gamers select appropriate hardware for their displays
+                        and performance expectations.</p>
+
                     <h4 id="power-efficiency">1080p Gaming Performance Analysis</h4>
-                    <p>1080p (Full HD) gaming remains the most popular resolution, offering an excellent balance between visual quality and hardware requirements. At this resolution, even mid-range GPUs can deliver exceptional performance, often exceeding 60 FPS in most modern titles with high to ultra settings.</p>
-                    
-                    <p>For competitive gaming at 1080p, high-refresh-rate monitors (144Hz, 240Hz, or 360Hz) demand GPUs capable of delivering correspondingly high frame rates. The RTX 4070 and above excel at 1080p high-refresh gaming, consistently delivering 144+ FPS in competitive titles like Counter-Strike 2, Valorant, and Apex Legends.</p>
-                    
+                    <p>1080p (Full HD) gaming remains the most popular resolution, offering an excellent balance between
+                        visual quality and hardware requirements. At this resolution, even mid-range GPUs can deliver
+                        exceptional performance, often exceeding 60 FPS in most modern titles with high to ultra
+                        settings.</p>
+
+                    <p>For competitive gaming at 1080p, high-refresh-rate monitors (144Hz, 240Hz, or 360Hz) demand GPUs
+                        capable of delivering correspondingly high frame rates. The RTX 4070 and above excel at 1080p
+                        high-refresh gaming, consistently delivering 144+ FPS in competitive titles like Counter-Strike
+                        2, Valorant, and Apex Legends.</p>
+
                     <h4 id="memory-bandwidth">1080p GPU Performance Tiers</h4>
                     <ul>
-                        <li><strong>Budget Gaming (RTX 4060, RTX 3060):</strong> 60-90 FPS high settings in most games</li>
+                        <li><strong>Budget Gaming (RTX 4060, RTX 3060):</strong> 60-90 FPS high settings in most games
+                        </li>
                         <li><strong>High Performance (RTX 4060 Ti, RTX 3060 Ti):</strong> 80-120 FPS ultra settings</li>
-                        <li><strong>Enthusiast (RTX 4070, RTX 3070 Ti):</strong> 120+ FPS ultra settings, ideal for high-refresh displays</li>
-                        <li><strong>Overkill (RTX 4080+):</strong> 200+ FPS in esports titles, future-proofing for upcoming games</li>
+                        <li><strong>Enthusiast (RTX 4070, RTX 3070 Ti):</strong> 120+ FPS ultra settings, ideal for
+                            high-refresh displays</li>
+                        <li><strong>Overkill (RTX 4080+):</strong> 200+ FPS in esports titles, future-proofing for
+                            upcoming games</li>
                     </ul>
-                    
+
                     <h3 id="cooling-overclocking">1440p Gaming: The Sweet Spot Resolution</h3>
-                    <p>1440p (Quad HD) gaming provides significantly improved visual clarity over 1080p while remaining achievable with mid-range to high-end GPUs. This resolution offers approximately 78% more pixels than 1080p, requiring proportionally more GPU power but delivering noticeably sharper image quality.</p>
-                    
-                    <p>Modern AAA games at 1440p with ultra settings typically require RTX 4070-class performance or better for smooth 60+ FPS gameplay. The increased VRAM requirements at 1440p make cards with 12GB or more memory particularly valuable for maintaining consistent performance across diverse game engines and texture quality levels.</p>
-                    
+                    <p>1440p (Quad HD) gaming provides significantly improved visual clarity over 1080p while remaining
+                        achievable with mid-range to high-end GPUs. This resolution offers approximately 78% more pixels
+                        than 1080p, requiring proportionally more GPU power but delivering noticeably sharper image
+                        quality.</p>
+
+                    <p>Modern AAA games at 1440p with ultra settings typically require RTX 4070-class performance or
+                        better for smooth 60+ FPS gameplay. The increased VRAM requirements at 1440p make cards with
+                        12GB or more memory particularly valuable for maintaining consistent performance across diverse
+                        game engines and texture quality levels.</p>
+
                     <table class="performance-table">
                         <thead>
                             <tr>
@@ -1896,12 +2389,17 @@
                             </tr>
                         </tbody>
                     </table>
-                    
+
                     <h3>4K Gaming Excellence</h3>
-                    <p>4K gaming represents the pinnacle of visual fidelity for consumer displays, offering four times the pixel count of 1080p. This resolution demands exceptional GPU performance, particularly for maintaining high frame rates with maximum graphical settings enabled.</p>
-                    
-                    <p>Native 4K gaming at 60+ FPS with ultra settings remains challenging even for high-end GPUs. The RTX 4090 currently stands as the only single-GPU solution capable of consistently delivering excellent 4K performance across all modern games. The RTX 4080 provides solid 4K gaming but may require settings adjustments in the most demanding titles.</p>
-                    
+                    <p>4K gaming represents the pinnacle of visual fidelity for consumer displays, offering four times
+                        the pixel count of 1080p. This resolution demands exceptional GPU performance, particularly for
+                        maintaining high frame rates with maximum graphical settings enabled.</p>
+
+                    <p>Native 4K gaming at 60+ FPS with ultra settings remains challenging even for high-end GPUs. The
+                        RTX 4090 currently stands as the only single-GPU solution capable of consistently delivering
+                        excellent 4K performance across all modern games. The RTX 4080 provides solid 4K gaming but may
+                        require settings adjustments in the most demanding titles.</p>
+
                     <div class="highlight-box">
                         <h4>4K Gaming GPU Requirements</h4>
                         <ul>
@@ -1915,29 +2413,46 @@
 
                 <article class="content-article" id="cryptocurrency-mining">
                     <h2>Comprehensive GPU Cryptocurrency Mining Guide: Performance, Profitability, and Optimization</h2>
-                    
-                    <p>Cryptocurrency mining remains a significant application for GPU computing power, though the landscape has evolved considerably since Ethereum's transition to Proof of Stake. Understanding mining performance, profitability calculations, and optimization strategies helps miners make informed hardware decisions and maximize returns on investment.</p>
-                    
+
+                    <p>Cryptocurrency mining remains a significant application for GPU computing power, though the
+                        landscape has evolved considerably since Ethereum's transition to Proof of Stake. Understanding
+                        mining performance, profitability calculations, and optimization strategies helps miners make
+                        informed hardware decisions and maximize returns on investment.</p>
+
                     <h3>GPU Mining Fundamentals and Current Landscape</h3>
-                    <p>GPU mining involves using graphics card processing power to solve cryptographic puzzles and validate blockchain transactions. While Ethereum mining ended in September 2022, numerous alternative cryptocurrencies continue to reward miners with GPU-friendly algorithms.</p>
-                    
+                    <p>GPU mining involves using graphics card processing power to solve cryptographic puzzles and
+                        validate blockchain transactions. While Ethereum mining ended in September 2022, numerous
+                        alternative cryptocurrencies continue to reward miners with GPU-friendly algorithms.</p>
+
                     <h3>Post-Ethereum Mining Landscape</h3>
-                    <p>The cryptocurrency mining ecosystem has adapted following Ethereum's transition to Proof of Stake. Miners have migrated to alternative coins including Ethereum Classic (ETC), Ravencoin (RVN), Ergo (ERG), Beam (BEAM), and various other algorithms that remain profitable for GPU mining.</p>
-                    
-                    <p>Mining profitability fluctuates based on cryptocurrency prices, network difficulty, and electricity costs. Current market conditions show modest profitability for efficient GPUs in regions with low electricity costs, while high-efficiency cards like the RTX 40 series provide better profit margins due to improved performance per watt ratios.</p>
-                    
+                    <p>The cryptocurrency mining ecosystem has adapted following Ethereum's transition to Proof of
+                        Stake. Miners have migrated to alternative coins including Ethereum Classic (ETC), Ravencoin
+                        (RVN), Ergo (ERG), Beam (BEAM), and various other algorithms that remain profitable for GPU
+                        mining.</p>
+
+                    <p>Mining profitability fluctuates based on cryptocurrency prices, network difficulty, and
+                        electricity costs. Current market conditions show modest profitability for efficient GPUs in
+                        regions with low electricity costs, while high-efficiency cards like the RTX 40 series provide
+                        better profit margins due to improved performance per watt ratios.</p>
+
                     <h4>Popular Mining Algorithms and Coins</h4>
                     <ul>
-                        <li><strong>Ethash (Ethereum Classic):</strong> Memory-intensive algorithm favoring high memory bandwidth</li>
-                        <li><strong>KawPow (Ravencoin):</strong> GPU-friendly algorithm with regular modifications to resist ASICs</li>
-                        <li><strong>Autolykos (Ergo):</strong> Memory-hard algorithm designed for GPU mining efficiency</li>
+                        <li><strong>Ethash (Ethereum Classic):</strong> Memory-intensive algorithm favoring high memory
+                            bandwidth</li>
+                        <li><strong>KawPow (Ravencoin):</strong> GPU-friendly algorithm with regular modifications to
+                            resist ASICs</li>
+                        <li><strong>Autolykos (Ergo):</strong> Memory-hard algorithm designed for GPU mining efficiency
+                        </li>
                         <li><strong>BeamHash (Beam):</strong> Equihash-based algorithm with privacy features</li>
-                        <li><strong>Octopus (Conflux):</strong> Dual-mining compatible algorithm with decent profitability</li>
+                        <li><strong>Octopus (Conflux):</strong> Dual-mining compatible algorithm with decent
+                            profitability</li>
                     </ul>
-                    
+
                     <h3>GPU Mining Performance Metrics</h3>
-                    <p>Mining performance is measured in hashrate (hashes per second), with different algorithms producing varying hashrates on the same hardware. Power efficiency, measured as hashrate per watt, determines long-term profitability more than raw performance alone.</p>
-                    
+                    <p>Mining performance is measured in hashrate (hashes per second), with different algorithms
+                        producing varying hashrates on the same hardware. Power efficiency, measured as hashrate per
+                        watt, determines long-term profitability more than raw performance alone.</p>
+
                     <table class="performance-table">
                         <thead>
                             <tr>
@@ -1984,39 +2499,61 @@
                             </tr>
                         </tbody>
                     </table>
-                    
+
                     <div class="warning-box">
                         <h4>Mining Profitability Considerations</h4>
-                        <p>Cryptocurrency mining profitability is highly volatile and depends on factors beyond hardware performance. Market conditions, regulatory changes, network upgrades, and competition from other miners significantly impact returns. Always research current conditions and consider mining as a speculative activity with associated risks.</p>
+                        <p>Cryptocurrency mining profitability is highly volatile and depends on factors beyond hardware
+                            performance. Market conditions, regulatory changes, network upgrades, and competition from
+                            other miners significantly impact returns. Always research current conditions and consider
+                            mining as a speculative activity with associated risks.</p>
                     </div>
                 </article>
 
                 <article class="content-article" id="ai-machine-learning">
                     <h2>GPU AI Tasks and Machine Learning Performance Guide: Training, Inference, and Optimization</h2>
-                    
-                    <p>Artificial Intelligence and Machine Learning represent rapidly growing applications for GPU computing power. From training large language models to real-time AI inference, understanding GPU performance in AI workloads helps researchers, developers, and enthusiasts choose appropriate hardware for their machine learning projects.</p>
-                    
+
+                    <p>Artificial Intelligence and Machine Learning represent rapidly growing applications for GPU
+                        computing power. From training large language models to real-time AI inference, understanding
+                        GPU performance in AI workloads helps researchers, developers, and enthusiasts choose
+                        appropriate hardware for their machine learning projects.</p>
+
                     <h3>GPU AI Computing Fundamentals</h3>
-                    <p>AI and machine learning workloads leverage GPU parallel processing capabilities to accelerate mathematical operations required for neural network training and inference. Different AI tasks stress GPU resources in unique ways, requiring specialized performance analysis and optimization strategies.</p>
-                    
+                    <p>AI and machine learning workloads leverage GPU parallel processing capabilities to accelerate
+                        mathematical operations required for neural network training and inference. Different AI tasks
+                        stress GPU resources in unique ways, requiring specialized performance analysis and optimization
+                        strategies.</p>
+
                     <h3>AI Workload Categories</h3>
-                    <p>AI applications span numerous categories including natural language processing, computer vision, generative AI, speech recognition, and scientific computing. Each category presents different computational requirements and benefits from specific GPU architectural features.</p>
-                    
+                    <p>AI applications span numerous categories including natural language processing, computer vision,
+                        generative AI, speech recognition, and scientific computing. Each category presents different
+                        computational requirements and benefits from specific GPU architectural features.</p>
+
                     <h4>Machine Learning Training vs. Inference</h4>
-                    <p>Training involves teaching AI models using large datasets and requires substantial computational resources, memory capacity, and time. Inference applies trained models to new data and prioritizes low latency and energy efficiency over raw computational power.</p>
-                    
+                    <p>Training involves teaching AI models using large datasets and requires substantial computational
+                        resources, memory capacity, and time. Inference applies trained models to new data and
+                        prioritizes low latency and energy efficiency over raw computational power.</p>
+
                     <ul>
-                        <li><strong>Training Workloads:</strong> Require maximum GPU compute power, large VRAM, and sustained performance</li>
-                        <li><strong>Inference Workloads:</strong> Prioritize low latency, energy efficiency, and consistent response times</li>
-                        <li><strong>Fine-tuning:</strong> Adapts pre-trained models using transfer learning with moderate resource requirements</li>
-                        <li><strong>Real-time Processing:</strong> Demands consistent performance with strict latency constraints</li>
+                        <li><strong>Training Workloads:</strong> Require maximum GPU compute power, large VRAM, and
+                            sustained performance</li>
+                        <li><strong>Inference Workloads:</strong> Prioritize low latency, energy efficiency, and
+                            consistent response times</li>
+                        <li><strong>Fine-tuning:</strong> Adapts pre-trained models using transfer learning with
+                            moderate resource requirements</li>
+                        <li><strong>Real-time Processing:</strong> Demands consistent performance with strict latency
+                            constraints</li>
                     </ul>
-                    
+
                     <h3>Tensor Cores and AI Acceleration</h3>
-                    <p>NVIDIA's Tensor cores provide specialized acceleration for AI workloads through optimized matrix multiplication operations. These cores deliver significant performance improvements for supported AI frameworks and data types, making RTX series GPUs particularly effective for machine learning applications.</p>
-                    
-                    <p>Tensor core utilization varies by AI framework, model architecture, and data precision. Mixed-precision training using FP16 or BF16 formats can achieve 2-3x performance improvements over FP32 training while maintaining model accuracy in most scenarios.</p>
-                    
+                    <p>NVIDIA's Tensor cores provide specialized acceleration for AI workloads through optimized matrix
+                        multiplication operations. These cores deliver significant performance improvements for
+                        supported AI frameworks and data types, making RTX series GPUs particularly effective for
+                        machine learning applications.</p>
+
+                    <p>Tensor core utilization varies by AI framework, model architecture, and data precision.
+                        Mixed-precision training using FP16 or BF16 formats can achieve 2-3x performance improvements
+                        over FP32 training while maintaining model accuracy in most scenarios.</p>
+
                     <table class="performance-table">
                         <thead>
                             <tr>
@@ -2067,17 +2604,28 @@
 
                 <article class="content-article" id="professional-workloads">
                     <h2>Professional GPU Workloads: Rendering, Simulation, and Compute Applications</h2>
-                    
-                    <p>Professional applications extend GPU capabilities beyond gaming and mining into rendering, simulation, scientific computing, and specialized professional workflows. Understanding GPU performance in these applications helps professionals optimize their workflows and choose appropriate hardware for demanding professional tasks.</p>
-                    
+
+                    <p>Professional applications extend GPU capabilities beyond gaming and mining into rendering,
+                        simulation, scientific computing, and specialized professional workflows. Understanding GPU
+                        performance in these applications helps professionals optimize their workflows and choose
+                        appropriate hardware for demanding professional tasks.</p>
+
                     <h3>Professional Rendering and Visualization</h3>
-                    <p>Professional rendering applications leverage GPU acceleration for 3D rendering, visual effects, architectural visualization, and scientific visualization. These applications often require sustained performance over extended periods and benefit from large memory capacities and specialized GPU features.</p>
-                    
+                    <p>Professional rendering applications leverage GPU acceleration for 3D rendering, visual effects,
+                        architectural visualization, and scientific visualization. These applications often require
+                        sustained performance over extended periods and benefit from large memory capacities and
+                        specialized GPU features.</p>
+
                     <h3>3D Rendering Performance</h3>
-                    <p>Modern 3D rendering engines including Blender Cycles, Octane Render, Redshift, and V-Ray offer GPU acceleration that can provide 10-50x performance improvements over CPU rendering. RT cores in RTX series GPUs accelerate ray tracing calculations essential for photorealistic rendering.</p>
-                    
-                    <p>Rendering performance scales with GPU memory capacity, CUDA core counts, and RT core efficiency. Complex scenes with high-resolution textures and geometric detail require substantial VRAM, making cards with 16GB+ memory particularly valuable for professional rendering workflows.</p>
-                    
+                    <p>Modern 3D rendering engines including Blender Cycles, Octane Render, Redshift, and V-Ray offer
+                        GPU acceleration that can provide 10-50x performance improvements over CPU rendering. RT cores
+                        in RTX series GPUs accelerate ray tracing calculations essential for photorealistic rendering.
+                    </p>
+
+                    <p>Rendering performance scales with GPU memory capacity, CUDA core counts, and RT core efficiency.
+                        Complex scenes with high-resolution textures and geometric detail require substantial VRAM,
+                        making cards with 16GB+ memory particularly valuable for professional rendering workflows.</p>
+
                     <table class="performance-table">
                         <thead>
                             <tr>
@@ -2119,27 +2667,34 @@
                             </tr>
                         </tbody>
                     </table>
-                    
+
                     <h4 id="buying-guide-comprehensive">Professional Rendering Optimization</h4>
                     <ul>
-                        <li><strong>Scene Optimization:</strong> Efficient geometry and texture management for GPU memory</li>
+                        <li><strong>Scene Optimization:</strong> Efficient geometry and texture management for GPU
+                            memory</li>
                         <li><strong>Tile Rendering:</strong> Breaking large renders into GPU-manageable segments</li>
                         <li><strong>Denoising:</strong> Using AI-powered denoising for faster converged renders</li>
                         <li><strong>Multi-GPU Rendering:</strong> Scaling across multiple GPUs for complex projects</li>
                     </ul>
-                    
+
                     <h3>Video Production and Post-Processing</h3>
-                    <p>Video production workflows including editing, color grading, visual effects, and encoding benefit significantly from GPU acceleration. Adobe Premiere Pro, DaVinci Resolve, After Effects, and other professional video applications leverage GPU compute power for real-time preview and accelerated export.</p>
-                    
-                    <p>Hardware encoding capabilities in RTX series GPUs enable high-quality video export with minimal performance impact on timeline editing. Dual AV1 encoders in RTX 40 series cards provide excellent compression ratios for modern video distribution platforms.</p>
+                    <p>Video production workflows including editing, color grading, visual effects, and encoding benefit
+                        significantly from GPU acceleration. Adobe Premiere Pro, DaVinci Resolve, After Effects, and
+                        other professional video applications leverage GPU compute power for real-time preview and
+                        accelerated export.</p>
+
+                    <p>Hardware encoding capabilities in RTX series GPUs enable high-quality video export with minimal
+                        performance impact on timeline editing. Dual AV1 encoders in RTX 40 series cards provide
+                        excellent compression ratios for modern video distribution platforms.</p>
                 </article>
             </section>
 
             <!-- GPU Cards Display Section with All 30+ GPUs -->
             <section class="section" id="gpus">
                 <h2 class="section-title">Complete GPU Database - 30+ Graphics Cards</h2>
-                <p class="section-subtitle">Comprehensive specifications, gaming benchmarks, mining hashrates, and AI performance metrics</p>
-                
+                <p class="section-subtitle">Comprehensive specifications, gaming benchmarks, mining hashrates, and AI
+                    performance metrics</p>
+
                 <div class="loading-indicator" id="loadingIndicator" role="status" aria-live="polite">
                     <div class="spinner"></div>
                     <p>Loading GPU data...</p>
@@ -2153,7 +2708,8 @@
             <!-- Blog Section -->
             <section class="blog-section section" id="blog">
                 <h2 class="section-title">Expert GPU Reviews & Comparisons</h2>
-                <p class="section-subtitle">In-depth analysis and comparisons of the latest NVIDIA RTX graphics cards by GPU expert Gourav Choudhary</p>
+                <p class="section-subtitle">In-depth analysis and comparisons of the latest NVIDIA RTX graphics cards by
+                    GPU expert Gourav Choudhary</p>
 
                 <div class="blog-grid">
                     <article class="blog-card">
@@ -2162,9 +2718,13 @@
                             <time datetime="2025-08-07">August 7, 2025</time>
                             <span>7 min read</span>
                         </div>
-                        <h3 class="blog-title">AMD RX 7900 XTX vs NVIDIA RTX 4080: Ultimate Battle 2025</h3>
-                        <p class="blog-excerpt">Epic showdown between AMD RX 7900 XTX and NVIDIA RTX 4080. Complete performance analysis, ray tracing comparison, and value assessment for 4K gaming enthusiasts.</p>
-                        <a href="blog/amd-rx-7900-xtx-vs-nvidia-rtx-4080-ultimate-battle-2025.html" class="blog-cta" aria-label="Read AMD vs NVIDIA battle comparison">Read Epic Battle</a>
+                        <a href="blog/amd-rx-7900-xtx-vs-nvidia-rtx-4080-ultimate-battle-2025.html"
+                            class="blog-title-link">
+                            <h3 class="blog-title">AMD RX 7900 XTX vs NVIDIA RTX 4080: Ultimate Battle 2025</h3>
+                        </a>
+                        <p class="blog-excerpt">Epic showdown between AMD RX 7900 XTX and NVIDIA RTX 4080. Complete
+                            performance analysis, ray tracing comparison, and value assessment for 4K gaming
+                            enthusiasts.</p>
                     </article>
 
                     <article class="blog-card">
@@ -2173,9 +2733,12 @@
                             <time datetime="2025-08-07">August 7, 2025</time>
                             <span>6 min read</span>
                         </div>
-                        <h3 class="blog-title">RTX 4060 Ti vs RTX 4070: Complete Comparison 2025</h3>
-                        <p class="blog-excerpt">Definitive comparison between RTX 4060 Ti and RTX 4070 for 1440p gaming. Performance analysis, value assessment, and clear buying recommendations for mid-range builders.</p>
-                        <a href="blog/rtx-4060-ti-vs-rtx-4070-complete-comparison-2025.html" class="blog-cta" aria-label="Read RTX 4060 Ti vs 4070 comparison">Read Comparison</a>
+                        <a href="blog/rtx-4060-ti-vs-rtx-4070-complete-comparison-2025.html" class="blog-title-link">
+                            <h3 class="blog-title">RTX 4060 Ti vs RTX 4070: Complete Comparison 2025</h3>
+                        </a>
+                        <p class="blog-excerpt">Definitive comparison between RTX 4060 Ti and RTX 4070 for 1440p gaming.
+                            Performance analysis, value assessment, and clear buying recommendations for mid-range
+                            builders.</p>
                     </article>
 
                     <article class="blog-card">
@@ -2184,9 +2747,12 @@
                             <time datetime="2025-08-06">August 6, 2025</time>
                             <span>6 min read</span>
                         </div>
-                        <h3 class="blog-title">NVIDIA GeForce RTX 60 Series Rumors & Leaks 2025</h3>
-                        <p class="blog-excerpt">Breaking news and speculation about NVIDIA's next-generation RTX 60 series. RTX 6090 and RTX 6080 predictions, Cobalt architecture details, DLSS 5.0, performance expectations, and release timeline analysis.</p>
-                        <a href="blog/nvidia-geforce-rtx-60-series-rumors-leaks-2025.html" class="blog-cta" aria-label="Read RTX 60 series rumors and predictions">Read Latest Rumors</a>
+                        <a href="blog/nvidia-geforce-rtx-60-series-rumors-leaks-2025.html" class="blog-title-link">
+                            <h3 class="blog-title">NVIDIA GeForce RTX 60 Series Rumors & Leaks 2025</h3>
+                        </a>
+                        <p class="blog-excerpt">Breaking news and speculation about NVIDIA's next-generation RTX 60
+                            series. RTX 6090 and RTX 6080 predictions, Cobalt architecture details, DLSS 5.0,
+                            performance expectations, and release timeline analysis.</p>
                     </article>
 
                     <article class="blog-card">
@@ -2195,9 +2761,12 @@
                             <time datetime="2024-12-15">December 15, 2024</time>
                             <span>12 min read</span>
                         </div>
-                        <h3 class="blog-title">RTX 5090 vs RTX 4090: Ultimate Performance Battle</h3>
-                        <p class="blog-excerpt">Comprehensive comparison between NVIDIA's flagship GPUs. Performance benchmarks, ray tracing capabilities, DLSS improvements, power efficiency, and value analysis for 4K gaming and content creation.</p>
-                        <a href="blog/rtx-5090-vs-4090-comparison.html" class="blog-cta" aria-label="Read RTX 5090 vs 4090 comparison">Read Full Comparison</a>
+                        <a href="blog/rtx-5090-vs-4090-comparison.html" class="blog-title-link">
+                            <h3 class="blog-title">RTX 5090 vs RTX 4090: Ultimate Performance Battle</h3>
+                        </a>
+                        <p class="blog-excerpt">Comprehensive comparison between NVIDIA's flagship GPUs. Performance
+                            benchmarks, ray tracing capabilities, DLSS improvements, power efficiency, and value
+                            analysis for 4K gaming and content creation.</p>
                     </article>
 
                     <article class="blog-card">
@@ -2206,9 +2775,12 @@
                             <time datetime="2024-12-12">December 12, 2024</time>
                             <span>10 min read</span>
                         </div>
-                        <h3 class="blog-title">RTX 3090 vs RTX 4090: Generation Gap Analysis</h3>
-                        <p class="blog-excerpt">Detailed comparison between RTX 3090 and RTX 4090. Architecture improvements, performance gains, efficiency upgrades, and whether upgrading from RTX 3090 is worth the investment.</p>
-                        <a href="blog/rtx-3090-vs-4090-comparison.html" class="blog-cta" aria-label="Read RTX 3090 vs 4090 analysis">Read Full Analysis</a>
+                        <a href="blog/rtx-3090-vs-4090-comparison.html" class="blog-title-link">
+                            <h3 class="blog-title">RTX 3090 vs RTX 4090: Generation Gap Analysis</h3>
+                        </a>
+                        <p class="blog-excerpt">Detailed comparison between RTX 3090 and RTX 4090. Architecture
+                            improvements, performance gains, efficiency upgrades, and whether upgrading from RTX 3090 is
+                            worth the investment.</p>
                     </article>
 
                     <article class="blog-card">
@@ -2217,9 +2789,12 @@
                             <time datetime="2024-12-10">December 10, 2024</time>
                             <span>15 min read</span>
                         </div>
-                        <h3 class="blog-title">RTX 3090 vs 4090 vs 5090: Three Generations Compared</h3>
-                        <p class="blog-excerpt">Ultimate comparison across three GPU generations. Performance evolution, technological advancements, price-to-performance analysis, and buying recommendations for different use cases.</p>
-                        <a href="blog/rtx-3090-vs-4090-vs-5090-ultimate-comparison.html" class="blog-cta" aria-label="Read ultimate GPU comparison guide">Read Ultimate Guide</a>
+                        <a href="blog/rtx-3090-vs-4090-vs-5090-ultimate-comparison.html" class="blog-title-link">
+                            <h3 class="blog-title">RTX 3090 vs 4090 vs 5090: Three Generations Compared</h3>
+                        </a>
+                        <p class="blog-excerpt">Ultimate comparison across three GPU generations. Performance evolution,
+                            technological advancements, price-to-performance analysis, and buying recommendations for
+                            different use cases.</p>
                     </article>
                 </div>
             </section>
@@ -2227,13 +2802,15 @@
             <!-- GPU Buying Guides Section -->
             <section class="comparison-section section" id="guides">
                 <h2 class="section-title">Complete GPU Buying Guides 2025</h2>
-                <p class="section-subtitle">Expert guides to help you choose the perfect graphics card for your needs and budget</p>
+                <p class="section-subtitle">Expert guides to help you choose the perfect graphics card for your needs
+                    and budget</p>
 
                 <div class="blog-grid">
                     <div class="guide-card">
                         <span class="guide-icon">🎮</span>
                         <h3 class="guide-title">Gaming GPU Guide 2025</h3>
-                        <p class="guide-description">Comprehensive guide to choosing the best GPU for 1080p, 1440p, and 4K gaming across all price ranges and performance levels.</p>
+                        <p class="guide-description">Comprehensive guide to choosing the best GPU for 1080p, 1440p, and
+                            4K gaming across all price ranges and performance levels.</p>
                         <ul class="guide-features">
                             <li><strong>Budget Gaming (1080p):</strong> RTX 4060, RTX 3060 - $299-$399</li>
                             <li><strong>1440p High Settings:</strong> RTX 4070 SUPER, RTX 4070 Ti - $599-$799</li>
@@ -2245,7 +2822,8 @@
                     <div class="guide-card">
                         <span class="guide-icon">💡</span>
                         <h3 class="guide-title">Power Supply Calculator</h3>
-                        <p class="guide-description">Calculate the exact PSU wattage needed for your GPU setup. Ensure stable power delivery and system reliability with our comprehensive PSU guide.</p>
+                        <p class="guide-description">Calculate the exact PSU wattage needed for your GPU setup. Ensure
+                            stable power delivery and system reliability with our comprehensive PSU guide.</p>
                         <ul class="guide-features">
                             <li><strong>RTX 4060/3060:</strong> 550W 80+ Bronze minimum</li>
                             <li><strong>RTX 4070 Series:</strong> 650W 80+ Gold recommended</li>
@@ -2257,19 +2835,24 @@
                     <div class="guide-card">
                         <span class="guide-icon">🔧</span>
                         <h3 class="guide-title">GPU Installation Guide</h3>
-                        <p class="guide-description">Step-by-step GPU installation, driver setup, and optimization. From unboxing to peak performance in 30 minutes.</p>
+                        <p class="guide-description">Step-by-step GPU installation, driver setup, and optimization. From
+                            unboxing to peak performance in 30 minutes.</p>
                         <ul class="guide-features">
                             <li><strong>Pre-installation:</strong> PSU check, case clearance, cable management</li>
-                            <li><strong>Physical Install:</strong> Safe removal, PCIe installation, power connections</li>
-                            <li><strong>Software Setup:</strong> Driver installation, GeForce Experience, optimization</li>
-                            <li><strong>Performance Testing:</strong> Benchmarks, temperature monitoring, troubleshooting</li>
+                            <li><strong>Physical Install:</strong> Safe removal, PCIe installation, power connections
+                            </li>
+                            <li><strong>Software Setup:</strong> Driver installation, GeForce Experience, optimization
+                            </li>
+                            <li><strong>Performance Testing:</strong> Benchmarks, temperature monitoring,
+                                troubleshooting</li>
                         </ul>
                     </div>
 
                     <div class="guide-card">
                         <span class="guide-icon">📊</span>
                         <h3 class="guide-title">Benchmark & Testing Guide</h3>
-                        <p class="guide-description">Understanding GPU benchmarks, performance metrics, and real-world gaming tests. Learn to interpret review data effectively.</p>
+                        <p class="guide-description">Understanding GPU benchmarks, performance metrics, and real-world
+                            gaming tests. Learn to interpret review data effectively.</p>
                         <ul class="guide-features">
                             <li><strong>Synthetic Benchmarks:</strong> 3DMark, Unigine, FurMark testing</li>
                             <li><strong>Game Testing:</strong> Real-world FPS, frame times, 1% lows</li>
@@ -2281,7 +2864,8 @@
                     <div class="guide-card">
                         <span class="guide-icon">💰</span>
                         <h3 class="guide-title">Value & Budget Analysis</h3>
-                        <p class="guide-description">Price-to-performance analysis, best deals, and when to buy. Maximize your GPU investment with smart purchasing decisions.</p>
+                        <p class="guide-description">Price-to-performance analysis, best deals, and when to buy.
+                            Maximize your GPU investment with smart purchasing decisions.</p>
                         <ul class="guide-features">
                             <li><strong>Best Time to Buy:</strong> Price cycles, new release impacts</li>
                             <li><strong>Price/Performance:</strong> FPS per dollar calculations</li>
@@ -2293,7 +2877,8 @@
                     <div class="guide-card">
                         <span class="guide-icon">⚡</span>
                         <h3 class="guide-title">Overclocking & Optimization</h3>
-                        <p class="guide-description">Safe GPU overclocking, thermal management, and performance optimization. Squeeze every FPS from your graphics card safely.</p>
+                        <p class="guide-description">Safe GPU overclocking, thermal management, and performance
+                            optimization. Squeeze every FPS from your graphics card safely.</p>
                         <ul class="guide-features">
                             <li><strong>Safe Overclocking:</strong> MSI Afterburner, stability testing</li>
                             <li><strong>Thermal Solutions:</strong> Fan curves, undervolting, repasting</li>
@@ -2307,17 +2892,21 @@
             <!-- Latest GPU News Section -->
             <section class="comparison-section section" id="news">
                 <h2 class="section-title">Latest GPU News & Updates</h2>
-                <p class="section-subtitle">Stay informed with the latest graphics card releases, industry news, and technology breakthroughs</p>
+                <p class="section-subtitle">Stay informed with the latest graphics card releases, industry news, and
+                    technology breakthroughs</p>
 
                 <div class="blog-grid">
                     <article class="news-card">
                         <div class="news-stripe" style="background: linear-gradient(45deg, #00ff88, #00ccff);"></div>
                         <div class="news-meta">
-                            <span class="news-badge" style="background: linear-gradient(45deg, #00ff88, #00ccff); color: #000;">BREAKING</span>
+                            <span class="news-badge"
+                                style="background: linear-gradient(45deg, #00ff88, #00ccff); color: #000;">BREAKING</span>
                             <span class="news-date">June 14, 2025</span>
                         </div>
                         <h3 class="news-title">RTX 5090 Official Specifications Revealed</h3>
-                        <p class="news-excerpt">NVIDIA officially announces RTX 5090 with 32GB GDDR7 memory, 170 RT cores, and revolutionary DLSS 4 technology. Expected launch in Q3 2025 with $1999 MSRP. Performance claims show 40% improvement over RTX 4090.</p>
+                        <p class="news-excerpt">NVIDIA officially announces RTX 5090 with 32GB GDDR7 memory, 170 RT
+                            cores, and revolutionary DLSS 4 technology. Expected launch in Q3 2025 with $1999 MSRP.
+                            Performance claims show 40% improvement over RTX 4090.</p>
                         <div class="news-tags">
                             <span>• 32GB GDDR7 VRAM</span>
                             <span>• DLSS 4.0 Support</span>
@@ -2329,11 +2918,14 @@
                     <article class="news-card">
                         <div class="news-stripe" style="background: linear-gradient(45deg, #ff8800, #ff4444);"></div>
                         <div class="news-meta">
-                            <span class="news-badge" style="background: linear-gradient(45deg, #ff8800, #ff4444); color: #000;">TRENDING</span>
+                            <span class="news-badge"
+                                style="background: linear-gradient(45deg, #ff8800, #ff4444); color: #000;">TRENDING</span>
                             <span class="news-date">June 12, 2025</span>
                         </div>
                         <h3 class="news-title">RTX 40 Series Massive Price Drops Incoming</h3>
-                        <p class="news-excerpt">Major retailers announce significant price reductions on RTX 40 series GPUs ahead of RTX 50 launch. RTX 4080 drops to $899, RTX 4070 Ti to $699. Perfect opportunity for budget-conscious builders to upgrade.</p>
+                        <p class="news-excerpt">Major retailers announce significant price reductions on RTX 40 series
+                            GPUs ahead of RTX 50 launch. RTX 4080 drops to $899, RTX 4070 Ti to $699. Perfect
+                            opportunity for budget-conscious builders to upgrade.</p>
                         <div class="news-tags">
                             <span>• Up to 35% Discounts</span>
                             <span>• All Major Retailers</span>
@@ -2345,11 +2937,14 @@
                     <article class="news-card">
                         <div class="news-stripe" style="background: linear-gradient(45deg, #00ccff, #4488ff);"></div>
                         <div class="news-meta">
-                            <span class="news-badge" style="background: linear-gradient(45deg, #00ccff, #4488ff); color: #000;">REVIEW</span>
+                            <span class="news-badge"
+                                style="background: linear-gradient(45deg, #00ccff, #4488ff); color: #000;">REVIEW</span>
                             <span class="news-date">June 10, 2025</span>
                         </div>
                         <h3 class="news-title">RTX 4070 SUPER vs RTX 4070 Ti: Performance Showdown</h3>
-                        <p class="news-excerpt">Comprehensive testing reveals RTX 4070 SUPER offers 95% of RTX 4070 Ti performance at 85% of the price. 16GB VRAM variant provides better future-proofing for 1440p gaming. Detailed benchmark results available.</p>
+                        <p class="news-excerpt">Comprehensive testing reveals RTX 4070 SUPER offers 95% of RTX 4070 Ti
+                            performance at 85% of the price. 16GB VRAM variant provides better future-proofing for 1440p
+                            gaming. Detailed benchmark results available.</p>
                         <div class="news-tags">
                             <span>• 20+ Game Tests</span>
                             <span>• Ray Tracing Analysis</span>
@@ -2361,11 +2956,14 @@
                     <article class="news-card">
                         <div class="news-stripe" style="background: linear-gradient(45deg, #8844ff, #ff44cc);"></div>
                         <div class="news-meta">
-                            <span class="news-badge" style="background: linear-gradient(45deg, #8844ff, #ff44cc); color: #000;">TECH</span>
+                            <span class="news-badge"
+                                style="background: linear-gradient(45deg, #8844ff, #ff44cc); color: #000;">TECH</span>
                             <span class="news-date">June 8, 2025</span>
                         </div>
                         <h3 class="news-title">DLSS 4 Technology Deep Dive</h3>
-                        <p class="news-excerpt">NVIDIA's DLSS 4 promises 2x performance improvement with new AI frame generation. Machine learning advances enable higher quality upscaling and reduced latency. Compatible with RTX 50 series and RTX 40 series GPUs.</p>
+                        <p class="news-excerpt">NVIDIA's DLSS 4 promises 2x performance improvement with new AI frame
+                            generation. Machine learning advances enable higher quality upscaling and reduced latency.
+                            Compatible with RTX 50 series and RTX 40 series GPUs.</p>
                         <div class="news-tags">
                             <span>• AI Frame Generation</span>
                             <span>• 2x Performance Boost</span>
@@ -2377,11 +2975,14 @@
                     <article class="news-card">
                         <div class="news-stripe" style="background: linear-gradient(45deg, #ff6b6b, #feca57);"></div>
                         <div class="news-meta">
-                            <span class="news-badge" style="background: linear-gradient(45deg, #ff6b6b, #feca57); color: #000;">MARKET</span>
+                            <span class="news-badge"
+                                style="background: linear-gradient(45deg, #ff6b6b, #feca57); color: #000;">MARKET</span>
                             <span class="news-date">June 6, 2025</span>
                         </div>
                         <h3 class="news-title">GPU Market Analysis: Supply & Demand Q2 2025</h3>
-                        <p class="news-excerpt">GPU availability improves significantly with normalized pricing across all tiers. Cryptocurrency mining impact diminishes while AI workload demand increases. Gaming GPU market shows healthy growth with stable supply chains.</p>
+                        <p class="news-excerpt">GPU availability improves significantly with normalized pricing across
+                            all tiers. Cryptocurrency mining impact diminishes while AI workload demand increases.
+                            Gaming GPU market shows healthy growth with stable supply chains.</p>
                         <div class="news-tags">
                             <span>• Stable Supply</span>
                             <span>• Normalized Pricing</span>
@@ -2393,11 +2994,14 @@
                     <article class="news-card">
                         <div class="news-stripe" style="background: linear-gradient(45deg, #48dbfb, #0abde3);"></div>
                         <div class="news-meta">
-                            <span class="news-badge" style="background: linear-gradient(45deg, #48dbfb, #0abde3); color: #000;">INDUSTRY</span>
+                            <span class="news-badge"
+                                style="background: linear-gradient(45deg, #48dbfb, #0abde3); color: #000;">INDUSTRY</span>
                             <span class="news-date">June 4, 2025</span>
                         </div>
                         <h3 class="news-title">PCIe 5.0 Adoption in Gaming GPUs</h3>
-                        <p class="news-excerpt">RTX 50 series to feature full PCIe 5.0 support enabling faster data transfer and future expansion capabilities. Motherboard manufacturers prepare new chipsets. Backward compatibility with PCIe 4.0 and 3.0 maintained.</p>
+                        <p class="news-excerpt">RTX 50 series to feature full PCIe 5.0 support enabling faster data
+                            transfer and future expansion capabilities. Motherboard manufacturers prepare new chipsets.
+                            Backward compatibility with PCIe 4.0 and 3.0 maintained.</p>
                         <div class="news-tags">
                             <span>• PCIe 5.0 Support</span>
                             <span>• Faster Data Transfer</span>
@@ -2412,19 +3016,23 @@
             <section class="comparison-section section" id="comparison">
                 <h2 class="section-title">GPU Database Statistics</h2>
                 <div class="stats-grid">
-                    <div class="stat-card" style="background: rgba(0, 255, 136, 0.1); border: 1px solid rgba(0, 255, 136, 0.3);">
+                    <div class="stat-card"
+                        style="background: rgba(0, 255, 136, 0.1); border: 1px solid rgba(0, 255, 136, 0.3);">
                         <div class="stat-number" style="color: #00ff88;">30+</div>
                         <div class="stat-label">Total GPU Models</div>
                     </div>
-                    <div class="stat-card" style="background: rgba(0, 204, 255, 0.1); border: 1px solid rgba(0, 204, 255, 0.3);">
+                    <div class="stat-card"
+                        style="background: rgba(0, 204, 255, 0.1); border: 1px solid rgba(0, 204, 255, 0.3);">
                         <div class="stat-number" style="color: #00ccff;">4</div>
                         <div class="stat-label">RTX Generations</div>
                     </div>
-                    <div class="stat-card" style="background: rgba(255, 136, 0, 0.1); border: 1px solid rgba(255, 136, 0, 0.3);">
+                    <div class="stat-card"
+                        style="background: rgba(255, 136, 0, 0.1); border: 1px solid rgba(255, 136, 0, 0.3);">
                         <div class="stat-number" style="color: #ff8800;">$249-$1999</div>
                         <div class="stat-label">Price Range</div>
                     </div>
-                    <div class="stat-card" style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.3);">
+                    <div class="stat-card"
+                        style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.3);">
                         <div class="stat-number" style="color: #ffffff;">115W-575W</div>
                         <div class="stat-label">Power Range</div>
                     </div>
@@ -2432,25 +3040,208 @@
 
                 <h2 class="section-title">Performance Comparison Chart</h2>
                 <p class="section-subtitle">Compare graphics cards side by side to make informed decisions</p>
-                <canvas id="comparisonChart" width="400" height="200" aria-label="GPU performance comparison chart"></canvas>
+                <canvas id="comparisonChart" width="400" height="200"
+                    aria-label="GPU performance comparison chart"></canvas>
             </section>
         </div>
     </main>
 
+    <!-- Modern Redesigned Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="affiliate-disclosure">
-                <p><strong>Affiliate Disclosure:</strong> As an Amazon Associate, we earn from qualifying purchases. This helps us keep the site running and provide free GPU information.</p>
+        <!-- Newsletter CTA Section -->
+        <div class="footer-newsletter-section">
+            <div class="newsletter-container">
+                <div class="newsletter-content">
+                    <h3 class="newsletter-title">
+                        <span class="gradient-text">Stay Ahead of GPU Technology</span>
+                    </h3>
+                    <p class="newsletter-subtitle">Get exclusive RTX 60 series updates, benchmarks, and deals delivered
+                        weekly</p>
+                </div>
+                <form class="newsletter-form-inline" id="newsletterForm" onsubmit="handleNewsletterSubmit(event)">
+                    <input type="email" placeholder="Enter your email address" class="newsletter-input-modern"
+                        id="newsletterEmail" required>
+                    <button type="submit" class="newsletter-btn-modern">
+                        <span>Subscribe</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </form>
             </div>
-            <div class="footer-links">
-                <a href="/about">About</a>
-                <a href="/contact">Contact</a>
-                <a href="/privacy-policy">Privacy Policy</a>
-                <a href="/terms-of-service">Terms of Service</a>
-                <a href="/advertise">Advertise</a>
-                <a href="/blog">Blog</a>
+        </div>
+
+        <!-- Main Footer Content -->
+        <div class="footer-main">
+            <div class="footer-container">
+                <!-- Brand Column -->
+                <div class="footer-brand">
+                    <div class="footer-logo-modern">
+                        <div class="gpu-cube-logo">
+                            <div class="cube-face"></div>
+                            <div class="cube-face"></div>
+                            <div class="cube-face"></div>
+                        </div>
+                        <span>GPU Database</span>
+                    </div>
+                    <p class="brand-tagline">The Ultimate Graphics Card Resource</p>
+                    <div class="brand-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">GPUs Tracked</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Price Updates</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100K+</span>
+                            <span class="stat-label">Users</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Links Grid -->
+                <div class="footer-links-grid">
+                    <!-- GPUs Column -->
+                    <div class="footer-link-column">
+                        <h4 class="footer-title">
+                            <span class="title-icon">🎮</span>
+                            Graphics Cards
+                        </h4>
+                        <ul class="footer-list">
+                            <li><a href="#" class="footer-link">NVIDIA RTX 40 Series</a></li>
+                            <li><a href="#" class="footer-link">AMD Radeon RX 7000</a></li>
+                            <li><a href="#" class="footer-link">Intel Arc Graphics</a></li>
+                            <li><a href="#" class="footer-link hot-link">RTX 60 Series Rumors</a></li>
+                            <li><a href="#" class="footer-link">Budget GPUs Under $300</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Tools Column -->
+                    <div class="footer-link-column">
+                        <h4 class="footer-title">
+                            <span class="title-icon">🛠️</span>
+                            Tools & Calculators
+                        </h4>
+                        <ul class="footer-list">
+                            <li><a href="#comparison" class="footer-link">GPU Comparison Tool</a></li>
+                            <li><a href="#" class="footer-link">Benchmark Database</a></li>
+                            <li><a href="#" class="footer-link">PSU Calculator</a></li>
+                            <li><a href="#cryptocurrency-mining" class="footer-link">Mining Profitability</a></li>
+                            <li><a href="#" class="footer-link">Bottleneck Calculator</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Resources Column -->
+                    <div class="footer-link-column">
+                        <h4 class="footer-title">
+                            <span class="title-icon">📚</span>
+                            Resources
+                        </h4>
+                        <ul class="footer-list">
+                            <li><a href="#guides" class="footer-link">Buying Guides</a></li>
+                            <li><a href="#news" class="footer-link">Latest GPU News</a></li>
+                            <li><a href="#" class="footer-link">Driver Downloads</a></li>
+                            <li><a href="#" class="footer-link">Overclocking Guide</a></li>
+                            <li><a href="#ai-machine-learning" class="footer-link">AI Performance</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Company Column -->
+                    <div class="footer-link-column">
+                        <h4 class="footer-title">
+                            <span class="title-icon">💼</span>
+                            Company
+                        </h4>
+                        <ul class="footer-list">
+                            <li><a href="/about" class="footer-link">About Us</a></li>
+                            <li><a href="/contact" class="footer-link">Contact</a></li>
+                            <li><a href="/advertise" class="footer-link">Advertise</a></li>
+                            <li><a href="#" class="footer-link">API Access</a></li>
+                            <li><a href="#" class="footer-link">Careers</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <p>© 2025 GPU Database. All rights reserved. | The ultimate resource for 30+ graphics card models with comprehensive specs, performance data, and expert reviews</p>
+        </div>
+
+        <!-- Social Media Bar -->
+        <div class="footer-social-bar">
+            <div class="social-container">
+                <span class="social-text">Follow Us</span>
+                <div class="social-icons">
+                    <a href="https://x.com/Its_Gourav_09" class="social-icon-modern"
+                        aria-label="X (Twitter) - Its_Gourav_09" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/@Choudharygamerz_32" class="social-icon-modern"
+                        aria-label="YouTube - Choudharygamerz_32" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a href="https://www.facebook.com/gouravxchoudhary/" class="social-icon-modern"
+                        aria-label="Facebook - gouravxchoudhary" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/gouravxchoudhary09/" class="social-icon-modern"
+                        aria-label="Instagram - gouravxchoudhary09" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/gouravxchoudhary" class="social-icon-modern"
+                        aria-label="GitHub - gouravxchoudhary" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a href="https://wa.me/8955622948" class="social-icon-modern" aria-label="WhatsApp - 8955622948"
+                        target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <div class="footer-legal">
+                    <p>&copy; 2024 GPU Database. All rights reserved. A Technology Resource by Gourav Choudhary</p>
+                </div>
+                <div class="footer-legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <span class="separator">•</span>
+                    <a href="#">Terms of Service</a>
+                    <span class="separator">•</span>
+                    <a href="#">Cookie Policy</a>
+                    <span class="separator">•</span>
+                    <a href="#">DMCA</a>
+                    <span class="separator">•</span>
+                    <a href="#">Sitemap</a>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -2554,7 +3345,7 @@
                     "Ethereum Classic": "120 MH/s",
                     "Ravencoin": "55 MH/s",
                     "Ergo": "230 MH/s",
-                    "Efficiency": "0.27 MH/W"
+                    "Efficiency": "0.38 MH/W"
                 },
                 aiPerformance: {
                     "TOPS": "661",
@@ -2874,6 +3665,18 @@
                     "Call of Duty 4K": "65 FPS",
                     "Fortnite 4K": "88 FPS",
                     "Minecraft RTX 4K": "58 FPS"
+                },
+                miningPerformance: {
+                    "Ethereum Classic": "125 MH/s",
+                    "Ravencoin": "54 MH/s",
+                    "Ergo": "235 MH/s",
+                    "Efficiency": "0.36 MH/W"
+                },
+                aiPerformance: {
+                    "TOPS": "285",
+                    "LLM Inference": "Good",
+                    "Image Generation": "6-8s (1024x1024)",
+                    "Training": "Medium-large models"
                 },
                 features: ["Ray Tracing", "DLSS 2", "NVENC", "PCIe 4.0"],
                 price: "$899",
@@ -3335,7 +4138,7 @@
 
                             navLinks.forEach(link => {
                                 link.classList.remove('active');
-                                if (link.dataset.section === sectionId || 
+                                if (link.dataset.section === sectionId ||
                                     (link.getAttribute('href') === `#${sectionId}`)) {
                                     link.classList.add('active');
                                 }
@@ -3432,7 +4235,7 @@
 
                 const cardsHTML = this.filteredData.map((gpu, index) => this.createGPUCard(gpu, index)).join('');
                 container.innerHTML = cardsHTML;
-                
+
                 // Trigger animation after render
                 setTimeout(() => {
                     this.animateGPUCards();
@@ -3611,24 +4414,10 @@
                                 "rgba(136, 68, 255, 1)",
                                 "rgba(255, 68, 204, 1)",
                                 "rgba(255, 204, 68, 1)"
-                            ],
-                            borderWidth: 2,
-                            borderRadius: 8
+                            ]
                         }]
                     },
                     options: {
-                        responsive: true,
-                        maintainAspectRatio: true,
-                        plugins: {
-                            legend: {
-                                labels: { color: '#ffffff' }
-                            },
-                            tooltip: {
-                                backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                                borderColor: 'rgba(0, 255, 136, 0.5)',
-                                borderWidth: 1
-                            }
-                        },
                         scales: {
                             y: {
                                 beginAtZero: true,
@@ -3658,6 +4447,182 @@
         document.addEventListener('DOMContentLoaded', () => {
             window.database = new EnhancedGPUDatabase();
         });
+
+        // Newsletter Form Handler
+        function handleNewsletterSubmit(event) {
+            event.preventDefault();
+
+            const emailInput = document.getElementById('newsletterEmail');
+            const email = emailInput.value;
+            const submitBtn = event.target.querySelector('.newsletter-btn-modern');
+            const originalHTML = submitBtn.innerHTML;
+
+            // Show loading state
+            submitBtn.innerHTML = `
+                <span>Subscribing...</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="animate-spin">
+                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                </svg>
+            `;
+            submitBtn.disabled = true;
+
+            // Option 1: Using Formspree (Easiest - No backend needed)
+            // Sign up at https://formspree.io and get your form ID
+            /*
+            fetch('https://formspree.io/f/YOUR_FORM_ID', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                    message: `New newsletter subscription request from ${email}`,
+                    _subject: 'New Newsletter Subscription - GPU Database'
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    showSuccess();
+                } else {
+                    showError();
+                }
+            })
+            .catch(error => {
+                showError();
+            });
+            */
+
+            // Option 2: Using EmailJS (Free tier available)
+            // Sign up at https://www.emailjs.com and get your keys
+            /*
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+                subscriber_email: email,
+                to_email: 'gouravchoudharyoffical@gmail.com',
+                message: `New subscriber: ${email} needs help with GPU selection`
+            })
+            .then(function(response) {
+                showSuccess();
+            }, function(error) {
+                showError();
+            });
+            */
+
+            // Option 3: Using Web3Forms (Free, no signup required for testing)
+            // Get your access key from https://web3forms.com
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    access_key: 'YOUR_ACCESS_KEY', // Replace with your Web3Forms access key
+                    email: 'gouravchoudharyoffical@gmail.com',
+                    subject: 'New GPU Database Newsletter Subscription',
+                    name: 'Newsletter Subscriber',
+                    message: `New subscriber email: ${email}\n\nThis person is interested in GPU updates and may need help selecting a graphics card.`,
+                    from_name: 'GPU Database Website'
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showSuccess();
+                    } else {
+                        showError();
+                    }
+                })
+                .catch(error => {
+                    showError();
+                });
+
+            function showSuccess() {
+                // Show success state
+                submitBtn.innerHTML = `
+                    <span>Subscribed!</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 6L9 17l-5-5"></path>
+                    </svg>
+                `;
+                submitBtn.style.background = 'linear-gradient(45deg, #00ff88, #00ff88)';
+
+                // Clear input
+                emailInput.value = '';
+
+                // Show success message
+                const successMsg = document.createElement('div');
+                successMsg.className = 'newsletter-success-msg';
+                successMsg.textContent = 'Thank you! You have been subscribed successfully.';
+                successMsg.style.cssText = `
+                    position: absolute;
+                    bottom: -30px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: rgba(0, 255, 136, 0.2);
+                    border: 1px solid rgba(0, 255, 136, 0.5);
+                    padding: 0.5rem 1rem;
+                    border-radius: 25px;
+                    font-size: 0.85rem;
+                    color: #00ff88;
+                    white-space: nowrap;
+                    animation: fadeInUp 0.5s ease;
+                    z-index: 10;
+                `;
+                event.target.style.position = 'relative';
+                event.target.appendChild(successMsg);
+
+                // Reset after 5 seconds
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalHTML;
+                    submitBtn.style.background = '';
+                    submitBtn.disabled = false;
+                    if (successMsg.parentNode) {
+                        successMsg.remove();
+                    }
+                }, 5000);
+            }
+
+            function showError() {
+                // Show error state
+                submitBtn.innerHTML = `
+                    <span>Error! Try Again</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                `;
+                submitBtn.style.background = 'linear-gradient(45deg, #ff4444, #ff4444)';
+
+                // Reset after 3 seconds
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalHTML;
+                    submitBtn.style.background = '';
+                    submitBtn.disabled = false;
+                }, 3000);
+            }
+        }
+
+        // Add spinning animation style
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes spin {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+            .animate-spin {
+                animation: spin 1s linear infinite;
+            }
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateX(-50%) translateY(10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(-50%) translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
-</html>
+
+</html>          
