@@ -25,6 +25,11 @@
     <link rel="canonical" href="https://gpudatabase.in/privacy-policy">
     <title>Privacy Policy - GPU Database | Data Protection & User Privacy</title>
     
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+    
     <!-- Schema.org structured data -->
     <script type="application/ld+json">
     {
@@ -44,6 +49,9 @@
     </script>
     
     <style>
+        /* ===============================================
+           GLOBAL STYLES & CSS VARIABLES
+           =============================================== */
         * {
             margin: 0;
             padding: 0;
@@ -51,89 +59,95 @@
         }
 
         :root {
-            --primary-green: #00ff88;
-            --primary-blue: #00ccff;
-            --accent-purple: #8844ff;
-            --accent-orange: #ff8800;
-            --bg-primary: #0d0d0d;
-            --bg-secondary: #141414;
-            --bg-card: rgba(255, 255, 255, 0.04);
+            /* Professional Color Palette */
+            --primary-neon: #00ff88;
+            --secondary-cyan: #00ccff;
+            --accent-purple: #7c3aed;
+            --accent-orange: #ff6b35;
+            --accent-pink: #ff0080;
+            
+            /* Background Colors */
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-tertiary: #1a1a1a;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --bg-hover: rgba(255, 255, 255, 0.05);
+            
+            /* Text Colors */
             --text-primary: #ffffff;
-            --text-secondary: #b8b8b8;
-            --text-muted: #808080;
-            --border-color: rgba(255, 255, 255, 0.1);
-            --navbar-height: 70px;
+            --text-secondary: #a0a0a0;
+            --text-muted: #707070;
+            
+            /* Borders & Effects */
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(0, 255, 136, 0.3);
+            --glow-neon: 0 0 30px rgba(0, 255, 136, 0.4);
+            --glow-cyan: 0 0 30px rgba(0, 204, 255, 0.4);
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.5);
+            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.6);
+            --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.7);
+            --shadow-glow: 0 0 60px rgba(0, 255, 136, 0.2);
+            
+            /* Layout */
+            --border-radius: 12px;
+            --navbar-height: 80px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
-            overflow-x: hidden;
             line-height: 1.6;
         }
 
-        /* Animated Background */
-        .animated-bg {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            background: linear-gradient(125deg, #0d0d0d 0%, #0f0f1a 50%, #0d0d0d 100%);
-        }
-
-        .gradient-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.15;
-        }
-
-        .orb1 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, var(--primary-green) 0%, transparent 70%);
-            top: -200px;
-            left: -200px;
-            animation: float 20s infinite ease-in-out;
-        }
-
-        .orb2 {
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, var(--primary-blue) 0%, transparent 70%);
-            bottom: -175px;
-            right: -175px;
-            animation: float 25s infinite ease-in-out reverse;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(30px, -30px) scale(1.1); }
-        }
-
-        /* Navigation */
+        /* ===============================================
+           NAVIGATION BAR STYLES
+           =============================================== */
         .navbar {
-            background: rgba(13, 13, 13, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 0 1.5rem;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
             height: var(--navbar-height);
             display: flex;
             align-items: center;
-            transition: all 0.3s ease;
+        }
+
+        .navbar::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                var(--primary-neon) 20%,
+                var(--secondary-cyan) 50%,
+                var(--primary-neon) 80%,
+                transparent
+            );
+            animation: navGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes navGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
 
         .navbar.scrolled {
-            background: rgba(13, 13, 13, 0.98);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            background: rgba(10, 10, 10, 0.95);
+            box-shadow: var(--shadow-lg);
         }
 
         .nav-container {
@@ -143,206 +157,373 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 2rem;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
-        }
-
-        .nav-links {
+        /* Logo with GPU Animation */
+        .logo-wrapper {
             display: flex;
-            gap: 1.5rem;
-            list-style: none;
             align-items: center;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
+            gap: 1rem;
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            padding: 0.5rem;
             position: relative;
         }
 
-        .nav-links a::after {
+        .gpu-logo-3d {
+            width: 45px;
+            height: 45px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: gpuRotate 8s infinite linear;
+        }
+
+        @keyframes gpuRotate {
+            0% { transform: rotateY(0deg) rotateX(0deg); }
+            100% { transform: rotateY(360deg) rotateX(360deg); }
+        }
+
+        .gpu-chip {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-neon), var(--secondary-cyan));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            color: var(--bg-primary);
+            box-shadow: var(--glow-neon);
+        }
+
+        .gpu-chip::before {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
+            inset: -2px;
+            background: linear-gradient(45deg, var(--primary-neon), var(--secondary-cyan), var(--accent-purple));
+            border-radius: 8px;
+            z-index: -1;
+            opacity: 0.5;
+            filter: blur(10px);
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-neon), var(--secondary-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Navigation Menu */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 50px;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
             width: 0;
-            height: 2px;
-            background: var(--primary-green);
-            transition: width 0.3s ease;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(0, 255, 136, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
+        .nav-link:hover::before {
+            width: 100px;
+            height: 100px;
         }
 
-        .nav-links a:hover {
-            color: var(--text-primary);
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-neon);
+            background: rgba(0, 255, 136, 0.1);
         }
 
-        /* Mobile Menu Button */
-        .mobile-menu-btn {
+        /* Mobile Menu Toggle */
+        .menu-toggle {
             display: none;
             flex-direction: column;
-            gap: 4px;
+            gap: 5px;
             background: none;
             border: none;
             cursor: pointer;
             padding: 0.5rem;
+            border-radius: 8px;
+            transition: var(--transition);
         }
 
-        .mobile-menu-btn span {
+        .menu-toggle span {
             width: 25px;
-            height: 3px;
-            background: var(--text-primary);
-            border-radius: 2px;
-            transition: all 0.3s ease;
+            height: 2px;
+            background: var(--primary-neon);
+            transition: var(--transition);
+            display: block;
         }
 
-        .mobile-menu-btn.active span:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
         }
 
-        .mobile-menu-btn.active span:nth-child(2) {
+        .menu-toggle.active span:nth-child(2) {
             opacity: 0;
         }
 
-        .mobile-menu-btn.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
         }
 
-        /* Container */
+        /* ===============================================
+           MAIN CONTENT STYLES
+           =============================================== */
+        main {
+            padding-top: var(--navbar-height);
+            min-height: 100vh;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: calc(var(--navbar-height) + 3rem) 1.5rem 3rem;
+            padding: 3rem 2rem;
         }
 
-        /* Hero Section */
+        /* Hero Section with GPU Circuit Animation */
         .hero-section {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             position: relative;
-            min-height: 350px;
+            min-height: 400px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.02), rgba(0, 204, 255, 0.02));
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
         }
 
-        /* GPU Security Shield Animation */
-        .security-shield {
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0.1;
-            z-index: 0;
-        }
-
-        .shield-outer {
-            width: 100%;
-            height: 100%;
-            border: 3px solid var(--primary-green);
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            position: relative;
-            animation: shieldPulse 4s ease-in-out infinite;
-        }
-
-        .shield-inner {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 3rem;
-            color: var(--primary-green);
-            animation: shieldRotate 8s linear infinite;
-        }
-
-        @keyframes shieldPulse {
-            0%, 100% { transform: scale(1); opacity: 0.1; }
-            50% { transform: scale(1.2); opacity: 0.2; }
-        }
-
-        @keyframes shieldRotate {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        /* Data Flow Lines */
-        .data-lines {
+        /* GPU Circuit Board Animation */
+        .gpu-circuit-container {
             position: absolute;
             width: 100%;
             height: 100%;
             top: 0;
             left: 0;
-            opacity: 0.08;
             overflow: hidden;
+            opacity: 0.15;
         }
 
-        .data-line {
+        .circuit-line {
             position: absolute;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
-            animation: dataFlow 3s linear infinite;
+            background: linear-gradient(90deg, transparent, var(--primary-neon), transparent);
+            animation: circuitFlow 3s linear infinite;
         }
 
-        .data-line:nth-child(1) {
-            width: 200px;
-            top: 20%;
-            left: -200px;
+        .circuit-line:nth-child(1) {
+            width: 2px;
+            height: 100px;
+            top: 10%;
+            left: 20%;
             animation-delay: 0s;
         }
 
-        .data-line:nth-child(2) {
+        .circuit-line:nth-child(2) {
             width: 150px;
-            top: 40%;
+            height: 2px;
+            top: 30%;
             left: -150px;
             animation-delay: 0.5s;
         }
 
-        .data-line:nth-child(3) {
-            width: 180px;
-            top: 60%;
-            left: -180px;
+        .circuit-line:nth-child(3) {
+            width: 2px;
+            height: 80px;
+            bottom: 20%;
+            right: 25%;
             animation-delay: 1s;
         }
 
-        .data-line:nth-child(4) {
-            width: 160px;
-            top: 80%;
-            left: -160px;
+        .circuit-line:nth-child(4) {
+            width: 200px;
+            height: 2px;
+            bottom: 40%;
+            right: -200px;
             animation-delay: 1.5s;
+            animation-direction: reverse;
         }
 
-        @keyframes dataFlow {
-            to { transform: translateX(calc(100vw + 200px)); }
+        @keyframes circuitFlow {
+            0% {
+                opacity: 0;
+                filter: brightness(0);
+            }
+            50% {
+                opacity: 1;
+                filter: brightness(2) drop-shadow(0 0 10px var(--primary-neon));
+            }
+            100% {
+                opacity: 0;
+                filter: brightness(0);
+                transform: translateX(100vw);
+            }
+        }
+
+        /* GPU Core Animation */
+        .gpu-core-animation {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.2;
+        }
+
+        .gpu-core {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: coreRotate 10s linear infinite;
+        }
+
+        .gpu-core-face {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 204, 255, 0.1));
+            border: 2px solid var(--primary-neon);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary-neon);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .gpu-core-face:nth-child(1) {
+            transform: translateZ(40px);
+            animation: facePulse 2s ease-in-out infinite;
+        }
+
+        .gpu-core-face:nth-child(2) {
+            transform: rotateY(90deg) translateZ(40px);
+            animation: facePulse 2s ease-in-out infinite 0.5s;
+        }
+
+        .gpu-core-face:nth-child(3) {
+            transform: rotateY(180deg) translateZ(40px);
+            animation: facePulse 2s ease-in-out infinite 1s;
+        }
+
+        .gpu-core-face:nth-child(4) {
+            transform: rotateY(-90deg) translateZ(40px);
+            animation: facePulse 2s ease-in-out infinite 1.5s;
+        }
+
+        @keyframes coreRotate {
+            from { transform: rotateY(0) rotateX(25deg); }
+            to { transform: rotateY(360deg) rotateX(25deg); }
+        }
+
+        @keyframes facePulse {
+            0%, 100% { 
+                opacity: 0.8;
+                box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+            }
+            50% { 
+                opacity: 1;
+                box-shadow: 0 0 40px rgba(0, 255, 136, 0.6);
+            }
+        }
+
+        /* Floating GPU Memory Chips */
+        .memory-chips {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .memory-chip {
+            position: absolute;
+            width: 30px;
+            height: 20px;
+            background: linear-gradient(135deg, var(--primary-neon), var(--secondary-cyan));
+            border-radius: 4px;
+            opacity: 0.3;
+            animation: floatChip 8s ease-in-out infinite;
+        }
+
+        .memory-chip:nth-child(1) {
+            top: 15%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .memory-chip:nth-child(2) {
+            top: 25%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .memory-chip:nth-child(3) {
+            bottom: 20%;
+            left: 12%;
+            animation-delay: 4s;
+        }
+
+        .memory-chip:nth-child(4) {
+            bottom: 30%;
+            right: 10%;
+            animation-delay: 6s;
+        }
+
+        @keyframes floatChip {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.3;
+            }
+            50% { 
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 0.6;
+            }
         }
 
         .section-title {
             font-size: clamp(2.5rem, 7vw, 4rem);
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--text-primary), var(--primary-green));
+            background: linear-gradient(135deg, var(--text-primary), var(--primary-neon));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -420,7 +601,7 @@
         }
 
         .policy-section h2 {
-            color: var(--primary-green);
+            color: var(--primary-neon);
             margin-bottom: 1.5rem;
             font-size: 1.8rem;
             position: relative;
@@ -435,7 +616,7 @@
             transform: translateY(-50%);
             width: 4px;
             height: 100%;
-            background: linear-gradient(180deg, var(--primary-green), var(--primary-blue));
+            background: linear-gradient(180deg, var(--primary-neon), var(--secondary-cyan));
             border-radius: 2px;
         }
 
@@ -466,7 +647,7 @@
 
         .policy-section li::before {
             content: '▸';
-            color: var(--primary-green);
+            color: var(--primary-neon);
             position: absolute;
             left: 0;
             font-weight: bold;
@@ -489,11 +670,11 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--primary-green), var(--primary-blue));
+            background: linear-gradient(90deg, var(--primary-neon), var(--secondary-cyan));
         }
 
         .highlight strong {
-            color: var(--primary-green);
+            color: var(--primary-neon);
         }
 
         .contact-info {
@@ -524,7 +705,7 @@
         }
 
         .contact-info h3 {
-            color: var(--primary-green);
+            color: var(--primary-neon);
             margin-bottom: 1.5rem;
             font-size: 1.5rem;
             position: relative;
@@ -536,7 +717,7 @@
         }
 
         .contact-link {
-            color: var(--primary-green);
+            color: var(--primary-neon);
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
@@ -544,172 +725,431 @@
         }
 
         .contact-link:hover {
-            color: var(--primary-blue);
+            color: var(--secondary-cyan);
             text-shadow: 0 0 10px rgba(0, 204, 255, 0.5);
         }
 
-        /* Footer */
+        /* ===============================================
+           FOOTER STYLES
+           =============================================== */
         .footer {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 3rem 1rem 2rem;
+            background: var(--bg-primary);
             border-top: 1px solid var(--border-color);
+            margin-top: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                var(--primary-neon) 20%,
+                var(--secondary-cyan) 50%,
+                var(--accent-purple) 80%,
+                transparent
+            );
+            animation: footerGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes footerGlow {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), rgba(0, 204, 255, 0.05));
+            padding: 4rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .newsletter-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .newsletter-content h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary-neon), var(--secondary-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            min-width: 450px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            color: var(--text-primary);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--primary-neon);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+        }
+
+        .newsletter-btn {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary-neon), var(--secondary-cyan));
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .newsletter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+        }
+
+        /* Footer Main */
+        .footer-main {
+            padding: 4rem 2rem 3rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-neon);
+        }
+
+        /* Footer GPU Cube Animation */
+        .footer-gpu-cube {
+            width: 40px;
+            height: 40px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: footerCubeRotate 10s infinite linear;
+        }
+
+        @keyframes footerCubeRotate {
+            0% { transform: rotateX(0) rotateY(0); }
+            100% { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 204, 255, 0.2));
+            border: 1px solid var(--primary-neon);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cube-face:nth-child(1) { transform: translateZ(20px); }
+        .cube-face:nth-child(2) { transform: rotateY(90deg) translateZ(20px); }
+        .cube-face:nth-child(3) { transform: rotateY(180deg) translateZ(20px); }
+        .cube-face:nth-child(4) { transform: rotateY(-90deg) translateZ(20px); }
+        .cube-face:nth-child(5) { transform: rotateX(90deg) translateZ(20px); }
+        .cube-face:nth-child(6) { transform: rotateX(-90deg) translateZ(20px); }
+
+        .footer-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .footer-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .stat {
             text-align: center;
-            margin-top: 4rem;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-neon);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .footer-column h4 {
+            color: var(--text-primary);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
         }
 
         .footer-links {
+            list-style: none;
             display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 0.75rem;
         }
 
-        .footer-links a {
+        .footer-link {
             color: var(--text-secondary);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: var(--transition);
+            position: relative;
+            padding-left: 0;
         }
 
-        .footer-links a:hover {
-            color: var(--primary-green);
+        .footer-link:hover {
+            color: var(--primary-neon);
+            padding-left: 10px;
         }
 
-        /* Mobile Responsive */
+        /* Footer Bottom */
+        .footer-bottom {
+            background: var(--bg-secondary);
+            padding: 1.5rem 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-bottom-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-legal-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-legal-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .footer-legal-links a:hover {
+            color: var(--primary-neon);
+        }
+
+        /* Social Media Links Styles */
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-link svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--primary-neon), var(--secondary-cyan));
+            color: var(--bg-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 255, 136, 0.3);
+            border-color: transparent;
+        }
+        
+        .social-link:hover svg {
+            transform: scale(1.1);
+        }
+
+        /* Centered Social Media Section */
+        .footer-social-section-center {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .social-heading {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+        }
+
+        .social-heading::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-neon), var(--secondary-cyan));
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .social-heading::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 204, 255, 0.1));
+            border-radius: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .social-heading:hover {
+            color: var(--primary-neon);
+            transform: translateY(-2px);
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        }
+
+        .social-heading:hover::before {
+            width: 100%;
+        }
+
+        .social-heading:hover::after {
+            opacity: 1;
+        }
+
+        .social-links-center {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ===============================================
+           RESPONSIVE DESIGN
+           =============================================== */
         @media (max-width: 768px) {
-            .navbar {
-                padding: 0 1rem;
+            .menu-toggle {
+                display: flex;
             }
-
-            .nav-links {
+            
+            .nav-menu {
                 display: none;
-                position: fixed;
-                top: var(--navbar-height);
+                position: absolute;
+                top: 100%;
                 left: 0;
                 right: 0;
-                background: rgba(13, 13, 13, 0.98);
-                backdrop-filter: blur(10px);
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(20px);
                 flex-direction: column;
-                padding: 1.5rem;
-                gap: 0.5rem;
+                padding: 2rem;
+                gap: 1rem;
                 border-top: 1px solid var(--border-color);
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-                max-height: calc(100vh - var(--navbar-height));
-                overflow-y: auto;
             }
-
-            .nav-links.active {
+            
+            .nav-menu.active {
                 display: flex;
             }
-
-            .nav-links a {
-                width: 100%;
-                padding: 1rem;
-                border-radius: 12px;
+            
+            .newsletter-container {
+                flex-direction: column;
+                text-align: center;
             }
-
-            .nav-links a:hover {
-                background: rgba(255, 255, 255, 0.05);
+            
+            .newsletter-form {
+                min-width: 100%;
+                flex-direction: column;
             }
-
-            .mobile-menu-btn {
-                display: flex;
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-bottom-content {
+                flex-direction: column;
+                gap: 1rem;
             }
 
             .container {
-                padding: calc(var(--navbar-height) + 2rem) 1rem 2rem;
+                padding: 2rem 1rem;
             }
 
             .policy-content {
                 padding: 2rem 1.5rem;
-            }
-
-            .policy-section h2 {
-                font-size: 1.4rem;
-            }
-
-            .contact-info {
-                padding: 2rem 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-section {
-                min-height: 300px;
-            }
-
-            .security-shield {
-                width: 80px;
-                height: 80px;
-            }
-
-            .shield-inner {
-                font-size: 2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .policy-content {
-                padding: 1.5rem;
-                border-radius: 16px;
-            }
-
-            .policy-section h2 {
-                font-size: 1.2rem;
-                padding-left: 15px;
-            }
-
-            .policy-section h3 {
-                font-size: 1rem;
-            }
-
-            .highlight {
-                padding: 1rem;
-            }
-
-            .contact-info {
-                padding: 1.5rem;
-            }
-
-            .contact-info h3 {
-                font-size: 1.2rem;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .mobile-menu-btn {
-                display: none;
-            }
-
-            .nav-links {
-                display: flex !important;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Animated Background -->
-    <div class="animated-bg">
-        <div class="gradient-orb orb1"></div>
-        <div class="gradient-orb orb2"></div>
-    </div>
-
-    <!-- Navigation -->
+    <!-- NAVIGATION BAR -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="/" class="logo">GPU Database</a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="/blog" class="nav-link" aria-current="page">Blog</a></li>
-                <li><a href="/#guides" class="nav-link">Guides</a></li>
-                <li><a href="/#news" class="nav-link">News</a></li>
-                <li><a href="/#comparison" class="nav-link">Compare</a></li>
+            <a href="/" class="logo-wrapper">
+                <div class="gpu-logo-3d">
+                    <div class="gpu-chip">GPU</div>
+                </div>
+                <span class="logo-text">GPU Database</span>
+            </a>
+            
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="/about" class="nav-link">About</a></li>
                 <li><a href="/contact" class="nav-link">Contact</a></li>
+                <li><a href="/blog" class="nav-link">Blogs</a></li>
+                <li><a href="/terms-of-service" class="nav-link">Terms</a></li>
             </ul>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+            
+            <button class="menu-toggle" id="menuToggle">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -719,20 +1159,32 @@
 
     <main>
         <div class="container">
-            <!-- Hero Section with GPU Animations -->
+            <!-- Hero Section with GPU Circuit Animation -->
             <section class="hero-section">
-                <!-- Security Shield Animation -->
-                <div class="security-shield">
-                    <div class="shield-outer"></div>
-                    <div class="shield-inner">🔒</div>
+                <!-- GPU Circuit Board Animation -->
+                <div class="gpu-circuit-container">
+                    <div class="circuit-line"></div>
+                    <div class="circuit-line"></div>
+                    <div class="circuit-line"></div>
+                    <div class="circuit-line"></div>
                 </div>
 
-                <!-- Data Flow Lines -->
-                <div class="data-lines">
-                    <div class="data-line"></div>
-                    <div class="data-line"></div>
-                    <div class="data-line"></div>
-                    <div class="data-line"></div>
+                <!-- GPU Core 3D Animation -->
+                <div class="gpu-core-animation">
+                    <div class="gpu-core">
+                        <div class="gpu-core-face">GPU</div>
+                        <div class="gpu-core-face">RTX</div>
+                        <div class="gpu-core-face">AI</div>
+                        <div class="gpu-core-face">4K</div>
+                    </div>
+                </div>
+
+                <!-- Floating Memory Chips -->
+                <div class="memory-chips">
+                    <div class="memory-chip"></div>
+                    <div class="memory-chip"></div>
+                    <div class="memory-chip"></div>
+                    <div class="memory-chip"></div>
                 </div>
 
                 <h1 class="section-title">Privacy Policy</h1>
@@ -848,66 +1300,240 @@
         </div>
     </main>
 
+    <!-- FOOTER -->
     <footer class="footer">
-        <div class="footer-links">
-            <a href="/">Home</a>
-            <a href="/about">About</a>
-            <a href="/contact">Contact</a>
-            <a href="/privacy-policy">Privacy Policy</a>
-            <a href="/terms-of-service">Terms of Service</a>
+        <!-- Newsletter Section -->
+        <div class="newsletter-section">
+            <div class="newsletter-container">
+                <div class="newsletter-content">
+                    <h3>Stay Ahead of GPU Technology</h3>
+                    <p>Get exclusive RTX 60 series updates, benchmarks, and deals delivered weekly</p>
+                </div>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" 
+                           class="newsletter-input" 
+                           placeholder="Enter your email address" 
+                           id="newsletterEmail" 
+                           required>
+                    <button type="submit" class="newsletter-btn">
+                        Subscribe →
+                    </button>
+                </form>
+            </div>
         </div>
-        <p>© 2025 GPU Database. All rights reserved.</p>
+
+        <!-- Footer Main -->
+        <div class="footer-main">
+            <div class="footer-container">
+                <!-- Brand Column -->
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="footer-gpu-cube">
+                            <div class="cube-face">G</div>
+                            <div class="cube-face">P</div>
+                            <div class="cube-face">U</div>
+                            <div class="cube-face">D</div>
+                            <div class="cube-face">B</div>
+                            <div class="cube-face">✓</div>
+                        </div>
+                        <span>GPU Database</span>
+                    </div>
+                    <p class="footer-description">
+                        The ultimate resource for graphics card comparisons, benchmarks, and analysis. Helping gamers, miners, and AI enthusiasts make informed GPU decisions.
+                    </p>
+                    <div class="footer-stats">
+                        <div class="stat">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">GPUs Tracked</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Price Updates</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">100K+</div>
+                            <div class="stat-label">Users</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-column">
+                    <h4>Graphics Cards</h4>
+                    <ul class="footer-links">
+                        <li><a href="/#gpus" class="footer-link">RTX 50 Series</a></li>
+                        <li><a href="/#gpus" class="footer-link">RTX 40 Series</a></li>
+                        <li><a href="/#gpus" class="footer-link">RTX 30 Series</a></li>
+                        <li><a href="/#comparison" class="footer-link">GPU Comparison</a></li>
+                        <li><a href="/#guides" class="footer-link">Buying Guides</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="/#gaming-performance-analysis" class="footer-link">Gaming Performance</a></li>
+                        <li><a href="/#cryptocurrency-mining" class="footer-link">Mining Calculator</a></li>
+                        <li><a href="/#ai-machine-learning" class="footer-link">AI Performance</a></li>
+                        <li><a href="/#professional-workloads" class="footer-link">Professional Use</a></li>
+                        <li><a href="/blog" class="footer-link">Blog & News</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="/about" class="footer-link">About Us</a></li>
+                        <li><a href="/contact" class="footer-link">Contact</a></li>
+                        <li><a href="/advertise" class="footer-link">Advertise</a></li>
+                        <li><a href="#" class="footer-link">API Access</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Media Section (Centered) -->
+        <div class="footer-social-section-center">
+            <p class="social-heading">Follow Us</p>
+            <div class="social-links-center">
+                <a href="https://www.instagram.com/gouravxchoudhary09/" target="_blank" rel="noopener" class="social-link" title="Instagram">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.405a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"/>
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/gouravxchoudhary/" target="_blank" rel="noopener" class="social-link" title="Facebook">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                <a href="https://x.com/Its_Gourav_09" target="_blank" rel="noopener" class="social-link" title="X (Twitter)">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/gouravxchoudhary/" target="_blank" rel="noopener" class="social-link" title="LinkedIn">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+                <a href="https://www.youtube.com/@Choudharygamerz_32" target="_blank" rel="noopener" class="social-link" title="YouTube">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p class="copyright">© 2024 GPU Database. All rights reserved. A Technology Resource by Gourav Choudhary</p>
+                <div class="footer-legal-links">
+                    <a href="/privacy-policy">Privacy Policy</a>
+                    <a href="/terms-of-service">Terms of Service</a>
+                    <a href="/cookie-policy">Cookie Policy</a>
+                    <a href="/dmca">DMCA</a>
+                    <a href="/sitemap.xml">Sitemap</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-        let isMenuOpen = false;
+        // ===============================================
+        // NAVIGATION JAVASCRIPT
+        // ===============================================
         
-        mobileMenuBtn.addEventListener('click', () => {
-            isMenuOpen = !isMenuOpen;
-            mobileMenuBtn.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            document.body.style.overflow = isMenuOpen ? 'hidden' : '';
-        });
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+        }
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (isMenuOpen && !navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                isMenuOpen = false;
-                mobileMenuBtn.classList.remove('active');
-                navLinks.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-
-        // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
+        // Navbar scroll effects
+        let lastScroll = 0;
         window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 50) {
+            const navbar = document.getElementById('navbar');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
+            
+            lastScroll = currentScroll;
         });
 
-        // Smooth Scrolling for Internal Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="/#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const headerOffset = 100;
-                    const elementPosition = target.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
+                // Only prevent default and scroll if we're on the home page
+                if (window.location.pathname === '/') {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(2);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        navMenu?.classList.remove('active');
+                        menuToggle?.classList.remove('active');
+                    }
                 }
+                // If not on home page, let the link navigate normally
             });
+        });
+
+        // ===============================================
+        // NEWSLETTER FORM HANDLER
+        // ===============================================
+        
+        const newsletterForm = document.getElementById('newsletterForm');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                const email = document.getElementById('newsletterEmail').value;
+                const btn = event.target.querySelector('.newsletter-btn');
+                
+                // Show success message
+                btn.textContent = 'Subscribed! ✓';
+                btn.style.background = 'linear-gradient(135deg, #00ff88, #00ff88)';
+                
+                // Reset form after delay
+                setTimeout(() => {
+                    event.target.reset();
+                    btn.textContent = 'Subscribe →';
+                    btn.style.background = '';
+                }, 3000);
+                
+                // Here you would normally send the email to your backend
+                console.log('Newsletter subscription:', email);
+            });
+        }
+
+        // ===============================================
+        // SET ACTIVE NAV LINK (based on current page)
+        // ===============================================
+        
+        const currentPath = window.location.pathname;
+        document.querySelectorAll('.nav-link').forEach(link => {
+            // Remove active class from all links
+            link.classList.remove('active');
+            
+            // Add active class to current page link
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('active');
+            }
         });
     </script>
 </body>

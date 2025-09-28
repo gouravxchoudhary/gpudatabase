@@ -8,6 +8,11 @@
     <meta name="keywords" content="Gourav Choudhary, GPU Database founder, RTX expert, graphics card specialist, PC building expert">
     <title>About Gourav Choudhary - GPU Database Founder | RTX Expert & PC Building Specialist</title>
     
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+    
     <style>
         * {
             margin: 0;
@@ -16,89 +21,95 @@
         }
 
         :root {
-            --primary-green: #00ff88;
-            --primary-blue: #00ccff;
-            --accent-purple: #8844ff;
-            --accent-orange: #ff8800;
-            --bg-primary: #0d0d0d;
-            --bg-secondary: #141414;
-            --bg-card: rgba(255, 255, 255, 0.04);
+            /* Professional Color Palette */
+            --primary-neon: #00ff88;
+            --secondary-cyan: #00ccff;
+            --accent-purple: #7c3aed;
+            --accent-orange: #ff6b35;
+            --accent-pink: #ff0080;
+            
+            /* Background Colors */
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-tertiary: #1a1a1a;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --bg-hover: rgba(255, 255, 255, 0.05);
+            
+            /* Text Colors */
             --text-primary: #ffffff;
-            --text-secondary: #b8b8b8;
-            --text-muted: #808080;
-            --border-color: rgba(255, 255, 255, 0.1);
-            --navbar-height: 70px;
+            --text-secondary: #a0a0a0;
+            --text-muted: #707070;
+            
+            /* Borders & Effects */
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(0, 255, 136, 0.3);
+            --glow-neon: 0 0 30px rgba(0, 255, 136, 0.4);
+            --glow-cyan: 0 0 30px rgba(0, 204, 255, 0.4);
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.5);
+            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.6);
+            --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.7);
+            --shadow-glow: 0 0 60px rgba(0, 255, 136, 0.2);
+            
+            /* Layout */
+            --border-radius: 12px;
+            --navbar-height: 80px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
-            overflow-x: hidden;
             line-height: 1.6;
         }
 
-        /* Animated Background */
-        .animated-bg {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            background: linear-gradient(125deg, #0d0d0d 0%, #0f0f1a 50%, #0d0d0d 100%);
-        }
-
-        .gradient-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.2;
-        }
-
-        .orb1 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, var(--primary-green) 0%, transparent 70%);
-            top: -200px;
-            right: -200px;
-            animation: float 15s infinite ease-in-out;
-        }
-
-        .orb2 {
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, var(--primary-blue) 0%, transparent 70%);
-            bottom: -175px;
-            left: -175px;
-            animation: float 20s infinite ease-in-out reverse;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(30px, -30px) scale(1.1); }
-        }
-
-        /* Navigation */
+        /* ===============================================
+           NEW NAVIGATION BAR STYLES
+           =============================================== */
         .navbar {
-            background: rgba(13, 13, 13, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 0 1.5rem;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
             height: var(--navbar-height);
             display: flex;
             align-items: center;
-            transition: all 0.3s ease;
+        }
+
+        .navbar::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                var(--primary-neon) 20%,
+                var(--secondary-cyan) 50%,
+                var(--primary-neon) 80%,
+                transparent
+            );
+            animation: navGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes navGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
 
         .navbar.scrolled {
-            background: rgba(13, 13, 13, 0.98);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            background: rgba(10, 10, 10, 0.95);
+            box-shadow: var(--shadow-lg);
         }
 
         .nav-container {
@@ -108,91 +119,162 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 2rem;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
-        }
-
-        .nav-links {
+        /* Logo with GPU Animation */
+        .logo-wrapper {
             display: flex;
-            gap: 1.5rem;
-            list-style: none;
             align-items: center;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
+            gap: 1rem;
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            padding: 0.5rem;
             position: relative;
         }
 
-        .nav-links a::after {
+        .gpu-logo-3d {
+            width: 45px;
+            height: 45px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: gpuRotate 8s infinite linear;
+        }
+
+        @keyframes gpuRotate {
+            0% { transform: rotateY(0deg) rotateX(0deg); }
+            100% { transform: rotateY(360deg) rotateX(360deg); }
+        }
+
+        .gpu-chip {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-neon), var(--secondary-cyan));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            color: var(--bg-primary);
+            box-shadow: var(--glow-neon);
+        }
+
+        .gpu-chip::before {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
+            inset: -2px;
+            background: linear-gradient(45deg, var(--primary-neon), var(--secondary-cyan), var(--accent-purple));
+            border-radius: 8px;
+            z-index: -1;
+            opacity: 0.5;
+            filter: blur(10px);
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-neon), var(--secondary-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Navigation Menu */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 50px;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
             width: 0;
-            height: 2px;
-            background: var(--primary-green);
-            transition: width 0.3s ease;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(0, 255, 136, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
         }
 
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
+        .nav-link:hover::before {
+            width: 100px;
+            height: 100px;
         }
 
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--text-primary);
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-neon);
+            background: rgba(0, 255, 136, 0.1);
         }
 
-        /* Mobile Menu Button */
-        .mobile-menu-btn {
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary-neon), var(--secondary-cyan));
+            color: var(--bg-primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 255, 136, 0.4);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
             display: none;
             flex-direction: column;
-            gap: 4px;
+            gap: 5px;
             background: none;
             border: none;
             cursor: pointer;
             padding: 0.5rem;
+            border-radius: 8px;
+            transition: var(--transition);
         }
 
-        .mobile-menu-btn span {
+        .menu-toggle span {
             width: 25px;
-            height: 3px;
-            background: var(--text-primary);
-            border-radius: 2px;
-            transition: all 0.3s ease;
+            height: 2px;
+            background: var(--primary-neon);
+            transition: var(--transition);
+            display: block;
         }
 
-        .mobile-menu-btn.active span:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
         }
 
-        .mobile-menu-btn.active span:nth-child(2) {
+        .menu-toggle.active span:nth-child(2) {
             opacity: 0;
         }
 
-        .mobile-menu-btn.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
         }
 
         /* Container */
@@ -210,7 +292,7 @@
             margin-bottom: 2rem;
             position: relative;
             overflow: hidden;
-            min-height: 400px;
+            min-height: 500px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -231,7 +313,7 @@
             50% { transform: scale(1.1); opacity: 0.8; }
         }
 
-        /* GPU Circuit Animation Background */
+        /* GPU Circuit Board Animation */
         .gpu-circuit-bg {
             position: absolute;
             width: 100%;
@@ -244,7 +326,7 @@
 
         .circuit-line {
             position: absolute;
-            background: linear-gradient(90deg, transparent, var(--primary-green), transparent);
+            background: linear-gradient(90deg, transparent, var(--primary-neon), transparent);
             height: 1px;
             animation: circuitFlow 3s linear infinite;
         }
@@ -324,6 +406,12 @@
             animation-delay: 9s;
         }
 
+        .gpu-icon-float:nth-child(5) {
+            left: 50%;
+            top: 15%;
+            animation-delay: 12s;
+        }
+
         @keyframes floatIcon {
             0%, 100% {
                 transform: translate(0, 0) rotate(0deg);
@@ -342,40 +430,146 @@
         }
 
         /* GPU Chip Animation */
-        .gpu-chip {
+        .gpu-chip-animation {
             position: absolute;
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            opacity: 0.1;
+            opacity: 0.15;
             z-index: 0;
         }
 
         .chip-core {
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            background: linear-gradient(135deg, var(--primary-neon), var(--secondary-cyan));
             position: relative;
-            animation: chipPulse 4s ease-in-out infinite;
+            animation: chipRotate 8s linear infinite;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chip-core::before {
+            content: 'GPU';
+            font-weight: bold;
+            font-size: 20px;
+            color: var(--bg-primary);
+        }
+
+        .chip-core::after {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            background: linear-gradient(135deg, var(--primary-neon), var(--secondary-cyan));
+            border-radius: 10px;
+            opacity: 0.5;
+            filter: blur(15px);
+            animation: chipPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes chipRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         @keyframes chipPulse {
             0%, 100% {
-                transform: scale(1) rotate(0deg);
-                opacity: 0.1;
+                transform: scale(1);
+                opacity: 0.3;
             }
             50% {
-                transform: scale(1.2) rotate(45deg);
-                opacity: 0.2;
+                transform: scale(1.2);
+                opacity: 0.6;
+            }
+        }
+
+        /* GPU Data Stream Animation */
+        .gpu-data-streams {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .data-stream {
+            position: absolute;
+            width: 2px;
+            height: 30px;
+            background: linear-gradient(to bottom, transparent, var(--secondary-cyan), transparent);
+            opacity: 0;
+            animation: dataFlow 4s infinite linear;
+        }
+
+        .data-stream:nth-child(1) { left: 15%; animation-delay: 0s; }
+        .data-stream:nth-child(2) { left: 35%; animation-delay: 0.5s; }
+        .data-stream:nth-child(3) { left: 55%; animation-delay: 1s; }
+        .data-stream:nth-child(4) { left: 75%; animation-delay: 1.5s; }
+        .data-stream:nth-child(5) { left: 85%; animation-delay: 2s; }
+
+        @keyframes dataFlow {
+            0% {
+                top: -30px;
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
+        }
+
+        /* GPU Performance Bars Animation */
+        .gpu-performance-bars {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+            opacity: 0.1;
+        }
+
+        .perf-bar {
+            width: 4px;
+            background: linear-gradient(to top, var(--primary-neon), var(--secondary-cyan));
+            border-radius: 2px;
+            animation: perfBarPulse 2s ease-in-out infinite;
+        }
+
+        .perf-bar:nth-child(1) { height: 20px; animation-delay: 0s; }
+        .perf-bar:nth-child(2) { height: 30px; animation-delay: 0.2s; }
+        .perf-bar:nth-child(3) { height: 25px; animation-delay: 0.4s; }
+        .perf-bar:nth-child(4) { height: 35px; animation-delay: 0.6s; }
+        .perf-bar:nth-child(5) { height: 28px; animation-delay: 0.8s; }
+        .perf-bar:nth-child(6) { height: 32px; animation-delay: 1s; }
+        .perf-bar:nth-child(7) { height: 24px; animation-delay: 1.2s; }
+
+        @keyframes perfBarPulse {
+            0%, 100% {
+                opacity: 0.1;
+                transform: scaleY(1);
+            }
+            50% {
+                opacity: 0.3;
+                transform: scaleY(1.3);
             }
         }
 
         .hero h1 {
             font-size: clamp(2.5rem, 7vw, 4rem);
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--text-primary), var(--primary-green));
+            background: linear-gradient(135deg, var(--text-primary), var(--primary-neon));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -452,7 +646,7 @@
             height: clamp(200px, 30vw, 280px);
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--primary-green);
+            border: 4px solid var(--primary-neon);
             box-shadow: 0 0 40px rgba(0, 255, 136, 0.3);
             transition: all 0.3s ease;
             position: relative;
@@ -464,7 +658,7 @@
         }
 
         .profile-info h2 {
-            color: var(--primary-green);
+            color: var(--primary-neon);
             font-size: clamp(1.8rem, 5vw, 2.5rem);
             margin-bottom: 1rem;
             font-weight: 700;
@@ -503,7 +697,7 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--primary-green), var(--primary-blue));
+            background: linear-gradient(90deg, var(--primary-neon), var(--secondary-cyan));
             transform: scaleX(0);
             transition: transform 0.3s ease;
         }
@@ -521,7 +715,7 @@
             font-size: 2.5rem;
             font-weight: bold;
             margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            background: linear-gradient(135deg, var(--primary-neon), var(--secondary-cyan));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -553,45 +747,10 @@
             overflow: hidden;
         }
 
-        .expertise-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 204, 255, 0.1));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1;
-        }
-
-        .expertise-card::after {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, var(--primary-green), var(--primary-blue), var(--accent-purple));
-            border-radius: 20px;
-            opacity: 0;
-            z-index: -1;
-            transition: opacity 0.3s ease;
-        }
-
         .expertise-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border-color: var(--primary-green);
-        }
-
-        .expertise-card:hover::before {
-            opacity: 1;
-        }
-
-        .expertise-card:hover::after {
-            opacity: 1;
+            border-color: var(--primary-neon);
         }
 
         .expertise-icon {
@@ -600,16 +759,10 @@
             display: block;
             position: relative;
             z-index: 2;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
         }
 
         .expertise-title {
-            color: var(--primary-green);
+            color: var(--primary-neon);
             font-size: 1.3rem;
             margin-bottom: 1rem;
             font-weight: 700;
@@ -622,15 +775,6 @@
             line-height: 1.6;
             position: relative;
             z-index: 2;
-        }
-
-        .expertise-card:hover .expertise-title {
-            color: var(--primary-green);
-            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
-        }
-
-        .expertise-card:hover .expertise-description {
-            color: var(--text-primary);
         }
 
         /* Contact Info */
@@ -654,14 +798,14 @@
 
         .contact-item:hover {
             transform: translateX(10px);
-            border-color: var(--primary-green);
+            border-color: var(--primary-neon);
             box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
         }
 
         .contact-icon {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            background: linear-gradient(135deg, var(--primary-neon), var(--secondary-cyan));
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -675,7 +819,7 @@
         }
 
         .contact-text strong {
-            color: var(--primary-blue);
+            color: var(--secondary-cyan);
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -689,14 +833,14 @@
         }
 
         .contact-link {
-            color: var(--primary-green);
+            color: var(--primary-neon);
             text-decoration: none;
             transition: color 0.3s ease;
             word-break: break-word;
         }
 
         .contact-link:hover {
-            color: var(--primary-blue);
+            color: var(--secondary-cyan);
         }
 
         /* Section Titles */
@@ -704,7 +848,7 @@
             font-size: clamp(2rem, 5vw, 2.5rem);
             margin: 4rem 0 2rem;
             text-align: center;
-            background: linear-gradient(135deg, var(--text-primary), var(--primary-green));
+            background: linear-gradient(135deg, var(--text-primary), var(--primary-neon));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -720,7 +864,7 @@
             transform: translateX(-50%);
             width: 100px;
             height: 3px;
-            background: linear-gradient(90deg, var(--primary-green), var(--primary-blue));
+            background: linear-gradient(90deg, var(--primary-neon), var(--secondary-cyan));
             border-radius: 2px;
         }
 
@@ -736,24 +880,8 @@
             overflow: hidden;
         }
 
-        .mission-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(0, 204, 255, 0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
         .mission-section h2 {
-            color: var(--primary-blue);
+            color: var(--secondary-cyan);
             margin-bottom: 1.5rem;
             font-size: clamp(1.5rem, 4vw, 2rem);
             position: relative;
@@ -767,115 +895,406 @@
             position: relative;
         }
 
-        /* Footer */
+        /* ===============================================
+           NEW FOOTER STYLES
+           =============================================== */
         .footer {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 3rem 1rem 2rem;
+            background: var(--bg-primary);
             border-top: 1px solid var(--border-color);
+            margin-top: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                var(--primary-neon) 20%,
+                var(--secondary-cyan) 50%,
+                var(--accent-purple) 80%,
+                transparent
+            );
+            animation: footerGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes footerGlow {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), rgba(0, 204, 255, 0.05));
+            padding: 4rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .newsletter-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .newsletter-content h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary-neon), var(--secondary-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            min-width: 450px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            color: var(--text-primary);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--primary-neon);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+        }
+
+        .newsletter-btn {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary-neon), var(--secondary-cyan));
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .newsletter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+        }
+
+        /* Footer Main */
+        .footer-main {
+            padding: 4rem 2rem 3rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-neon);
+        }
+
+        /* Footer GPU Cube Animation */
+        .footer-gpu-cube {
+            width: 40px;
+            height: 40px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: footerCubeRotate 10s infinite linear;
+        }
+
+        @keyframes footerCubeRotate {
+            0% { transform: rotateX(0) rotateY(0); }
+            100% { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 204, 255, 0.2));
+            border: 1px solid var(--primary-neon);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cube-face:nth-child(1) { transform: translateZ(20px); }
+        .cube-face:nth-child(2) { transform: rotateY(90deg) translateZ(20px); }
+        .cube-face:nth-child(3) { transform: rotateY(180deg) translateZ(20px); }
+        .cube-face:nth-child(4) { transform: rotateY(-90deg) translateZ(20px); }
+        .cube-face:nth-child(5) { transform: rotateX(90deg) translateZ(20px); }
+        .cube-face:nth-child(6) { transform: rotateX(-90deg) translateZ(20px); }
+
+        .footer-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .footer-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .stat {
             text-align: center;
-            margin-top: 4rem;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-neon);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .footer-column h4 {
+            color: var(--text-primary);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
         }
 
         .footer-links {
+            list-style: none;
             display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 0.75rem;
         }
 
-        .footer-links a {
+        .footer-link {
             color: var(--text-secondary);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: var(--transition);
+            position: relative;
+            padding-left: 0;
         }
 
-        .footer-links a:hover {
-            color: var(--primary-green);
+        .footer-link:hover {
+            color: var(--primary-neon);
+            padding-left: 10px;
+        }
+
+        /* Social Media Links Styles */
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-link svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--primary-neon), var(--secondary-cyan));
+            color: var(--bg-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 255, 136, 0.3);
+            border-color: transparent;
+        }
+        
+        .social-link:hover svg {
+            transform: scale(1.1);
+        }
+
+        /* Centered Social Media Section */
+        .footer-social-section-center {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .social-heading {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+        }
+
+        .social-heading::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-neon), var(--secondary-cyan));
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .social-heading::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 204, 255, 0.1));
+            border-radius: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .social-heading:hover {
+            color: var(--primary-neon);
+            transform: translateY(-2px);
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        }
+
+        .social-heading:hover::before {
+            width: 100%;
+        }
+
+        .social-heading:hover::after {
+            opacity: 1;
+        }
+
+        .social-links-center {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Footer Bottom */
+        .footer-bottom {
+            background: var(--bg-secondary);
+            padding: 1.5rem 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-bottom-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-legal-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-legal-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .footer-legal-links a:hover {
+            color: var(--primary-neon);
         }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .navbar {
-                padding: 0 1rem;
+            .menu-toggle {
+                display: flex;
             }
-
-            .nav-links {
+            
+            .nav-menu {
                 display: none;
-                position: fixed;
-                top: var(--navbar-height);
+                position: absolute;
+                top: 100%;
                 left: 0;
                 right: 0;
-                background: rgba(13, 13, 13, 0.98);
-                backdrop-filter: blur(10px);
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(20px);
                 flex-direction: column;
-                padding: 1.5rem;
-                gap: 0.5rem;
+                padding: 2rem;
+                gap: 1rem;
                 border-top: 1px solid var(--border-color);
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-                max-height: calc(100vh - var(--navbar-height));
-                overflow-y: auto;
             }
-
-            .nav-links.active {
+            
+            .nav-menu.active {
                 display: flex;
             }
-
-            .nav-links a {
-                width: 100%;
-                padding: 1rem;
-                border-radius: 12px;
+            
+            .newsletter-container {
+                flex-direction: column;
+                text-align: center;
             }
-
-            .nav-links a:hover {
-                background: rgba(255, 255, 255, 0.05);
+            
+            .newsletter-form {
+                min-width: 100%;
+                flex-direction: column;
             }
-
-            .mobile-menu-btn {
-                display: flex;
-            }
-
-            .container {
-                padding: calc(var(--navbar-height) + 1.5rem) 1rem 2rem;
-            }
-
-            .about-content {
-                padding: 2rem 1.5rem;
-            }
-
-            .expertise-grid {
+            
+            .footer-container {
                 grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-bottom-content {
+                flex-direction: column;
+                gap: 1rem;
             }
 
             .contact-info {
                 grid-template-columns: 1fr;
             }
 
-            .contact-link {
-                font-size: 0.9rem;
-                word-wrap: break-word;
-                overflow-wrap: break-word;
+            .expertise-grid {
+                grid-template-columns: 1fr;
             }
 
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1rem;
-            }
-
-            .stat-card {
-                padding: 1.5rem;
-            }
-
-            .stat-number {
-                font-size: 2rem;
-            }
-
-            .expertise-card {
-                padding: 1.5rem;
-            }
-
-            .mission-section {
-                padding: 2rem 1.5rem;
             }
         }
 
@@ -886,16 +1305,6 @@
 
             .hero {
                 min-height: 350px;
-            }
-
-            /* Reduce GPU animations on small mobile */
-            .gpu-floating-icons,
-            .gpu-chip {
-                display: none;
-            }
-
-            .gpu-circuit-bg {
-                opacity: 0.08;
             }
 
             .profile-photo {
@@ -914,17 +1323,6 @@
             .expertise-title {
                 font-size: 1.1rem;
             }
-
-            .contact-item {
-                padding: 1rem;
-                gap: 0.8rem;
-            }
-
-            .contact-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
         }
 
         /* Desktop Styles */
@@ -938,49 +1336,30 @@
             .profile-info {
                 text-align: left;
             }
-
-            .mobile-menu-btn {
-                display: none;
-            }
-
-            .nav-links {
-                display: flex !important;
-            }
-        }
-
-        /* Animations for scroll */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
     </style>
 </head>
 
 <body>
-    <!-- Animated Background -->
-    <div class="animated-bg">
-        <div class="gradient-orb orb1"></div>
-        <div class="gradient-orb orb2"></div>
-    </div>
-
-    <!-- Navigation -->
+    <!-- NEW NAVIGATION BAR -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="/" class="logo">GPU Database</a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="/#guides" class="nav-link">Guides</a></li>
-                <li><a href="/#news" class="nav-link">News</a></li>
-                <li><a href="/#comparison" class="nav-link">Compare</a></li>
-                <li><a href="/blog" class="nav-link">Blog</a></li>
+            <a href="/" class="logo-wrapper">
+                <div class="gpu-logo-3d">
+                    <div class="gpu-chip">GPU</div>
+                </div>
+                <span class="logo-text">GPU Database</span>
+            </a>
+            
+            <!-- Keep the same navigation links from the about page -->
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/blog" class="nav-link">Blogs</a></li>
                 <li><a href="/contact" class="nav-link">Contact</a></li>
+                <li><a href="/privacy" class="nav-link">Privacy</a></li>
+                <li><a href="/terms" class="nav-link">Terms</a></li>
             </ul>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+            
+            <button class="menu-toggle" id="menuToggle">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -991,7 +1370,7 @@
     <main>
         <div class="container">
             <section class="hero">
-                <!-- GPU Circuit Animation Background -->
+                <!-- GPU Circuit Board Animation -->
                 <div class="gpu-circuit-bg">
                     <div class="circuit-line"></div>
                     <div class="circuit-line"></div>
@@ -1005,11 +1384,32 @@
                     <span class="gpu-icon-float">💻</span>
                     <span class="gpu-icon-float">🎮</span>
                     <span class="gpu-icon-float">🔧</span>
+                    <span class="gpu-icon-float">🚀</span>
                 </div>
 
                 <!-- GPU Chip Animation -->
-                <div class="gpu-chip">
+                <div class="gpu-chip-animation">
                     <div class="chip-core"></div>
+                </div>
+
+                <!-- GPU Data Streams -->
+                <div class="gpu-data-streams">
+                    <div class="data-stream"></div>
+                    <div class="data-stream"></div>
+                    <div class="data-stream"></div>
+                    <div class="data-stream"></div>
+                    <div class="data-stream"></div>
+                </div>
+
+                <!-- GPU Performance Bars -->
+                <div class="gpu-performance-bars">
+                    <div class="perf-bar"></div>
+                    <div class="perf-bar"></div>
+                    <div class="perf-bar"></div>
+                    <div class="perf-bar"></div>
+                    <div class="perf-bar"></div>
+                    <div class="perf-bar"></div>
+                    <div class="perf-bar"></div>
                 </div>
 
                 <h1>About Gourav Choudhary</h1>
@@ -1029,7 +1429,7 @@
                     </div>
                 </div>
 
-                <div class="stats-grid animate-on-scroll">
+                <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-number">30+</div>
                         <div class="stat-label">GPUs Tested</div>
@@ -1048,8 +1448,8 @@
                     </div>
                 </div>
 
-                <h2 class="section-title animate-on-scroll">Technical Expertise</h2>
-                <div class="expertise-grid animate-on-scroll">
+                <h2 class="section-title">Technical Expertise</h2>
+                <div class="expertise-grid">
                     <div class="expertise-card">
                         <span class="expertise-icon">🎮</span>
                         <h3 class="expertise-title">Gaming Performance</h3>
@@ -1087,14 +1487,14 @@
                     </div>
                 </div>
 
-                <div class="mission-section animate-on-scroll">
+                <div class="mission-section">
                     <h2>My Mission</h2>
                     <p>To democratize access to accurate, comprehensive GPU information and make it easier for everyone to build their perfect PC. I believe that informed decisions lead to better experiences, whether you're a casual gamer, content creator, or tech enthusiast.</p>
                     <p>Through GPU Database, I aim to bridge the gap between complex technical specifications and practical real-world performance, helping users understand not just what a GPU can do, but how it will perform in their specific use case.</p>
                 </div>
 
-                <h2 class="section-title animate-on-scroll">Get In Touch</h2>
-                <div class="contact-info animate-on-scroll">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-info">
                     <div class="contact-item">
                         <div class="contact-icon">📱</div>
                         <div class="contact-text">
@@ -1125,7 +1525,7 @@
                         <div class="contact-text">
                             <strong>Instagram</strong>
                             <div class="contact-value">
-                                <a href="https://www.instagram.com/itz_gourav_choudhary09" class="contact-link" target="_blank" rel="noopener">@itz_gourav_choudhary09</a>
+                                <a href="https://www.instagram.com/gouravxchoudhary09" class="contact-link" target="_blank" rel="noopener">@gouravxchoudhary09</a>
                             </div>
                         </div>
                     </div>
@@ -1152,67 +1552,195 @@
         </div>
     </main>
 
+    <!-- NEW FOOTER -->
     <footer class="footer">
-        <div class="footer-links">
-            <a href="/">Home</a>
-            <a href="/about">About</a>
-            <a href="/contact">Contact</a>
-            <a href="/privacy-policy">Privacy</a>
-            <a href="/terms-of-service">Terms</a>
+        <!-- Newsletter Section -->
+        <div class="newsletter-section">
+            <div class="newsletter-container">
+                <div class="newsletter-content">
+                    <h3>Stay Ahead of GPU Technology</h3>
+                    <p>Get exclusive RTX 60 series updates, benchmarks, and deals delivered weekly</p>
+                </div>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" 
+                           class="newsletter-input" 
+                           placeholder="Enter your email address" 
+                           id="newsletterEmail" 
+                           required>
+                    <button type="submit" class="newsletter-btn">
+                        Subscribe →
+                    </button>
+                </form>
+            </div>
         </div>
-        <p>© 2025 GPU Database. All rights reserved.</p>
+
+        <!-- Footer Main -->
+        <div class="footer-main">
+            <div class="footer-container">
+                <!-- Brand Column -->
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="footer-gpu-cube">
+                            <div class="cube-face">G</div>
+                            <div class="cube-face">P</div>
+                            <div class="cube-face">U</div>
+                            <div class="cube-face">D</div>
+                            <div class="cube-face">B</div>
+                            <div class="cube-face">✓</div>
+                        </div>
+                        <span>GPU Database</span>
+                    </div>
+                    <p class="footer-description">
+                        The ultimate resource for graphics card comparisons, benchmarks, and analysis. Helping gamers, miners, and AI enthusiasts make informed GPU decisions.
+                    </p>
+                    <div class="footer-stats">
+                        <div class="stat">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">GPUs Tracked</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Price Updates</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">100K+</div>
+                            <div class="stat-label">Users</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-column">
+                    <h4>Graphics Cards</h4>
+                    <ul class="footer-links">
+                        <li><a href="/#gpus" class="footer-link">RTX 50 Series</a></li>
+                        <li><a href="/#gpus" class="footer-link">RTX 40 Series</a></li>
+                        <li><a href="/#gpus" class="footer-link">RTX 30 Series</a></li>
+                        <li><a href="/#comparison" class="footer-link">GPU Comparison</a></li>
+                        <li><a href="/#guides" class="footer-link">Buying Guides</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="/#gaming-performance-analysis" class="footer-link">Gaming Performance</a></li>
+                        <li><a href="/#cryptocurrency-mining" class="footer-link">Mining Calculator</a></li>
+                        <li><a href="/#ai-machine-learning" class="footer-link">AI Performance</a></li>
+                        <li><a href="/#professional-workloads" class="footer-link">Professional Use</a></li>
+                        <li><a href="/blog" class="footer-link">Blog & News</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="/about" class="footer-link">About Us</a></li>
+                        <li><a href="/contact" class="footer-link">Contact</a></li>
+                        <li><a href="/advertise" class="footer-link">Advertise</a></li>
+                        <li><a href="#" class="footer-link">API Access</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Media Section (Centered) -->
+        <div class="footer-social-section-center">
+            <p class="social-heading">Follow Us</p>
+            <div class="social-links-center">
+                <a href="https://www.instagram.com/gouravxchoudhary09/" target="_blank" rel="noopener" class="social-link" title="Instagram">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.405a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"/>
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/gouravxchoudhary/" target="_blank" rel="noopener" class="social-link" title="Facebook">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                <a href="https://x.com/Its_Gourav_09" target="_blank" rel="noopener" class="social-link" title="X (Twitter)">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/gouravxchoudhary/" target="_blank" rel="noopener" class="social-link" title="LinkedIn">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+                <a href="https://www.youtube.com/@Choudharygamerz_32" target="_blank" rel="noopener" class="social-link" title="YouTube">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p class="copyright">© 2024 GPU Database. All rights reserved. A Technology Resource by Gourav Choudhary</p>
+                <div class="footer-legal-links">
+                    <a href="/privacy-policy">Privacy Policy</a>
+                    <a href="/terms-of-service">Terms of Service</a>
+                    <a href="/cookie-policy">Cookie Policy</a>
+                    <a href="/dmca">DMCA</a>
+                    <a href="/sitemap.xml">Sitemap</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-        let isMenuOpen = false;
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
         
-        mobileMenuBtn.addEventListener('click', () => {
-            isMenuOpen = !isMenuOpen;
-            mobileMenuBtn.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            document.body.style.overflow = isMenuOpen ? 'hidden' : '';
-        });
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+        }
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (isMenuOpen && !navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                isMenuOpen = false;
-                mobileMenuBtn.classList.remove('active');
-                navLinks.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-
-        // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
+        // Navbar scroll effects
+        let lastScroll = 0;
         window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 50) {
+            const navbar = document.getElementById('navbar');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
+            
+            lastScroll = currentScroll;
         });
 
-        // Scroll Animation
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+        // Newsletter form handler
+        const newsletterForm = document.getElementById('newsletterForm');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                const email = document.getElementById('newsletterEmail').value;
+                const btn = event.target.querySelector('.newsletter-btn');
+                
+                // Show success message
+                btn.textContent = 'Subscribed! ✓';
+                btn.style.background = 'linear-gradient(135deg, #00ff88, #00ff88)';
+                
+                // Reset form after delay
+                setTimeout(() => {
+                    event.target.reset();
+                    btn.textContent = 'Subscribe →';
+                    btn.style.background = '';
+                }, 3000);
+                
+                console.log('Newsletter subscription:', email);
             });
-        }, observerOptions);
-
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
+        }
 
         // Stats Counter Animation
         const animateStats = () => {
@@ -1247,6 +1775,13 @@
 
         if (statsSection) {
             statsObserver.observe(statsSection);
+        }
+
+        // Fix Instagram link in contact
+        const instagramContact = document.querySelector('[href="https://www.instagram.com/itz_gourav_choudhary09"]');
+        if (instagramContact) {
+            instagramContact.href = "https://www.instagram.com/gouravxchoudhary09";
+            instagramContact.textContent = "@gouravxchoudhary09";
         }
     </script>
 </body>
