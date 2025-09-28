@@ -1888,7 +1888,7 @@
                         with complex instruction sets, GPUs are designed for parallel processing, featuring thousands of
                         smaller cores that can handle multiple tasks simultaneously.</p>
 
-                    <h3 id="gpu-performance-metrics">The Evolution of GPU Architecture</h3>
+                    <h3>The Evolution of GPU Architecture</h3>
                     <p>The journey from basic graphics accelerators to today's sophisticated GPUs spans several decades.
                         Early graphics cards merely handled basic 2D operations and simple 3D rendering. Modern GPUs,
                         particularly NVIDIA's RTX series, incorporate revolutionary technologies like real-time ray
@@ -1901,7 +1901,7 @@
                         and Tensor cores for AI workloads. Each generation brings improvements in performance per watt,
                         manufacturing process nodes, and specialized computing capabilities.</p>
 
-                    <h4 id="nvidia-rtx-evolution">Understanding GPU Components</h4>
+                    <h4>Understanding GPU Components</h4>
                     <p>Modern GPUs consist of several key components working in harmony. The graphics processor itself
                         houses thousands of shader cores organized into streaming multiprocessors. These cores handle
                         vertex processing, pixel shading, and compute operations. Memory controllers manage data flow
@@ -1922,7 +1922,7 @@
                         </ul>
                     </div>
 
-                    <h3 id="ray-tracing-dlss">Manufacturing Process and Performance Impact</h3>
+                    <h3>Manufacturing Process and Performance Impact</h3>
                     <p>The manufacturing process node significantly impacts GPU performance, power efficiency, and
                         transistor density. NVIDIA's latest GPUs utilize advanced nodes like TSMC's 4nm process,
                         allowing for billions of transistors on a single chip. Smaller process nodes enable higher clock
@@ -1935,6 +1935,887 @@
                         over the RTX 30 series while often consuming similar or less power.</p>
                 </article>
 
+                <article class="content-article" id="gpu-performance-metrics">
+                    <h2>Understanding GPU Performance Metrics</h2>
+                    <p>To effectively evaluate and compare graphics cards, it's essential to understand the key performance metrics that determine GPU capabilities. These metrics encompass core specifications, memory configurations, and real-world performance indicators that collectively define a GPU's potential across different workloads.</p>
+
+                    <h3>Core Performance Metrics</h3>
+                    <ul>
+                        <li><strong>CUDA Core Count:</strong> The number of parallel processing units for graphics and compute workloads</li>
+                        <li><strong>Base Clock:</strong> The guaranteed minimum operating frequency under load</li>
+                        <li><strong>Boost Clock:</strong> The maximum frequency achievable with adequate power and thermal headroom</li>
+                        <li><strong>RT Cores:</strong> Specialized cores for real-time ray tracing calculations</li>
+                        <li><strong>Tensor Cores:</strong> AI acceleration cores for deep learning and DLSS</li>
+                    </ul>
+
+                    <h3>Memory Specifications</h3>
+                    <ul>
+                        <li><strong>Memory Size:</strong> Total VRAM capacity for storing textures and data</li>
+                        <li><strong>Memory Type:</strong> GDDR6, GDDR6X, or other memory technology</li>
+                        <li><strong>Memory Interface:</strong> Bus width determining maximum theoretical bandwidth</li>
+                        <li><strong>Memory Speed:</strong> Clock rate of the graphics memory</li>
+                        <li><strong>Memory Bandwidth:</strong> Total data transfer capacity in GB/s</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <h4>Key Performance Indicators</h4>
+                        <ul>
+                            <li><strong>FP32 Performance:</strong> Single-precision floating point operations per second</li>
+                            <li><strong>Texture Fill Rate:</strong> Speed of texture mapping operations</li>
+                            <li><strong>Pixel Fill Rate:</strong> Rate at which pixels can be rendered</li>
+                            <li><strong>Ray Tracing Performance:</strong> Measured in ray-triangle intersections per second</li>
+                            <li><strong>Tensor Performance:</strong> AI operations per second for deep learning tasks</li>
+                        </ul>
+                    </div>
+
+                    <h3>Real-World Performance Metrics</h3>
+                    <p>While theoretical specifications provide a baseline for comparison, real-world performance metrics offer more practical insights into GPU capabilities:</p>
+
+                    <ul>
+                        <li><strong>Frame Rates (FPS):</strong> Average, 1% low, and 0.1% low FPS in games</li>
+                        <li><strong>Frame Times:</strong> Consistency and smoothness of frame delivery</li>
+                        <li><strong>Power Efficiency:</strong> Performance per watt across different workloads</li>
+                        <li><strong>Temperature:</strong> Operating temperatures under various loads</li>
+                        <li><strong>Noise Levels:</strong> Cooling system acoustics under load</li>
+                    </ul>
+                </article>
+
+                <article class="content-article" id="nvidia-rtx-evolution">
+                    <h2>NVIDIA RTX Series Evolution and Performance</h2>
+                    <p>The NVIDIA RTX series represents a significant leap in graphics technology, introducing real-time ray tracing and AI-powered features. Each generation brings substantial improvements in performance, efficiency, and technological capabilities.</p>
+
+                    <h3>RTX Technology Generations</h3>
+                    <ul>
+                        <li><strong>RTX 20 Series (Turing):</strong>
+                            <ul>
+                                <li>First generation of real-time ray tracing</li>
+                                <li>Introduction of DLSS 1.0</li>
+                                <li>12nm manufacturing process</li>
+                                <li>First-generation RT and Tensor cores</li>
+                            </ul>
+                        </li>
+                        <li><strong>RTX 30 Series (Ampere):</strong>
+                            <ul>
+                                <li>2nd generation ray tracing hardware</li>
+                                <li>DLSS 2.0 with improved AI upscaling</li>
+                                <li>8nm Samsung process node</li>
+                                <li>Up to 2x ray tracing performance</li>
+                            </ul>
+                        </li>
+                        <li><strong>RTX 40 Series (Ada Lovelace):</strong>
+                            <ul>
+                                <li>3rd generation ray tracing</li>
+                                <li>DLSS 3 with Frame Generation</li>
+                                <li>4nm TSMC process node</li>
+                                <li>Significant improvements in power efficiency</li>
+                            </ul>
+                        </li>
+                        <li><strong>RTX 50 Series (Blackwell):</strong>
+                            <ul>
+                                <li>4th generation ray tracing architecture</li>
+                                <li>DLSS 4 technology</li>
+                                <li>Advanced node process</li>
+                                <li>Enhanced power efficiency and performance</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <h4>Key RTX Features</h4>
+                        <ul>
+                            <li><strong>Ray Tracing:</strong> Real-time lighting, shadows, and reflections</li>
+                            <li><strong>DLSS:</strong> AI-powered upscaling for higher performance</li>
+                            <li><strong>Tensor Cores:</strong> Dedicated AI acceleration</li>
+                            <li><strong>NVIDIA Broadcast:</strong> AI-enhanced streaming features</li>
+                            <li><strong>NVIDIA Reflex:</strong> Reduced system latency</li>
+                        </ul>
+                    </div>
+
+                    <h3>Performance Scaling Across Generations</h3>
+                    <p>Each RTX generation has delivered significant performance improvements over its predecessor, particularly in ray tracing and AI workloads. The architectural advancements, combined with process node improvements, result in better performance per watt and enhanced capabilities for modern gaming and content creation.</p>
+
+                    <table class="performance-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>RTX 20 Series</th>
+                                <th>RTX 30 Series</th>
+                                <th>RTX 40 Series</th>
+                                <th>RTX 50 Series*</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ray Tracing</td>
+                                <td>1st Gen</td>
+                                <td>2nd Gen (2x)</td>
+                                <td>3rd Gen (3x)</td>
+                                <td>4th Gen (4x)</td>
+                            </tr>
+                            <tr>
+                                <td>DLSS Version</td>
+                                <td>1.0</td>
+                                <td>2.0-2.4</td>
+                                <td>3.0-3.5</td>
+                                <td>4.0</td>
+                            </tr>
+                            <tr>
+                                <td>Process Node</td>
+                                <td>12nm</td>
+                                <td>8nm</td>
+                                <td>4nm</td>
+                                <td>3nm*</td>
+                            </tr>
+                            <tr>
+                                <td>Max Memory</td>
+                                <td>11GB</td>
+                                <td>24GB</td>
+                                <td>24GB</td>
+                                <td>32GB*</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="text-muted">* RTX 50 Series specifications are based on current projections and may change.</p>
+                </article>
+
+                <article class="content-article" id="ray-tracing-dlss">
+                    <h2>Ray Tracing and DLSS Technology</h2>
+                    <p>Real-time ray tracing and DLSS (Deep Learning Super Sampling) represent two of the most significant advancements in modern graphics technology. These features work together to deliver unprecedented visual quality and performance in modern games and applications.</p>
+
+                    <h3>Real-Time Ray Tracing</h3>
+                    <p>Ray tracing simulates the physical behavior of light to create realistic lighting, shadows, and reflections. NVIDIA's RTX implementation includes:</p>
+
+                    <ul>
+                        <li><strong>Global Illumination:</strong> Realistic light bounces and ambient lighting</li>
+                        <li><strong>Ray-Traced Reflections:</strong> Accurate mirror and glossy reflections</li>
+                        <li><strong>Ray-Traced Shadows:</strong> Physically accurate soft shadows</li>
+                        <li><strong>Ray-Traced Ambient Occlusion:</strong> Subtle contact shadows</li>
+                        <li><strong>Ray-Traced Caustics:</strong> Light focusing effects through glass and water</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <h4>Ray Tracing Performance Impact</h4>
+                        <ul>
+                            <li><strong>Resolution Scaling:</strong> Higher resolutions require exponentially more rays</li>
+                            <li><strong>Effect Types:</strong> Different effects have varying performance costs</li>
+                            <li><strong>Scene Complexity:</strong> More geometry increases ray intersection calculations</li>
+                            <li><strong>RT Core Generation:</strong> Newer GPUs offer better ray tracing efficiency</li>
+                        </ul>
+                    </div>
+
+                    <h3>DLSS Technology Evolution</h3>
+                    <p>DLSS uses AI to upscale lower resolution images to higher resolutions while maintaining or even improving image quality. Each version brings significant improvements:</p>
+
+                    <ul>
+                        <li><strong>DLSS 1.0:</strong>
+                            <ul>
+                                <li>Initial AI upscaling implementation</li>
+                                <li>Game-specific training required</li>
+                                <li>Limited adoption and variable results</li>
+                            </ul>
+                        </li>
+                        <li><strong>DLSS 2.0-2.4:</strong>
+                            <ul>
+                                <li>General network training</li>
+                                <li>Significant quality improvements</li>
+                                <li>Multiple quality modes</li>
+                                <li>Temporal feedback for better stability</li>
+                            </ul>
+                        </li>
+                        <li><strong>DLSS 3.0-3.5:</strong>
+                            <ul>
+                                <li>Frame Generation technology</li>
+                                <li>AI-generated intermediate frames</li>
+                                <li>Substantial FPS improvements</li>
+                                <li>Enhanced image quality and stability</li>
+                            </ul>
+                        </li>
+                        <li><strong>DLSS 4.0:</strong>
+                            <ul>
+                                <li>Next-generation AI upscaling</li>
+                                <li>Improved temporal stability</li>
+                                <li>Enhanced detail preservation</li>
+                                <li>Ray reconstruction improvements</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <table class="performance-table">
+                        <thead>
+                            <tr>
+                                <th>DLSS Mode</th>
+                                <th>Performance Gain</th>
+                                <th>Quality Impact</th>
+                                <th>Recommended Use</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Quality</td>
+                                <td>~40%</td>
+                                <td>Minimal to None</td>
+                                <td>High-end GPUs, quality focus</td>
+                            </tr>
+                            <tr>
+                                <td>Balanced</td>
+                                <td>~60%</td>
+                                <td>Slight</td>
+                                <td>Mid-range GPUs, balanced approach</td>
+                            </tr>
+                            <tr>
+                                <td>Performance</td>
+                                <td>~100%</td>
+                                <td>Noticeable</td>
+                                <td>Entry-level GPUs, performance focus</td>
+                            </tr>
+                            <tr>
+                                <td>Ultra Performance</td>
+                                <td>~300%</td>
+                                <td>Significant</td>
+                                <td>8K gaming, extreme performance needs</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Ray Tracing + DLSS Synergy</h3>
+                    <p>Ray tracing and DLSS work together synergistically. The performance overhead of ray tracing can be offset by DLSS, allowing games to deliver both exceptional visual quality and high frame rates. This combination is particularly effective at higher resolutions where ray tracing overhead is most significant.</p>
+
+                    <div class="warning-box">
+                        <h4>System Requirements Consideration</h4>
+                        <p>While DLSS can significantly improve performance with ray tracing enabled, the base GPU should still meet minimum requirements for acceptable frame rates. Entry-level RTX cards may struggle with ray tracing at higher resolutions even with DLSS enabled.</p>
+                    </div>
+                </article>
+
+                <article class="content-article" id="content-creation">
+                    <h2>GPU Performance in Content Creation</h2>
+                    <p>Modern content creation workflows heavily rely on GPU acceleration for tasks ranging from video editing to 3D rendering. Understanding GPU performance in these applications helps content creators choose the right hardware for their specific needs.</p>
+
+                    <h3>Video Editing and Encoding</h3>
+                    <p>GPU acceleration significantly improves video editing performance through:</p>
+
+                    <ul>
+                        <li><strong>Hardware Encoding/Decoding:</strong>
+                            <ul>
+                                <li>NVIDIA NVENC for fast video export</li>
+                                <li>Real-time playback of high-resolution footage</li>
+                                <li>Support for multiple video formats</li>
+                                <li>8K video processing capability</li>
+                            </ul>
+                        </li>
+                        <li><strong>Effects Acceleration:</strong>
+                            <ul>
+                                <li>Real-time effects preview</li>
+                                <li>GPU-accelerated transitions</li>
+                                <li>Color grading and LUTs</li>
+                                <li>Motion graphics rendering</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h3>3D Rendering Performance</h3>
+                    <p>Professional 3D rendering engines leverage GPU acceleration for faster rendering times:</p>
+
+                    <table class="performance-table">
+                        <thead>
+                            <tr>
+                                <th>Rendering Engine</th>
+                                <th>RTX 4060</th>
+                                <th>RTX 4070</th>
+                                <th>RTX 4080</th>
+                                <th>RTX 4090</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Blender Cycles</td>
+                                <td>Good</td>
+                                <td>Very Good</td>
+                                <td>Excellent</td>
+                                <td>Outstanding</td>
+                            </tr>
+                            <tr>
+                                <td>V-Ray GPU</td>
+                                <td>Good</td>
+                                <td>Very Good</td>
+                                <td>Excellent</td>
+                                <td>Outstanding</td>
+                            </tr>
+                            <tr>
+                                <td>OctaneRender</td>
+                                <td>Good</td>
+                                <td>Very Good</td>
+                                <td>Excellent</td>
+                                <td>Outstanding</td>
+                            </tr>
+                            <tr>
+                                <td>Redshift</td>
+                                <td>Good</td>
+                                <td>Very Good</td>
+                                <td>Excellent</td>
+                                <td>Outstanding</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight-box">
+                        <h4>Key Rendering Features</h4>
+                        <ul>
+                            <li><strong>RTX Acceleration:</strong> Ray tracing cores speed up light calculations</li>
+                            <li><strong>OptiX Support:</strong> NVIDIA's ray tracing API for professional applications</li>
+                            <li><strong>CUDA Acceleration:</strong> General-purpose GPU computing for rendering</li>
+                            <li><strong>VRAM Usage:</strong> High memory capacity for complex scenes</li>
+                        </ul>
+                    </div>
+
+                    <h3>Content Creation Applications</h3>
+                    <ul>
+                        <li><strong>Adobe Creative Suite:</strong>
+                            <ul>
+                                <li>Premiere Pro: Video editing and effects</li>
+                                <li>After Effects: Motion graphics and VFX</li>
+                                <li>Photoshop: Image editing and filters</li>
+                                <li>Media Encoder: Video export acceleration</li>
+                            </ul>
+                        </li>
+                        <li><strong>3D Applications:</strong>
+                            <ul>
+                                <li>Blender: 3D modeling and animation</li>
+                                <li>Maya: Professional 3D creation</li>
+                                <li>3ds Max: Architectural and game design</li>
+                                <li>Cinema 4D: Motion graphics and visualization</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h3>Memory Requirements</h3>
+                    <p>Content creation workloads often demand substantial VRAM:</p>
+
+                    <ul>
+                        <li><strong>4K Video Editing:</strong> 8GB minimum, 12GB+ recommended</li>
+                        <li><strong>8K Video Editing:</strong> 16GB minimum, 24GB+ recommended</li>
+                        <li><strong>Complex 3D Scenes:</strong> 12GB minimum, 24GB+ for large projects</li>
+                        <li><strong>Texture Work:</strong> 8GB minimum, 16GB+ for high-resolution assets</li>
+                    </ul>
+
+                    <div class="warning-box">
+                        <h4>Professional Considerations</h4>
+                        <p>While gaming GPUs can handle content creation tasks, professional NVIDIA RTX cards (Quadro) offer additional features like certified drivers, ECC memory, and enhanced reliability for mission-critical workflows.</p>
+                    </div>
+                </article>
+
+                <article class="content-article" id="power-efficiency">
+                    <h2>Power Consumption and Efficiency</h2>
+                    <p>Power efficiency is a critical aspect of modern GPU design, affecting performance, heat generation, electricity costs, and system requirements. Understanding power consumption characteristics helps users make informed decisions about their graphics card choices and power supply needs.</p>
+
+                    <h3>Power Requirements by GPU Tier</h3>
+                    <table class="performance-table">
+                        <thead>
+                            <tr>
+                                <th>GPU Model</th>
+                                <th>TGP (W)</th>
+                                <th>Peak Power (W)</th>
+                                <th>Idle Power (W)</th>
+                                <th>PSU Recommendation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>RTX 4060</td>
+                                <td>115</td>
+                                <td>130</td>
+                                <td>9</td>
+                                <td>550W</td>
+                            </tr>
+                            <tr>
+                                <td>RTX 4070</td>
+                                <td>200</td>
+                                <td>225</td>
+                                <td>15</td>
+                                <td>650W</td>
+                            </tr>
+                            <tr>
+                                <td>RTX 4080</td>
+                                <td>320</td>
+                                <td>355</td>
+                                <td>22</td>
+                                <td>750W</td>
+                            </tr>
+                            <tr>
+                                <td>RTX 4090</td>
+                                <td>450</td>
+                                <td>500</td>
+                                <td>28</td>
+                                <td>850W</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight-box">
+                        <h4>Understanding Power Terms</h4>
+                        <ul>
+                            <li><strong>TGP (Total Graphics Power):</strong> Nominal power consumption during gaming</li>
+                            <li><strong>Peak Power:</strong> Maximum power draw under extreme workloads</li>
+                            <li><strong>Idle Power:</strong> Power consumption at desktop with no load</li>
+                            <li><strong>PSU Recommendation:</strong> Minimum power supply wattage for stable operation</li>
+                        </ul>
+                    </div>
+
+                    <h3>Efficiency Features</h3>
+                    <p>Modern GPUs incorporate various power efficiency technologies:</p>
+
+                    <ul>
+                        <li><strong>Dynamic Clock Adjustment:</strong>
+                            <ul>
+                                <li>Automatic frequency scaling based on workload</li>
+                                <li>Power state management for idle conditions</li>
+                                <li>Boost algorithms for optimal performance/power balance</li>
+                            </ul>
+                        </li>
+                        <li><strong>Power Management:</strong>
+                            <ul>
+                                <li>Multi-rail power delivery systems</li>
+                                <li>Efficient voltage regulation</li>
+                                <li>Advanced power states (D0-D3)</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h3>Performance per Watt</h3>
+                    <p>Performance per watt is a key metric for evaluating GPU efficiency:</p>
+
+                    <ul>
+                        <li><strong>Gaming Efficiency:</strong> FPS per watt in gaming workloads</li>
+                        <li><strong>Mining Efficiency:</strong> Hashrate per watt for cryptocurrency mining</li>
+                        <li><strong>Content Creation:</strong> Render time per watt for professional tasks</li>
+                        <li><strong>AI/ML Performance:</strong> TOPS per watt for machine learning</li>
+                    </ul>
+
+                    <div class="warning-box">
+                        <h4>Power Supply Quality</h4>
+                        <p>High-quality power supplies are essential for stable GPU operation. Transient power spikes can exceed rated TGP by significant margins. Choose PSUs with adequate headroom and good voltage regulation for optimal performance and longevity.</p>
+                    </div>
+
+                    <h3>Optimization Tips</h3>
+                    <ul>
+                        <li><strong>Undervolting:</strong> Reduce voltage while maintaining performance</li>
+                        <li><strong>Power Limits:</strong> Adjust power targets for efficiency</li>
+                        <li><strong>Fan Curves:</strong> Optimize cooling for power/noise balance</li>
+                        <li><strong>Frame Limiting:</strong> Cap frame rates to reduce power consumption</li>
+                    </ul>
+                </article>
+
+                <article class="content-article" id="memory-bandwidth">
+                    <h2>GPU Memory and Bandwidth Requirements</h2>
+                    <p>Graphics memory (VRAM) and memory bandwidth are crucial factors in GPU performance. Modern games and applications demand increasing amounts of VRAM and higher bandwidth to handle high-resolution textures, complex shaders, and large datasets.</p>
+
+                    <h3>Memory Technologies</h3>
+                    <p>Current GPU memory technologies offer different performance characteristics:</p>
+
+                    <ul>
+                        <li><strong>GDDR6X:</strong>
+                            <ul>
+                                <li>Highest bandwidth capability</li>
+                                <li>PAM4 signaling for increased data rates</li>
+                                <li>Used in high-end RTX cards</li>
+                                <li>Higher power consumption</li>
+                            </ul>
+                        </li>
+                        <li><strong>GDDR6:</strong>
+                            <ul>
+                                <li>Good balance of performance and efficiency</li>
+                                <li>Wide adoption across GPU tiers</li>
+                                <li>Lower cost than GDDR6X</li>
+                                <li>Better power efficiency</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <h4>Memory Configuration by GPU Tier</h4>
+                        <ul>
+                            <li><strong>Entry Level:</strong> 8GB GDDR6, 128-bit bus</li>
+                            <li><strong>Mid-Range:</strong> 12-16GB GDDR6, 192-bit bus</li>
+                            <li><strong>High-End:</strong> 16-24GB GDDR6X, 256-384-bit bus</li>
+                            <li><strong>Flagship:</strong> 24GB+ GDDR6X, 384-bit+ bus</li>
+                        </ul>
+                    </div>
+
+                    <h3>Memory Bandwidth Requirements</h3>
+                    <table class="performance-table">
+                        <thead>
+                            <tr>
+                                <th>Resolution</th>
+                                <th>Minimum VRAM</th>
+                                <th>Recommended VRAM</th>
+                                <th>Bandwidth Need</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1080p Gaming</td>
+                                <td>6GB</td>
+                                <td>8GB</td>
+                                <td>>300 GB/s</td>
+                            </tr>
+                            <tr>
+                                <td>1440p Gaming</td>
+                                <td>8GB</td>
+                                <td>12GB</td>
+                                <td>>400 GB/s</td>
+                            </tr>
+                            <tr>
+                                <td>4K Gaming</td>
+                                <td>10GB</td>
+                                <td>16GB</td>
+                                <td>>600 GB/s</td>
+                            </tr>
+                            <tr>
+                                <td>Content Creation</td>
+                                <td>12GB</td>
+                                <td>24GB</td>
+                                <td>Varies</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Memory Subsystem Features</h3>
+                    <ul>
+                        <li><strong>Cache Architecture:</strong>
+                            <ul>
+                                <li>L1 Cache for immediate access</li>
+                                <li>L2 Cache for improved hit rates</li>
+                                <li>Memory compression</li>
+                                <li>Smart access memory technologies</li>
+                            </ul>
+                        </li>
+                        <li><strong>Bandwidth Optimization:</strong>
+                            <ul>
+                                <li>Improved memory controllers</li>
+                                <li>Advanced compression algorithms</li>
+                                <li>Efficient memory management</li>
+                                <li>DirectStorage support</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="warning-box">
+                        <h4>Memory Bottleneck Considerations</h4>
+                        <p>Insufficient VRAM or bandwidth can severely impact performance, causing stuttering and texture pop-in. Always choose a GPU with adequate memory for your target resolution and use case, with room for future requirements.</p>
+                    </div>
+
+                    <h3>Future Trends</h3>
+                    <p>Memory technology continues to evolve with upcoming developments:</p>
+
+                    <ul>
+                        <li><strong>GDDR7:</strong> Next-generation memory standard</li>
+                        <li><strong>Higher Capacities:</strong> 32GB+ configurations</li>
+                        <li><strong>Improved Efficiency:</strong> Better performance per watt</li>
+                        <li><strong>Advanced Compression:</strong> More efficient data handling</li>
+                    </ul>
+                </article>
+
+                <article class="content-article" id="cooling-overclocking">
+                    <h2>Cooling Solutions and Overclocking</h2>
+                    <p>Effective cooling is essential for maintaining optimal GPU performance and enabling overclocking potential. Understanding different cooling solutions and overclocking principles helps users maximize their graphics card's capabilities while ensuring long-term reliability.</p>
+
+                    <h3>GPU Cooling Technologies</h3>
+                    <ul>
+                        <li><strong>Air Cooling:</strong>
+                            <ul>
+                                <li>Traditional heatsink and fan design</li>
+                                <li>Multiple fan configurations</li>
+                                <li>Heat pipe technology</li>
+                                <li>Vapor chamber solutions</li>
+                            </ul>
+                        </li>
+                        <li><strong>Liquid Cooling:</strong>
+                            <ul>
+                                <li>AIO (All-In-One) solutions</li>
+                                <li>Custom loop integration</li>
+                                <li>Hybrid cooling designs</li>
+                                <li>Enhanced thermal capacity</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <h4>Cooling Performance Comparison</h4>
+                        <table class="performance-table">
+                            <thead>
+                                <tr>
+                                    <th>Cooling Type</th>
+                                    <th>Temp Under Load</th>
+                                    <th>Noise Level</th>
+                                    <th>OC Potential</th>
+                                    <th>Cost</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Stock Air</td>
+                                    <td>75-85°C</td>
+                                    <td>Moderate</td>
+                                    <td>Limited</td>
+                                    <td>$</td>
+                                </tr>
+                                <tr>
+                                    <td>Premium Air</td>
+                                    <td>65-75°C</td>
+                                    <td>Low-Moderate</td>
+                                    <td>Good</td>
+                                    <td>$$</td>
+                                </tr>
+                                <tr>
+                                    <td>AIO Liquid</td>
+                                    <td>55-65°C</td>
+                                    <td>Low</td>
+                                    <td>Very Good</td>
+                                    <td>$$$</td>
+                                </tr>
+                                <tr>
+                                    <td>Custom Loop</td>
+                                    <td>45-55°C</td>
+                                    <td>Very Low</td>
+                                    <td>Excellent</td>
+                                    <td>$$$$</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Overclocking Fundamentals</h3>
+                    <p>GPU overclocking involves adjusting various parameters to achieve higher performance:</p>
+
+                    <ul>
+                        <li><strong>Core Clock:</strong>
+                            <ul>
+                                <li>Base clock adjustment</li>
+                                <li>Boost clock enhancement</li>
+                                <li>Voltage curve optimization</li>
+                                <li>Power limit adjustments</li>
+                            </ul>
+                        </li>
+                        <li><strong>Memory Clock:</strong>
+                            <ul>
+                                <li>VRAM frequency increase</li>
+                                <li>Memory timing adjustments</li>
+                                <li>Error detection and correction</li>
+                            </ul>
+                        </li>
+                        <li><strong>Fan Control:</strong>
+                            <ul>
+                                <li>Custom fan curves</li>
+                                <li>Temperature targets</li>
+                                <li>Acoustic optimization</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h3>Safe Overclocking Guidelines</h3>
+                    <ol>
+                        <li><strong>Temperature Monitoring:</strong>
+                            <ul>
+                                <li>Keep core temps under 85°C</li>
+                                <li>Monitor VRAM temperatures</li>
+                                <li>Watch VRM temperatures</li>
+                            </ul>
+                        </li>
+                        <li><strong>Stability Testing:</strong>
+                            <ul>
+                                <li>Use reliable stress testing tools</li>
+                                <li>Run extended stability tests</li>
+                                <li>Monitor for artifacts and crashes</li>
+                            </ul>
+                        </li>
+                        <li><strong>Performance Validation:</strong>
+                            <ul>
+                                <li>Benchmark before and after</li>
+                                <li>Verify actual gains</li>
+                                <li>Check power efficiency</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <div class="warning-box">
+                        <h4>Overclocking Risks</h4>
+                        <p>While modern GPUs have robust protection mechanisms, improper overclocking can still lead to instability, reduced lifespan, or potential damage. Always start with conservative adjustments and thoroughly test for stability.</p>
+                    </div>
+
+                    <h3>Advanced Cooling Considerations</h3>
+                    <ul>
+                        <li><strong>Case Airflow:</strong>
+                            <ul>
+                                <li>Proper intake/exhaust balance</li>
+                                <li>Strategic fan placement</li>
+                                <li>Dust filtration</li>
+                            </ul>
+                        </li>
+                        <li><strong>Thermal Interface:</strong>
+                            <ul>
+                                <li>Quality thermal paste</li>
+                                <li>Proper mounting pressure</li>
+                                <li>Regular maintenance</li>
+                            </ul>
+                        </li>
+                        <li><strong>Environmental Factors:</strong>
+                            <ul>
+                                <li>Ambient temperature impact</li>
+                                <li>Dust management</li>
+                                <li>Ventilation requirements</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </article>
+
+                <article class="content-article" id="buying-guide-comprehensive">
+                    <h2>Comprehensive GPU Buying Guide</h2>
+                    <p>Choosing the right GPU requires careful consideration of various factors including performance requirements, budget constraints, and system compatibility. This comprehensive guide helps you make an informed decision based on your specific needs.</p>
+
+                    <h3>Gaming Performance Tiers</h3>
+                    <table class="performance-table">
+                        <thead>
+                            <tr>
+                                <th>Tier</th>
+                                <th>Price Range</th>
+                                <th>Recommended GPUs</th>
+                                <th>Best For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Entry Level</td>
+                                <td>$250-350</td>
+                                <td>RTX 4060</td>
+                                <td>1080p Gaming</td>
+                            </tr>
+                            <tr>
+                                <td>Mid-Range</td>
+                                <td>$400-600</td>
+                                <td>RTX 4060 Ti, 4070</td>
+                                <td>1440p Gaming</td>
+                            </tr>
+                            <tr>
+                                <td>High-End</td>
+                                <td>$700-1000</td>
+                                <td>RTX 4070 Ti, 4080</td>
+                                <td>4K Gaming</td>
+                            </tr>
+                            <tr>
+                                <td>Enthusiast</td>
+                                <td>$1000+</td>
+                                <td>RTX 4090</td>
+                                <td>4K Ultra/Content Creation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight-box">
+                        <h4>Resolution and Refresh Rate Guide</h4>
+                        <ul>
+                            <li><strong>1080p @ 60Hz:</strong> RTX 4060 or better</li>
+                            <li><strong>1080p @ 144Hz:</strong> RTX 4060 Ti or better</li>
+                            <li><strong>1440p @ 60Hz:</strong> RTX 4060 Ti or better</li>
+                            <li><strong>1440p @ 144Hz:</strong> RTX 4070 or better</li>
+                            <li><strong>4K @ 60Hz:</strong> RTX 4070 Ti or better</li>
+                            <li><strong>4K @ 144Hz:</strong> RTX 4090</li>
+                        </ul>
+                    </div>
+
+                    <h3>Key Considerations</h3>
+                    <ul>
+                        <li><strong>System Requirements:</strong>
+                            <ul>
+                                <li>Power supply capacity and connectors</li>
+                                <li>Case size and clearance</li>
+                                <li>Cooling and airflow</li>
+                                <li>CPU compatibility</li>
+                            </ul>
+                        </li>
+                        <li><strong>Usage Scenarios:</strong>
+                            <ul>
+                                <li>Gaming resolution and refresh rate</li>
+                                <li>Content creation workloads</li>
+                                <li>Ray tracing and DLSS needs</li>
+                                <li>Multi-monitor setup</li>
+                            </ul>
+                        </li>
+                        <li><strong>Future-Proofing:</strong>
+                            <ul>
+                                <li>VRAM capacity for future games</li>
+                                <li>Feature support longevity</li>
+                                <li>Performance headroom</li>
+                                <li>Upgrade path considerations</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h3>AIB Partner Selection</h3>
+                    <p>Different AIB partners offer various cooling solutions and features:</p>
+
+                    <ul>
+                        <li><strong>Premium Tier:</strong>
+                            <ul>
+                                <li>ASUS ROG Strix</li>
+                                <li>MSI Gaming X Trio</li>
+                                <li>EVGA FTW3 Ultra</li>
+                            </ul>
+                        </li>
+                        <li><strong>Mid-Range:</strong>
+                            <ul>
+                                <li>ASUS TUF Gaming</li>
+                                <li>MSI Ventus</li>
+                                <li>Gigabyte Gaming OC</li>
+                            </ul>
+                        </li>
+                        <li><strong>Value Option:</strong>
+                            <ul>
+                                <li>Zotac Twin Edge</li>
+                                <li>PNY XLR8</li>
+                                <li>Palit GameRock</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="warning-box">
+                        <h4>Common Buying Mistakes to Avoid</h4>
+                        <ul>
+                            <li>Underestimating power supply requirements</li>
+                            <li>Not checking physical dimensions</li>
+                            <li>Overlooking VRAM capacity needs</li>
+                            <li>Bottlenecking with older CPUs</li>
+                            <li>Choosing based on price alone</li>
+                        </ul>
+                    </div>
+
+                    <h3>When to Buy</h3>
+                    <ul>
+                        <li><strong>Best Times:</strong>
+                            <ul>
+                                <li>Major sales events (Black Friday, etc.)</li>
+                                <li>End of quarter clearance</li>
+                                <li>Before new generation launches</li>
+                            </ul>
+                        </li>
+                        <li><strong>Times to Avoid:</strong>
+                            <ul>
+                                <li>Immediately after launch (high prices)</li>
+                                <li>During supply shortages</li>
+                                <li>Mining boom periods</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h3>Value Analysis</h3>
+                    <p>Consider the following metrics for value assessment:</p>
+
+                    <ul>
+                        <li><strong>Price per Frame:</strong> Cost divided by average FPS</li>
+                        <li><strong>Feature Set Value:</strong> DLSS, ray tracing, etc.</li>
+                        <li><strong>Power Efficiency:</strong> Performance per watt</li>
+                        <li><strong>Long-term Value:</strong> Resale and longevity</li>
+                    </ul>
+                </article>
+
                 <article class="content-article" id="gaming-performance-analysis">
                     <h2>Ultimate GPU Gaming Performance Guide: Resolution Analysis, Frame Rates, and Optimization
                         Strategies</h2>
@@ -1944,13 +2825,13 @@
                         gamers make informed decisions and optimize their gaming experience for smooth, immersive
                         gameplay.</p>
 
-                    <h3 id="content-creation">Gaming Performance Across All Resolutions</h3>
+                    <h3>Gaming Performance Across All Resolutions</h3>
                     <p>GPU gaming performance varies dramatically across different display resolutions, with each step
                         up in resolution requiring substantially more computational power. Understanding these
                         performance scaling characteristics helps gamers select appropriate hardware for their displays
                         and performance expectations.</p>
 
-                    <h4 id="power-efficiency">1080p Gaming Performance Analysis</h4>
+                    <h4>1080p Gaming Performance Analysis</h4>
                     <p>1080p (Full HD) gaming remains the most popular resolution, offering an excellent balance between
                         visual quality and hardware requirements. At this resolution, even mid-range GPUs can deliver
                         exceptional performance, often exceeding 60 FPS in most modern titles with high to ultra
@@ -1961,7 +2842,7 @@
                         high-refresh gaming, consistently delivering 144+ FPS in competitive titles like Counter-Strike
                         2, Valorant, and Apex Legends.</p>
 
-                    <h4 id="memory-bandwidth">1080p GPU Performance Tiers</h4>
+                    <h4>1080p GPU Performance Tiers</h4>
                     <ul>
                         <li><strong>Budget Gaming (RTX 4060, RTX 3060):</strong> 60-90 FPS high settings in most games
                         </li>
@@ -1972,7 +2853,7 @@
                             upcoming games</li>
                     </ul>
 
-                    <h3 id="cooling-overclocking">1440p Gaming: The Sweet Spot Resolution</h3>
+                    <h3>1440p Gaming: The Sweet Spot Resolution</h3>
                     <p>1440p (Quad HD) gaming provides significantly improved visual clarity over 1080p while remaining
                         achievable with mid-range to high-end GPUs. This resolution offers approximately 78% more pixels
                         than 1080p, requiring proportionally more GPU power but delivering noticeably sharper image
@@ -3578,19 +4459,21 @@
                     });
                 });
 
-                // Smooth scrolling for nav links
-                document.querySelectorAll('.nav-link, .footer-link').forEach(link => {
+                // Clean navigation without hash
+                document.querySelectorAll('a[href^="#"]').forEach(link => {
                     link.addEventListener('click', (e) => {
-                        const href = link.getAttribute('href');
-                        if (href && href.startsWith('#')) {
-                            e.preventDefault();
-                            const target = document.querySelector(href);
-                            if (target) {
-                                target.scrollIntoView({ behavior: 'smooth' });
-                                // Close mobile menu if open
-                                navMenu?.classList.remove('active');
-                                menuToggle?.classList.remove('active');
+                        e.preventDefault();
+                        const targetId = link.getAttribute('href').slice(1);
+                        const target = document.getElementById(targetId);
+                        if (target) {
+                            target.scrollIntoView({ behavior: 'smooth' });
+                            // Clear URL hash if it exists
+                            if (window.location.hash) {
+                                history.pushState('', document.title, window.location.pathname);
                             }
+                            // Close mobile menu if open
+                            navMenu?.classList.remove('active');
+                            menuToggle?.classList.remove('active');
                         }
                     });
                 });
